@@ -1,0 +1,11 @@
+div.top-banner {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--on-primary-text-color);
+    box-sizing: border-box;
+}
+
+main:has(div.top-banner)
+{
+    margin-top: 0px;
+}

@@ -1,0 +1,45 @@
+div#edit-page-content {
+    width: 100%;
+
+    padding: 0px var(--edit-page-content-padding);
+    box-sizing: border-box;
+}
+
+div#edit-user-tabs div.edit-user-settings-panel {
+    padding: var(--edit-user-tab-panel-padding);
+}
+
+div#edit-page-content div.user-profile-settings
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div#edit-page-content div.user-profile-settings > div
+{
+    margin: var(--settings-profile-sections-padding-vertical) var(--settings-profile-sections-padding-horizontal);
+}
+
+div#edit-page-content div#user-profile-settings-description
+{
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div#edit-page-content div#user-profile-settings-description textarea {
+    width: 100%;
+    height: var(--settings-profile-description-height);
+    resize: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+div#edit-page-content button#profile-settings-save-button {
+    align-self: center;
+}
+
+div#edit-page-content div.image-edit {
+    aspect-ratio: 1;
+}

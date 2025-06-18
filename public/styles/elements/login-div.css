@@ -1,0 +1,82 @@
+#login-div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    
+    padding: 0px;
+    margin: 0px;
+
+    background: var(--login-background);
+}
+
+#login-div h1 {
+    position: relative;
+    top: calc(var(--login-div-form-top-spacing)/2 );
+    left: 0px;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    color: var(--login-div-title-color);
+}
+
+#login-div div.form-div {
+    position: absolute;
+    top: var(--login-div-form-top-spacing);
+    left: calc((100vw - var(--login-div-width)) / 2);
+    width: var(--login-div-width);
+
+    box-sizing: border-box;
+    border-radius: var(--login-border-radius);
+    
+    padding: var(--login-div-padding);
+
+    background: var(--login-form-background);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-div div.form-div label {
+    align-self: flex-start;
+}
+
+#login-div div.form-div h2 {
+    margin-top: 0px;
+    margin-bottom: var(--login-div-padding);
+    text-align: center;
+}
+
+#login-div div.form-div input[type="text"], #login-div div.form-div input[type="password"], #login-div div.form-div input[type="email"] {
+    width: 100%;
+
+    margin-top: 0px;
+    margin-bottom: var(--login-div-input-space);
+
+    box-sizing: border-box;
+    padding: var(--login-div-input-padding);
+    border-radius: var(--login-div-input-border-radius);
+
+    border: var(--login-div-input-border-weight);
+    outline: none;
+
+    background: var(--login-inputs-background);
+}
+
+#login-div button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: var(--login-div-submit-button-margin);
+    margin-bottom: var(--login-div-submit-button-margin);
+}
+
+#login-div a {
+    font-size: var(--login-div-forgot-password-font-size);
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+

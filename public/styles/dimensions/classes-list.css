@@ -1,0 +1,30 @@
+:root {
+    --classes-list-padding: 20px;
+    --classes-list-class-preview-padding: 50px 30px;
+    --classes-list-margin: 20px;
+    --classes-list-class-preview-border-radius: 7px;
+    --classes-list-class-preview-spacing: 15px;
+    --classes-list-class-preview-padding-horizontal: 30px;
+    --classes-list-class-preview-padding-vertical: 50px;
+    --classes-list-margin: 20px;
+    --classes-list-class-preview-border-radius: 7px;
+    --classes-list-class-preview-spacing: 15px;
+    --classes-list-class-preview-edit-icon-size: 20px;
+    --classes-list-class-preview-title-size: larger;
+    --classes-list-add-class-button-border-width: 2px;
+
+    --classes-list-box-shadow-dx: 0px;
+    --classes-list-box-shadow-dy: 2px;
+    --classes-list-box-shadow-blurry: 3px;
+
+    --classes-list-class-preview-selected-margin: 30px;
+    --classes-list-class-preview-selected-icon-size: 30px;
+
+    --classes-list-preview-min-width: 30%;
+
+    --classes-list-class-title-padding: 4px;
+    --classes-list-class-title-shadow-strength: 3px;
+
+    --classes-list-class-description-padding: 20px;
+    --classes-list-class-description-shadow-strength: 3px;
+}

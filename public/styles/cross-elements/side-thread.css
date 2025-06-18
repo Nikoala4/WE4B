@@ -1,0 +1,5 @@
+section.side-thread {
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+}

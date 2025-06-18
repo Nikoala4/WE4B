@@ -1,0 +1,25 @@
+div.search-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+div.search-bar input {
+    flex-grow: 1;
+}
+
+div.search-bar button {
+    outline: none;
+    border: 1px solid black;
+}
+
+div.search-bar *:first-child {
+    border-radius: var(--search-bar-border-radius);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+div.search-bar *:last-child {
+    border-radius: var(--search-bar-border-radius);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}

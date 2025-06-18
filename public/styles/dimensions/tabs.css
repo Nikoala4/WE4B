@@ -1,0 +1,10 @@
+:root {
+    --tabs-buttons-padding-horizontal: 30px;
+    --tabs-buttons-padding-vertical: 10px;
+    --tabs-buttons-border-width: 1px;
+    --tabs-buttons-border-radius: 7px;
+
+    --tabs-content-border-width: 1px;
+    --tabs-content-padding: 5px;
+    --tabs-content-border-radius: 20px;
+}

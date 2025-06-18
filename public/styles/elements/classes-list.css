@@ -1,0 +1,105 @@
+div.classes-list {
+    position: relative;
+
+    width: 100%;
+    height: min-content;
+    margin: 0px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+div.classes-list a.class-preview-link {
+    text-decoration: none;
+    min-width: var(--classes-list-preview-min-width);
+}
+
+div.classes-list a.class-preview-link.hidden, div.classes-list div.class-preview.hidden {
+    display: none;
+}
+
+div.classes-list div.class-preview, button#add-class-button {
+    position: relative;
+
+    min-width: var(--classes-list-preview-min-width);
+
+    margin: var(--classes-list-margin);
+    flex-grow: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    box-sizing: border-box;
+    padding: var(--classes-list-class-preview-padding-vertical) var(--classes-list-class-preview-padding-horizontal);
+
+    border-radius: var(--classes-list-class-preview-border-radius);
+    box-shadow: var(--classes-list-box-shadow-dx) var(--classes-list-box-shadow-dy) var(--classes-list-box-shadow-blurry) var(--classes-list-box-shadow-background);
+    background-size: cover;
+    background-position: 50% 50%;
+
+    cursor: pointer;
+}
+
+div.classes-list.selecting div.class-preview:not(.selected) {
+    padding: calc(var(--classes-list-class-preview-padding-vertical) + 5px) calc(var(--classes-list-class-preview-padding-horizontal) + 5px);
+}
+
+div.classes-list.selecting div.class-preview.selected {
+    border: 5px solid var(--color-success);
+}
+
+div.classes-list div.class-preview h1 {
+    margin-top: 0px;
+    margin-bottom: var(--classes-list-class-preview-spacing);
+
+    font-size: var(--classes-list-class-preview-title-size);
+
+    background: var(--classes-list-class-content-background);
+    padding: var(--classes-list-class-title-padding);
+    box-shadow: 0px 0px var(--classes-list-class-title-shadow-strength) var(--classes-list-class-title-shadow-strength) var(--classes-list-class-content-background);
+    border-radius: var(--classes-list-class-title-shadow-strength);
+}
+
+div.classes-list div.class-preview p {
+    background: var(--classes-list-class-content-background);
+    padding: var(--classes-list-class-description-padding);
+    box-shadow: 0px 0px var(--classes-list-class-description-shadow-strength) var(--classes-list-class-description-shadow-strength) var(--classes-list-class-content-background);
+    border-radius: var(--classes-list-class-description-shadow-strength);
+}
+
+div.classes-list div.class-preview span.class-edit-icon {
+    position: absolute;
+    top: var(--classes-list-class-preview-padding-horizontal);
+    right: var(--classes-list-class-preview-padding-horizontal);
+}
+
+div.classes-list div.class-preview span.class-edit-icon img {
+    width: var(--classes-list-class-preview-edit-icon-size);
+    opacity: 0.6;
+}
+
+div.classes-list button#add-class-button {
+    margin: var(--classes-list-margin);
+    background: none;
+    border: var(--classes-list-add-class-button-border-width) dashed var(--inputs-surfaces-color);
+    height: 100%;
+    outline: none;
+}
+
+div.classes-list button#add-class-button img {
+    height: 2.8em;
+    box-sizing: border-box;
+}
+
+div.classes-list button#add-class-button span {
+    font-size: var(--classes-list-class-preview-title-size);
+}
+

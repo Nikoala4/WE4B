@@ -1,0 +1,317 @@
+/*
+
+    Class sections defines the sections contained in the class reading pages. 
+    They must not be confused with section elements, neither .class definitions
+
+*/
+
+.section {
+    position: relative;
+    margin: 0px;
+
+    box-sizing: border-box;
+}
+
+/*
+
+    Class Section Enumerations
+
+*/
+
+/* Section Container */
+div.section-container:not(.section-editable) {
+    padding: var(--section-container-padding);
+    margin: var(--section-container-margin);
+}
+
+div.section-container {
+    border: var(--section-container-border-width) solid var(--section-container-border-color);
+    border-radius: var(--section-container-border-radius);
+    gap: var(--section-container-wrapping-gap);
+}
+
+div.section-container:not(.section-editable), div.section-container.section-editable > div.container-editable-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+}
+
+div.section-container:not(.section-editable).horizontal-section-container, div.section-container.section-editable.horizontal-section-container > div.container-editable-content{
+    flex-direction: row;
+}
+
+div.section-container:not(.section-editable).wrapping-section-container, div.section-container.section-editable.wrapping-section-container > div.container-editable-content{
+    flex-wrap: wrap;
+}
+
+div.section-container.section-editable div.edit-container-buttons-actions {
+    display: flex;
+    justify-content: center;
+    margin: var(--section-editable-container-buttons-margin);
+    flex-grow: 0;
+    flex-shrink: 1;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* Raw Text*/
+p.section-raw-text {
+}
+
+div.section-raw-text.section-editable {
+    outline: none;
+    border: var(--section-raw-text-edition-border-size) dashed var(--section-raw-text-edition-border-idle-color);
+}
+
+div.section-raw-text.section-editable:focus {
+    outline: none;
+    border-color: var(--section-raw-text-edition-border-focus-color);
+}
+
+/* Rich Text */
+div.section-rich-text {
+}
+
+div.section-rich-text.section-editable {
+    margin: var(--section-rich-text-edition-margin);
+    border: var(--section-rich-text-edition-border-size) solid var(--section-rich-text-edition-border-color);
+    border-radius: var(--section-rich-text-edition-border-radius);
+    overflow: hidden;
+}
+
+div.section-rich-text.section-editable div.rich-text-section-edit-line {
+    display: flex;
+    flex-direction: row;
+    padding: var(--section-rich-text-edition-border-line-padding);
+    background: #b6d5b6;
+}
+
+div.section-rich-text.section-editable div.rich-text-section-content {
+    outline: none;
+    padding: var(--section-rich-text-edition-border-inner-padding);
+    border: var(--section-rich-text-edition-border-inner-border) solid var(--section-rich-text-edition-inner-border-color);
+}
+
+/* File */
+div.section-file {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border-radius: var(--section-file-border-radius);
+    background: var(--section-file-background);
+    padding: var(--section-file-padding);
+}
+
+div.section-file p.file-description {
+    flex-grow: 1;
+    padding-right: var(--section-file-padding);
+}
+
+div.section-file .file-button {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+    background: transparent;
+    border: none;
+
+    height: 100%;
+    padding: 0px;
+    padding-left: var(--section-file-padding);
+    align-items: center;
+}
+
+div.section-file .file-button::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: var(--section-file-background);
+    height: 100%;
+    width: var(--section-file-line-width);
+    border-radius: var(--section-file-line-width);
+}
+
+div.section-file .file-button img {
+    width: var(--section-file-image-size);
+    margin: calc(var(--section-file-padding) / 2);
+}
+
+div.section-file span.file-extension {
+    margin: 0px;
+    text-align: center;
+}
+
+/* Image */
+img.section-image {
+    height: auto; 
+    width: auto; 
+
+    flex: 1;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+div.section-image.section-editable {
+    position: relative;
+}
+
+div.section-image.section-editable img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+div.section-image.section-editable button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: var(--section-image-editable-button-background);
+    border: 0px;
+}
+
+/* Activity */
+div.section-activity {
+}
+
+/* Video */
+video.section-video, div.section-video.section-editable video {
+    flex-grow: 1;
+
+    max-width: 50vw;
+    max-height: 50vh;
+    height: auto;
+    width: auto;
+
+    border-radius: var(--section-video-border-radius);
+}
+
+div.section-video.section-editable {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.section-video.section-editable video {
+    position: relative;
+}
+
+div.section-video.section-editable img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+div.section-video.section-editable button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: var(--section-audio-editable-button-background);
+    border: 0px;
+}
+
+/* Audio */
+
+div.section-audio.section-editable audio {
+    position: relative;
+}
+
+div.section-audio.section-editable audio {
+    position: relative;
+    width: 100%;
+}
+div.section-audio.section-editable img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+div.section-audio.section-editable button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: var(--section-video-editable-button-background);
+    border: 0px;
+}
+
+/* Integration */
+iframe.section-integration {
+    flex-shrink: 0;
+    flex-grow: 1;   
+    border-radius: var(--section-integration-border-radius);
+}
+
+/*
+
+    Content edition styling
+
+*/
+.section.section-editable {
+    min-width: var(--section-editable-min-size);
+    min-height: var(--section-editable-min-size);
+}
+
+div.edit-content-section {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: var(--section-edit-padding);
+}
+
+/*
+
+    The use of the direct symbol (">") is justified because one container can contain another one. 
+    The style is here used for direct children. 
+
+*/
+
+div.section-container:not(.horizontal-section-container) > div.container-editable-content > div.edit-content-section {
+    flex-direction: row;
+}
+
+div.section-container:not(.horizontal-section-container) > div.container-editable-content > div.edit-content-section:not(:first-child) {
+    border-top: var(--section-editable-separation-width) dashed var(--section-editable-separation-color);
+}
+
+div.section-container.horizontal-section-container > div.container-editable-content > div.edit-content-section {
+    flex-direction: column;
+}
+
+div.section-container.horizontal-section-container > div.container-editable-content > div.edit-content-section:not(:first-child) {
+    border-left: var(--section-editable-separation-width) dashed var(--section-editable-separation-color);
+}
+
+div.edit-content-section div.edit-content-buttons-actions {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    padding: var(--section-editable-buttons-list-padding);
+}
+
+div.section-container:not(.horizontal-section-container) > div.container-editable-content > div.edit-content-section > div.edit-content-buttons-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+div.section-container.horizontal-section-container > div.container-editable-content > div.edit-content-section > div.edit-content-buttons-actions {
+    display: flex;
+    flex-direction: row;
+}
+
+div.edit-content-section .section {
+    flex-grow: 1;
+}
+

@@ -1,0 +1,17 @@
+:root{
+	--login-div-form-top-spacing: 30vh;
+	--login-div-width: 40vw;
+    --login-div-padding: 50px;
+
+    --login-border-radius: 7px;
+
+    --login-div-input-space: 10px;
+    --login-div-input-padding: 10px;
+    --login-div-input-border-radius: 3px;
+    --login-div-input-border-weight: 0px;
+
+    --login-div-submit-button-margin: 10px;
+    --login-div-forgot-password-font-size: small;
+
+    
+}

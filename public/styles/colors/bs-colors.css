@@ -1,0 +1,14 @@
+:root {
+    --bs-primary: #1A73E8;
+    --bs-secondary: #FF6D00;
+    --bs-success: #34A853;
+    --bs-danger: #EA4335;
+    --bs-warning: #FBBC05;
+    --bs-info: #4285F4;
+    --bs-light: #F1F3F4;
+    --bs-dark: #202124;
+}
+
+.bg-primary{
+    background-color: #10a83e !important;
+}

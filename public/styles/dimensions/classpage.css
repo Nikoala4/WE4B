@@ -1,0 +1,10 @@
+:root {
+    --classpage-padding: 30px;
+    --classpage-backlink-size: 50px;
+    --classpage-backlink-padding: 12px;
+
+    --classpage-save-buttons-margin: 20px;
+
+    --classpage-admin-class-handler-margin: 20px;
+    --classpage-admin-class-handler-spacing: 10px;
+}

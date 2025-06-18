@@ -1,0 +1,34 @@
+div#settings-content div#profile-settings-horizontal-editor
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div#settings-content div#profile-settings-horizontal-editor > div
+{
+    margin: var(--settings-profile-sections-padding-vertical) var(--settings-profile-sections-padding-horizontal);
+}
+
+div#settings-content div#profile-settings-description
+{
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div#settings-content div#profile-settings-description textarea {
+    width: 100%;
+    height: var(--settings-profile-description-height);
+    resize: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+div#settings-content button#profile-settings-save-button {
+    align-self: center;
+}
+
+div#settings-content div.image-edit {
+    aspect-ratio: 1;
+}

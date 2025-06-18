@@ -1,0 +1,17 @@
+div#settings-content div.info-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div#settings-content div.info-section:not(:first-child) {
+    margin-left: var(--settings-account-info-spacing);
+}
+
+div#settings-content div.actions-section {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: var(--settings-account-actions-spacing);
+    justify-content: left;
+}

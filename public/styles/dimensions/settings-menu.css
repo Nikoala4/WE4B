@@ -1,0 +1,14 @@
+:root {
+    --settings-menu-category-padding: 20px;
+    --settings-menu-item-padding: 10px;
+    --settings-menu-border-size: 1px;
+    --settings-menu-categories-spacing: 20px;
+
+    --settings-menu-category-border-radius: 10px;
+    --settings-menu-category-list-border-radius: 4px;
+
+    --settings-horizontal-margin: 50px;
+    --settings-content-border-width: 2px;
+
+    --settings-account-password-spacing: 10px;
+}

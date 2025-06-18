@@ -1,0 +1,37 @@
+div.thumbnails-list
+{
+    display: flex;
+    flex-direction: row!important;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    gap: var(--thumbnails-list-spacing);
+}
+
+div.thumbnails-list button.clickable-thumbnail
+{
+    width: var(--thumbnails-button-width);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--thumbnails-button-background);
+    border: var(--thumbnails-button-border-width) solid var(--thumbnails-button-border-color);
+    border-radius: var(--thumbnails-button-border-radius);
+    transition: background 0.1s ease-out;
+}
+
+div.thumbnails-list button.clickable-thumbnail:hover
+{
+    background: var(--thumbnails-button-hover-background);
+    transition: background 0.1s ease-out;
+}
+
+
+div.thumbnails-list button.clickable-thumbnail img
+{
+    max-width: 100%;
+    max-height: 100%;
+    padding: var(--thumbnails-button-image-padding);
+    box-sizing: border-box;
+}
+

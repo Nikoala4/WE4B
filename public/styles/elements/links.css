@@ -1,0 +1,14 @@
+a {
+    color: inherit;
+}
+
+a.img-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.img-link img {
+    max-height: 30px;
+    box-sizing: border-box;
+}

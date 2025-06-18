@@ -1,0 +1,10 @@
+:root {
+    --fullscreen-widget-width: 70vw;
+    --fullscreen-widget-height: 80vh;
+    --fullscreen-widget-margin: 5vh;
+    --fullscreen-widget-padding: 30px;
+    --fullscreen-widget-border-radius: 10px;
+    --fullscreen-widget-gap: 20px;
+    --fullscreen-widget-form-margin-bottom: 8px;
+    --fullscreen-widget-buttons-margin: 10px;
+}

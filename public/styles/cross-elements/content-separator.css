@@ -1,0 +1,6 @@
+div.content-separator {
+    position: relative;
+
+    display: flex;
+    flex-wrap: nowrap;
+}

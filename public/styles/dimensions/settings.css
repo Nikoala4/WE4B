@@ -1,0 +1,21 @@
+:root {
+    --settings-content-padding-horizontal: 40px;
+    --settings-content-padding-vertical: 10px;
+
+    --settings-profile-description-height: 100px;
+
+    --settings-profile-sections-padding-horizontal: 30px;
+    --settings-profile-sections-padding-vertical: 0px;
+
+    --settings-row-margin-bottom: 5px;
+    --settings-row-spacing: 5px;
+
+    --settings-account-info-spacing: 50px;
+    --settings-account-actions-spacing: 20px;
+
+    --image-edit-size: 300px;
+    --edit-media-button-padding: 80px;
+    --image-edit-border-width: 2px;
+
+    --settings-checkbox-list-max-width: 300px;
+}

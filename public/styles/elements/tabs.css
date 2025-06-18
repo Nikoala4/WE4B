@@ -1,0 +1,51 @@
+div.tabs-container {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+div.tabs-container div.tabs-buttons {
+    border: var(--tabs-buttons-border-width) solid var(--tabs-buttons-border-color);
+    border-bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    border-radius: var(--tabs-buttons-border-radius) var(--tabs-buttons-border-radius) 0px 0px;
+    overflow: hidden;
+    align-self: flex-start;
+}
+
+div.tabs-container div.tabs-buttons button {
+    padding: var(--tabs-buttons-padding-vertical) var(--tabs-buttons-padding-horizontal);
+    border: 0px;
+    color: var(--tabs-buttons-color);
+    background: var(--tabs-buttons-background);
+    transition: 0.2s all ease-out;
+}
+
+div.tabs-container div.tabs-buttons button:not(:first-child) {
+    border-left: var(--tabs-buttons-border-width) solid var(--tabs-buttons-border-color);
+}
+
+div.tabs-container div.tabs-buttons button:hover:not(.selected) {
+    background: var(--tabs-buttons-hover-background);
+    transition: 0.2s all ease-out;
+}
+
+div.tabs-container div.tabs-buttons button.selected {
+    background: var(--tabs-buttons-selected-background);
+    color: var(--tabs-buttons-selected-color);
+    transition: 0.1s all ease-out;
+}
+
+div.tabs-container div.tabs-content {
+    padding: var(--tabs-content-padding);
+    border: var(--tabs-content-border-width) solid var(--tabs-content-border-color);
+    border-radius: 0px var(--tabs-content-border-radius) var(--tabs-content-border-radius) var(--tabs-content-border-radius);
+}
+
+div.tabs-container div.tabs-content > div.hidden {
+    display: none;
+}
+
+

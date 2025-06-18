@@ -1,0 +1,26 @@
+span.result-text:empty {
+    display: none;
+}
+
+span.result-text {
+    width: 100%;
+    text-align: center;
+
+    padding: var(--error-text-padding);
+    margin-top: var(--error-text-margin);
+    margin-bottom: var(--error-text-margin);
+    border-radius: var(--error-text-border-radius);
+
+    box-sizing: border-box;
+}
+
+span.result-text.error {
+    background: var(--color-error);
+    color: var(--on-error-text-color);
+}
+
+span.result-text.success {
+    background: var(--color-success);
+    color: var(--on-success-text-color);
+}
+

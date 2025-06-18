@@ -1,0 +1,31 @@
+:root {
+    --section-container-padding: 10px 15px;
+    --section-container-margin: 10px;
+    --section-container-border-width: 1px;
+    --section-container-border-radius: 15px;
+    --section-container-wrapping-gap: 20px;
+
+    --section-file-border-radius: 4px;
+    --section-file-padding: 20px;
+    --section-file-line-width: 3px;
+    --section-file-image-size: 20px;
+
+    --section-editable-container-buttons-margin: 5px;
+    --section-editable-min-size: 10px;
+    --section-edit-padding: 5px;
+    --section-editable-separation-width: 1px;
+    --section-editable-buttons-list-padding: 10px;
+
+    --section-raw-text-edition-border-size: 1px;
+
+    --section-rich-text-edition-margin: 3px;
+    --section-rich-text-edition-border-size: 1px;
+    --section-rich-text-edition-border-radius: 5px;
+    --section-rich-text-edition-border-line-padding: 5px;
+    --section-rich-text-edition-border-inner-padding: 5px;
+    --section-rich-text-edition-border-inner-border: 5px;
+
+    --section-media-border-radius: 10px;
+    --section-video-border-radius: var(--section-media-border-radius);
+    --section-integration-border-radius: var(--section-media-border-radius);
+}

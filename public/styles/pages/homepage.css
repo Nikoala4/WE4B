@@ -1,0 +1,8 @@
+div#homepage-main-separation {
+    flex-direction: row;
+    width: 100%;
+}
+
+div#homepage-content {
+    width: 100%;
+}

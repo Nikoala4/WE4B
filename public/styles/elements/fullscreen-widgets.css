@@ -1,0 +1,64 @@
+.fullscreen-prompt
+{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    background: var(--fullscreen-widget-background);
+}
+
+.fullscreen-prompt div.fullscreen-widget {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+
+    margin-top: var(--fullscreen-widget-margin);
+    margin-right: calc((100vw - var(--fullscreen-widget-width))/2);
+    margin-left: calc((100vw - var(--fullscreen-widget-width))/2);
+
+    height: min-content;
+    max-height: var(--fullscreen-widget-height);
+
+    background: var(--surfaces-color);
+    padding: var(--fullscreen-widget-padding);
+    box-sizing: border-box;
+    border-radius: var(--fullscreen-widget-border-radius); 
+
+    display: flex;
+    flex-direction: column;
+}
+
+.fullscreen-prompt div.fullscreen-widget div.widget-title {
+    align-self: center;
+}
+
+.fullscreen-prompt div.fullscreen-widget div.widget-content {
+    flex-grow: 1;
+
+    max-height: 100%;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.fullscreen-prompt div.fullscreen-widget div.widget-buttons-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: var(--fullscreen-widget-gap);
+    margin-top: var(--fullscreen-widget-buttons-margin);
+}
+
+.fullscreen-prompt div.form input {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--fullscreen-widget-form-margin-bottom);
+}
+
+
+

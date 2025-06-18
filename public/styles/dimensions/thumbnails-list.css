@@ -1,0 +1,9 @@
+:root {
+    --thumbnails-list-spacing: 10px;
+
+    --thumbnails-button-width: 100px;
+    --thumbnails-button-border-width: 3px;
+    --thumbnails-button-border-radius: 4px;
+    --thumbnails-button-image-padding: 15px;
+
+}

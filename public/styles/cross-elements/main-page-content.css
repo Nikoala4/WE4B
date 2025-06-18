@@ -1,0 +1,3 @@
+div.main-page-content {
+    padding: var(--main-page-content-padding-vertical)  var(--main-page-content-padding-horizontal);
+}

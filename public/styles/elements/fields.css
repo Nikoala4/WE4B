@@ -1,0 +1,13 @@
+input[type="text"], input[type="email"], input[type="password"], input:not([type]), textarea
+{
+    box-sizing: border-box;
+    padding: var(--fields-padding);
+    border-radius: var(--fields-border-radius);
+
+    border: var(--fields-border-weight) solid var(--fields-border-color);
+    outline: none;
+
+    background: var(--fields-background);
+}
+
+

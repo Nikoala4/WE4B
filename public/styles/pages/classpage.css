@@ -1,0 +1,54 @@
+div#classpage-main-separation {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+}
+
+div#classpage-main-separation div#main-class-content {
+    position: relative;
+    width: calc(100% - var(--activity-thread-width));
+    box-sizing: border-box;
+
+    padding: 0px var(--classpage-padding);
+}
+
+div#classpage-main-separation div#main-class-content div.class-title-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div#classpage-main-separation div#main-class-content div.class-title-content a.class-back-link{
+    position: relative;
+    width: var(--classpage-backlink-size);
+    height: var(--classpage-backlink-size);
+}
+
+div#classpage-main-separation div#main-class-content div.class-title-content a.class-back-link img {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: var(--classpage-backlink-padding);
+}
+
+div#main-class-content > button {
+    margin: auto;
+    margin-top: var(--classpage-save-buttons-margin);
+    margin-bottom: var(--classpage-save-buttons-margin);
+}
+
+div#admin-class-handler
+{
+    padding: var(--classpage-admin-class-handler-margin);
+}
+
+div#admin-class-handler input
+{
+    display: block;
+    margin: var(--classpage-admin-class-handler-spacing) 0px;
+    width: 100%;
+}
+
+div#admin-class-handler div.image-edit {
+    aspect-ratio: 3;
+}
