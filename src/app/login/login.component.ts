@@ -1,31 +1,46 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
   imports: [FormsModule,
-    RouterLink
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email: String = ''
-  password: String=''
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  })
 
-  submit(){
-    if (this.validateForm()){
-      console.log(this.email + "\n" + this.password)
-    }
+  api = inject(ApiService)
+
+  async submit(){
+    console.log("submitting")
+    const resp = this.api.login(this.email?.value as String, this.password?.value as String)
+    console.log(resp)
   }
 
   forgot(){
-    console.log('FORGOT' + this.email)
   }
 
   validateForm(): Boolean{
 
     return true
   }
+
+  get email(){
+    return this.form.get('email')
+  }
+
+  get password(){
+    return this.form.get('password')
+  }
+
+
 }
