@@ -1,10 +1,12 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { AuthService, Role, UserData } from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
+import { Role } from '../../nooble/api-objs/Role';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { Account } from '../../nooble/api-objs/Account';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: UserData | null = null;
+  currentUser: Account | null = null;
   currentUserImage: string = '';
   adminEnabled = false;
 

@@ -1,19 +1,11 @@
 import { Injectable } from '@angular/core';
-
-export enum Role {
-  admin,
-  teacher_admin,
-  teacher,
-  student
-}
-
-export type UserData =  { name: string; surname: string; role: Role }
+import { Account } from '../../nooble/api-objs/Account';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  getCurrentUser(): UserData | null {
+  getCurrentUser(): Account | null {
     return null;
   }
 
