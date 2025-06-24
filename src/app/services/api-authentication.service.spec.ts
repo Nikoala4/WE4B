@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApiAuthenticationService } from './api-connection.service';
+import { ApiAuthenticationService } from './api-authentication.service';
 
 describe('ApiAuthenticationService', () => {
   let service: ApiAuthenticationService;

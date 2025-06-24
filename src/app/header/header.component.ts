@@ -33,11 +33,11 @@ export class HeaderComponent implements OnInit {
   }
 
   get isAdmin(): boolean {
-    return (this.currentUser?.role == Role.admin || this.currentUser?.role == Role.teacher_admin) ?? false;
+    return (this.currentUser?.role == Role.ADMIN || this.currentUser?.role == Role.TEACHER_ADMIN) ?? false;
   }
 
   get isTeacher(): boolean {
-    return (this.currentUser?.role == Role.teacher || this.currentUser?.role == Role.teacher_admin) ?? false;
+    return (this.currentUser?.role == Role.TEACHER || this.currentUser?.role == Role.TEACHER_ADMIN) ?? false;
   }
 
   onAdminSwitchChange(): void {

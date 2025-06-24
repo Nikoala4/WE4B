@@ -3,8 +3,7 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiLoginResponse } from '../../nooble/api-comm/LoginResponse';
 import { ApiLogInfoResponse } from '../../nooble/api-comm/LogInfoResponse';
-
-export const API_ENDPOINT = new InjectionToken<String>('API_ENDPOINT');
+import { API_ENDPOINT } from './api-endpoint-config';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +32,9 @@ export class ApiAuthenticationService {
     });
   }
 
-  logout(): Observable<Object|null>
+  logout(): Observable<null>
   {
-    return this.http.post(this.endpointUrl + "/connection/logout", {});
+    return this.http.post<null>(this.endpointUrl + "/connection/logout", {});
   }
 
 }
