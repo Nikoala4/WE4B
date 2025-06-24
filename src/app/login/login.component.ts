@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ApiAuthenticationService } from '../services/api-authentication.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,24 +18,25 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   })
 
-  constructor(private api: ApiAuthenticationService) {}
+  constructor(private api: AuthService) {}
 
   async submit()
   {
     console.log("submitting")
+
     this.api.login(this.email, this.password).subscribe({
       next: (response) => {
         console.log("Login successful", response);
-        // Handle successful login, e.g., redirect to home page
       },
       error: (error) => {
         console.error("Login failed", error);
-        // Handle login error, e.g., show an error message
       }
     });
   }
 
-  forgot(){
+  forgot()
+  {
+    //TODO: Implement forgot password functionality
   }
 
   validateForm(): Boolean{

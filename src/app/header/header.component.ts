@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { Account } from '../../nooble/api-objs/Account';
+import { PathResolverService } from '../services/path-resolver.service';
+import { FileType } from '../../nooble/api-objs/FileType';
 
 @Component({
   selector: 'app-header',
@@ -20,14 +22,33 @@ export class HeaderComponent implements OnInit {
   currentUserImage: string = '';
   adminEnabled = false;
 
-  constructor(private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object, private pathResolver: PathResolverService) {}
+
+  reload(): void {
+    if (this.authService.isLoggedIn()) {
+      this.currentUser = this.authService.getCurrentUser()!;
+
+      if (this.currentUser.profile.profile_image !== null) {
+        this.currentUserImage = this.pathResolver.getResourcePath(this.currentUser.profile.profile_image, FileType.PROFILE_ICON);
+      } else {
+        this.currentUserImage = "/images/icons/user.png";
+      }
+
+    } else {
+      this.currentUser = null;
+      this.currentUserImage = "/images/icons/user.png";
+    }
+  }
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getCurrentUser();
-    this.currentUserImage = this.authService.getUserImage();
+    // S'abonner à l'observable du service AuthService pour écouter les changements d'utilisateur
+    this.authService.authStatusChanged.subscribe(authState => {
+      this.reload();
+    });
 
-    if (isPlatformBrowser(this.platformId))
-    {
+    this.reload();
+
+    if (isPlatformBrowser(this.platformId)) {
       this.adminEnabled = this.getCookie('admin_enabled') === 'true';
     }
   }
