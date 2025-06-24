@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-routes',
   imports: [RouterLink],
   templateUrl: './routes.component.html',
-  styleUrl: './routes.component.scss'
+  styleUrl: './routes.component.css'
 })
 export class RoutesComponent {
 

@@ -1,0 +1,10 @@
+<input
+    type="text"
+    placeholder="Rechercher..."
+    [(ngModel)]="searchQuery"
+    (keyup.enter)="onSearch()"
+/>
+
+<button class="icon-button main-button" (click)="onSearch()">
+    <img src="/images/icons/search.png" alt="Rechercher" />
+</button>

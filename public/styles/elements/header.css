@@ -1,4 +1,4 @@
-header {
+app-header {
 	position: relative;
 	top: 0px;
 
@@ -12,11 +12,11 @@ header {
 	padding: var(--header-padding);
 }
 
-header span.header-space {
+app-header span.header-space {
 	flex-grow: 1;
 }
 
-header > *:not(:first-child) {
+app-header > *:not(:first-child) {
 	margin-left: var(--header-elements-left-margin);
 }
 

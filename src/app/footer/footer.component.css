@@ -1,0 +1,6 @@
+:host {
+	background: var(--primary-color);
+	color: var(--on-primary-text-color);
+	padding: var(--footer-padding);
+	flex-grow: 0px;
+}

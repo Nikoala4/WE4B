@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
   email: String = ''

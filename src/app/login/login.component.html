@@ -1,22 +1,22 @@
 <div id="login-div" class="center-div">
-            <h1>Bienvenue dans Nooble!</h1>
+    <h1>Bienvenue dans Nooble!</h1>
 
-            <div class="form-div">
-                <h2>Merci de vous connecter à votre compte</h2>
+    <div class="form-div">
+        <h2>Merci de vous connecter à votre compte</h2>
 
-                <label>Adresse mail:</label>
-                <input type="email" id="login-mail" [(ngModel)]="email" (keyup.enter)="submit()"/>
+        <label>Adresse mail:</label>
+        <input type="email" id="login-mail" [(ngModel)]="email" (keyup.enter)="submit()"/>
 
-                <label>Mot de passe:</label>
-              
-                <input type="password" id="login-password" [(ngModel)]="password" (keyup.enter)="submit()"/>
+        <label>Mot de passe:</label>
+        
+        <input type="password" id="login-password" [(ngModel)]="password" (keyup.enter)="submit()"/>
 
-                <span class="result-text" id="login-error-text"></span>
+        <span class="result-text" id="login-error-text"></span>
 
-                <button class="main-button" id="login-button" (click)="submit()">
-                    Se connecter
-                </button>
+        <button class="main-button" id="login-button" (click)="submit()">
+            Se connecter
+        </button>
 
-                <a routerLink="" (click)="forgot()">J'ai oublié mon mot de passe</a>
-            </div>
-        </div>
+        <a routerLink="" (click)="forgot()">J'ai oublié mon mot de passe</a>
+    </div>
+</div>

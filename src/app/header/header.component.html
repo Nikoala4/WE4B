@@ -1,0 +1,38 @@
+<div id="header-logo">
+  <img src="/images/logo.png" class="logo-medium" />
+  <h1>
+    <a routerLink="/">Nooble</a>
+  </h1>
+</div>
+
+<span class="header-space"></span>
+
+<!-- Switch Admin/Professeur -->
+<div
+  *ngIf="isAdmin && isTeacher"
+  id="header-admin-prof-switch"
+>
+  <span>Administrateur</span>
+  <div class="checkbox">
+    <input
+      id="admin-checkbox"
+      type="checkbox"
+      [(ngModel)]="adminEnabled"
+      (change)="onAdminSwitchChange()"
+    />
+    <span class="checkbox-style"></span>
+  </div>
+</div>
+
+<span class="header-space" *ngIf="isAdmin && isTeacher"></span>
+
+<!-- Lien vers la page de profil -->
+<a id="header-user-icon" [routerLink]="'/profile'">
+  <img
+    [src]="'data:image/png;base64,' + currentUserImage"
+    alt="Avatar utilisateur"
+  />
+  <span>
+    {{ currentUser?.surname }} {{ currentUser?.name }}
+  </span>
+</a>
