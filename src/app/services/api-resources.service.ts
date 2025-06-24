@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { API_ENDPOINT } from './api-endpoint-config';
-import { Activity } from '../../nooble/api-objs/Activity';
-import { ApiActivityRawResponse } from '../../nooble/api-comm/ActivityRawResponse';
 import { File } from '../../nooble/api-objs/File';
 import { FileType } from '../../nooble/api-objs/FileType';
 import { FileRawResponse } from '../../nooble/api-comm/FileRawResponse';
@@ -20,7 +18,7 @@ export class ApiResourcesService {
   delete(resourceId: string): Observable<null> {
     return this.http.post<null>(this.endpointUrl + "/resources/delete", {
       resourceId
-    });
+    }, {withCredentials: true});
   }
 
   getSelfFiles(type?: FileType): Observable<File[]> {
@@ -30,7 +28,7 @@ export class ApiResourcesService {
       url.searchParams.set("type", type);
     }
 
-    return this.http.get<FileRawResponse[]>(url.toString()).pipe(
+    return this.http.get<FileRawResponse[]>(url.toString(), {withCredentials: true}).pipe(
       map(
         (files: FileRawResponse[]) => files.map(
           file => ({
@@ -48,7 +46,7 @@ export class ApiResourcesService {
     formData.append('type', type);
     formData.append('file', file as any); // Cast to any to avoid type issues
 
-    return this.http.post<ApiUploadFileRawResponse>(this.endpointUrl + "/resources/upload", formData).pipe(
+    return this.http.post<ApiUploadFileRawResponse>(this.endpointUrl + "/resources/upload", formData, {withCredentials: true}).pipe(
       map((response: ApiUploadFileRawResponse) => ({
         ...response,
         sent_date: new Date(response.sent_date * 1000)

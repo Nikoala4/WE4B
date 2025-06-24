@@ -18,7 +18,7 @@ export class ApiThreadService {
     url.searchParams.set("count", count.toString());
     url.searchParams.set("offset", offset.toString());
 
-    return this.http.get<ApiActivityRawResponse[]>(url.toString()).pipe(
+    return this.http.get<ApiActivityRawResponse[]>(url.toString(), {withCredentials: true}).pipe(
       map(
         response => response.map(
           item => ({
@@ -36,6 +36,6 @@ export class ApiThreadService {
   markAsRead(activities: string[]): Observable<null> {
     return this.http.post<null>(this.endpointUrl + "/thread/mark-as-read", {
       activities
-    });
+    }, {withCredentials: true});
   }
 }

@@ -18,19 +18,19 @@ export class ApiAccountsService {
       mail,
       first_name,
       last_name
-    });
+    }, {withCredentials: true});
   }
 
   deleteAccount(userId: string): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/accounts/delete", {
       user_id: userId
-    });
+    }, {withCredentials: true});
   }
 
   getAccountInformation(userId: string): Observable<Account>
   {
-    return this.http.get<Account>(this.endpointUrl + "/accounts/get-info?user_id=" + userId);
+    return this.http.get<Account>(this.endpointUrl + "/accounts/get-info?user_id=" + userId, {withCredentials: true});
   }
 
   modifyAccountMail(userId: string, newMail: string): Observable<null>
@@ -38,7 +38,7 @@ export class ApiAccountsService {
     return this.http.post<null>(this.endpointUrl + "/accounts/modify-mail", {
       user_id: userId,
       mail: newMail
-    });
+    }, {withCredentials: true});
   }
 
   modifyAccountRole(userId: string, newRole: Role): Observable<null>
@@ -46,7 +46,7 @@ export class ApiAccountsService {
     return this.http.post<null>(this.endpointUrl + "/accounts/modify-role", {
       user_id: userId,
       role: newRole
-    });
+    }, {withCredentials: true});
   }
 
   searchAccount(pattern: string, count: number, offset: number): Observable<Account[]>
@@ -56,7 +56,7 @@ export class ApiAccountsService {
     url.searchParams.set("count", count.toString());
     url.searchParams.set("offset", offset.toString());
 
-    return this.http.get<Account[]>(url.toString());
+    return this.http.get<Account[]>(url.toString(), {withCredentials: true});
   }
 
   updateSelfPassword(lastPassword: string, newPassword: string): Observable<null>
@@ -64,7 +64,7 @@ export class ApiAccountsService {
     return this.http.post<null>(this.endpointUrl + "/accounts/update-password", {
       last_password: lastPassword,
       new_password: newPassword
-    });
+    }, {withCredentials: true});
   }
 
 }

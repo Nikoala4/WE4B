@@ -18,7 +18,7 @@ export class ApiDecorationsService {
   {
     return this.http.post<ApiBuyDecorationResponse>(this.endpointUrl + "/decorations/buy", {
       decoration: decorationId
-    });
+    }, {withCredentials: true});
   }
 
   create(name: string, price: number, imageId: string): Observable<ApiCreateDecorationResponse>
@@ -27,14 +27,14 @@ export class ApiDecorationsService {
       name,
       price,
       image_id: imageId
-    });
+    }, {withCredentials: true});
   }
 
   delete(decorationId: string): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/decorations/delete", {
       decoration_id: decorationId
-    });
+    }, {withCredentials: true});
   }
 
   getInfo(decorationId: string): Observable<ApiGetDecorationInformationResponse>
@@ -42,12 +42,12 @@ export class ApiDecorationsService {
     let url = new URL(this.endpointUrl = "/decorations/get-info");
     url.searchParams.set("decoration", decorationId);
 
-    return this.http.get<ApiGetDecorationInformationResponse>(url.toString());
+    return this.http.get<ApiGetDecorationInformationResponse>(url.toString(), {withCredentials: true});
   }
 
   listDecorations(): Observable<Decoration[]>
   {
-    return this.http.get<Decoration[]>(this.endpointUrl + "/decorations/list");
+    return this.http.get<Decoration[]>(this.endpointUrl + "/decorations/list", {withCredentials: true});
   }
 
   modify(decorationId: string, name: string, price: number, imageId: string): Observable<null>
@@ -57,7 +57,7 @@ export class ApiDecorationsService {
       name,
       price,
       image: imageId
-    });
+    }, {withCredentials: true});
   }
   
 }

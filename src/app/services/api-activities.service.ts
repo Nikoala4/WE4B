@@ -15,12 +15,12 @@ export class ApiActivitiesService {
   {
     return this.http.post<ApiActivityFileInitializationResponse>(this.endpointUrl + "/activities/init", {
       activity_name: activityName
-    });
+    }, {withCredentials: true});
   }
 
   listExistingActivities(): Observable<string[]>
   {
-    return this.http.get<string[]>(this.endpointUrl + "/activities/list");
+    return this.http.get<string[]>(this.endpointUrl + "/activities/list", {withCredentials: true});
   }
   
 }

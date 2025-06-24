@@ -17,7 +17,7 @@ export class ApiBadgesService {
   {
     return this.http.post<ApiBuyBadgeResponse>(this.endpointUrl + "/badges/buy", {
       name: badgeName
-    });
+    }, {withCredentials: true});
   }
 
   getInformation(name: string, level: number): Observable<ApiGetBadgeInfoResponse>
@@ -26,12 +26,12 @@ export class ApiBadgesService {
     url.searchParams.set("name", name);
     url.searchParams.set("level", level.toString());
 
-    return this.http.get<ApiGetBadgeInfoResponse>(url.toString());
+    return this.http.get<ApiGetBadgeInfoResponse>(url.toString(), {withCredentials: true});
   }
 
   getList(): Observable<ApiListBadgesResponse>
   {
-    return this.http.get<ApiListBadgesResponse>(this.endpointUrl + "/badges/list");
+    return this.http.get<ApiListBadgesResponse>(this.endpointUrl + "/badges/list", {withCredentials: true});
   }
 
 }

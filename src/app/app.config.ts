@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     { 
       provide: API_ENDPOINT,
-      useValue: 'http://localhost:8622/'
+      useValue: 'http://localhost:8622'
     }
   ]
 };

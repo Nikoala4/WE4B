@@ -16,19 +16,19 @@ export class ApiSafeService {
 
   get(): Observable<Safe>
   {
-    return this.http.get<Safe>(this.endpointUrl + "/safe");
+    return this.http.get<Safe>(this.endpointUrl + "/safe", {withCredentials: true});
   }
 
   getBadges(): Observable<BadgeDescriptor[]> {
-    return this.http.get<BadgeDescriptor[]>(this.endpointUrl + "/safe/badges");
+    return this.http.get<BadgeDescriptor[]>(this.endpointUrl + "/safe/badges", {withCredentials: true});
   }
 
   getDecorations(): Observable<string[]> {
-    return this.http.get<string[]>(this.endpointUrl + "/safe/decorations");
+    return this.http.get<string[]>(this.endpointUrl + "/safe/decorations", {withCredentials: true});
   }
 
   getQuota(): Observable<number> {
-    return this.http.get<number>(this.endpointUrl + "/safe/quota");
+    return this.http.get<number>(this.endpointUrl + "/safe/quota", {withCredentials: true});
   }
   
 }

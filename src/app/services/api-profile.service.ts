@@ -16,7 +16,7 @@ export class ApiProfileService {
     let url = new URL(this.endpointUrl + "/profile/get-info");
     url.searchParams.set("user_id", userId);
 
-    return this.http.get<Profile>(url.toString());
+    return this.http.get<Profile>(url.toString(), {withCredentials: true});
   }
 
   modify(userId: string, firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string): Observable<null>
@@ -29,7 +29,7 @@ export class ApiProfileService {
       active_decoration: activeDecoration,
       active_badges: activeBadges,
       description: description
-    })
+    }, {withCredentials: true});
   }
 
   update(firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string): Observable<null>
@@ -41,7 +41,7 @@ export class ApiProfileService {
       active_decoration: activeDecoration,
       active_badges: activeBadges,
       description: description
-    })
+    }, {withCredentials: true})
   }
 }
 
