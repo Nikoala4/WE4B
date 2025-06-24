@@ -23,7 +23,7 @@
     color: var(--login-div-title-color);
 }
 
-#login-div div.form-div {
+#login-div form.form-div {
     position: absolute;
     top: var(--login-div-form-top-spacing);
     left: calc((100vw - var(--login-div-width)) / 2);
@@ -41,17 +41,17 @@
     align-items: center;
 }
 
-#login-div div.form-div label {
+#login-div form.form-div label {
     align-self: flex-start;
 }
 
-#login-div div.form-div h2 {
+#login-div form.form-div h2 {
     margin-top: 0px;
     margin-bottom: var(--login-div-padding);
     text-align: center;
 }
 
-#login-div div.form-div input[type="text"], #login-div div.form-div input[type="password"], #login-div div.form-div input[type="email"] {
+#login-div form.form-div input[type="text"], #login-div form.form-div input[type="password"], #login-div form.form-div input[type="email"] {
     width: 100%;
 
     margin-top: 0px;

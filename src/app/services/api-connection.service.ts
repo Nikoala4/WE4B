@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiconnectionService {
+export class ApiAuthenticationService {
 
   constructor(private endpointUrl: String, private http: HttpClient) {}
+  
   
 
 }

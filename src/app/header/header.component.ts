@@ -1,5 +1,5 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { AuthService, Role, UserData } from '../services/auth-service.service';
+import { AuthService, Role, UserData } from '../services/auth.service';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
