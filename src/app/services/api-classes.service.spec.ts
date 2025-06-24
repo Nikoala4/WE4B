@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApiClassesService } from './api-classes.service';
+import { ApiBadgesService } from './api-badges.service';
 
-describe('ApiClassesService', () => {
-  let service: ApiClassesService;
+describe('ApiBadgesService', () => {
+  let service: ApiBadgesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ApiClassesService);
+    service = TestBed.inject(ApiBadgesService);
   });
 
   it('should be created', () => {
