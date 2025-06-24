@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_ENDPOINT } from './api-endpoint-config';
-import { ApiActivityFileInitializationResponse } from '../../nooble/api-comm/ActivityCreationResponse';
+import { ApiActivityFileInitializationResponse } from '../../nooble/api-comm/ActivityFileInitializationResponse';
 
 @Injectable({
   providedIn: 'root'
