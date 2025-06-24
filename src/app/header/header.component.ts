@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAdminSwitchChange(): void {
-    this.setCookie('admin_enabled', String(this.adminEnabled), 7);
+    this.setCookie('admin_enabled', this.adminEnabled.toString(), 7);
   }
 
   private getCookie(name: string): string | null {

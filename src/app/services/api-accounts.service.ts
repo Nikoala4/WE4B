@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_ENDPOINT } from './api-endpoint-config';
 import { Account } from '../../nooble/api-objs/Account';
@@ -10,9 +10,9 @@ import { Role } from '../../nooble/api-objs/Role';
 })
 export class ApiAccountsService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: String, private http: HttpClient) {}
+  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
   
-  addAccount(mail: String, first_name: String, last_name: String): Observable<null>
+  addAccount(mail: string, first_name: string, last_name: string): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/accounts/add", {
       mail,
@@ -21,19 +21,19 @@ export class ApiAccountsService {
     });
   }
 
-  deleteAccount(userId: String): Observable<null>
+  deleteAccount(userId: string): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/accounts/delete", {
       user_id: userId
     });
   }
 
-  getAccountInformation(userId: String): Observable<Account>
+  getAccountInformation(userId: string): Observable<Account>
   {
     return this.http.get<Account>(this.endpointUrl + "/accounts/get-info?user_id=" + userId);
   }
 
-  modifyAccountMail(userId: String, newMail: String): Observable<null>
+  modifyAccountMail(userId: string, newMail: string): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/accounts/modify-mail", {
       user_id: userId,
@@ -41,7 +41,7 @@ export class ApiAccountsService {
     });
   }
 
-  modifyAccountRole(userId: String, newRole: Role): Observable<null>
+  modifyAccountRole(userId: string, newRole: Role): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/accounts/modify-role", {
       user_id: userId,
@@ -49,7 +49,7 @@ export class ApiAccountsService {
     });
   }
 
-  searchAccount(pattern: string, count: Number, offset: Number): Observable<Account[]>
+  searchAccount(pattern: string, count: number, offset: number): Observable<Account[]>
   {
     let url = new URL(this.endpointUrl + "/accounts/search");
     url.searchParams.set("pattern", pattern);

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
   api = "http://localhost:8622"
   constructor() { }
-  async login(email: String, password: String){
+  async login(email: string, password: string){
     return await fetch(this.api+"/connection/login",
       {
                 method: "POST",

@@ -3,7 +3,7 @@ import { BadgeDescriptor } from "./BadgeDescriptor";
 
 export interface AccountSafe {
     quota: Number,
-    decorations: String[],
+    decorations: string[],
     badges: BadgeDescriptor[],
     role: Role
 }

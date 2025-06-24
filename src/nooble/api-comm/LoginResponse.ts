@@ -1,4 +1,4 @@
 export interface ApiLoginResponse {
-    first_name: String,
-    last_name: String
+    first_name: string,
+    last_name: string
 }

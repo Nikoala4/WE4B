@@ -1,1 +1,1 @@
-export type BadgeDescriptor = [String, Number]
+export type BadgeDescriptor = [string, number]

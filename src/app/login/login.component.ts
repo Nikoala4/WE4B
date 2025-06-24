@@ -22,7 +22,7 @@ export class LoginComponent {
 
   async submit(){
     console.log("submitting")
-    const resp = this.api.login(this.email?.value as String, this.password?.value as String)
+    const resp = this.api.login(this.email?.value as string, this.password?.value as string)
     console.log(resp)
   }
 
