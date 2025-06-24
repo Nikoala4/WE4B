@@ -33,7 +33,7 @@ export class ApiAuthenticationService {
     });
   }
 
-  logout(username: string, password: string): Observable<Object|null>
+  logout(): Observable<Object|null>
   {
     return this.http.post(this.endpointUrl + "/connection/logout", {});
   }
