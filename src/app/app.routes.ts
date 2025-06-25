@@ -16,6 +16,8 @@ export const routes: Routes = [
         {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
         {path:'profile', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
-    ]},
+    ], data: {
+        renderMode: 'client'
+    }},
 ];
 
