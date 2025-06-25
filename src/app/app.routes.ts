@@ -15,10 +15,10 @@ import { ProfileAccountSettingsComponent } from './settings/account-settings/pro
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
     {path:'forgot-password', component: ForgotPasswordComponent, canActivate: [disconnectedGuard]},
+    {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
     {path:'', component:BaseComponent, canActivate: [connectedGuard], children: [
-        {path:'home', component: HomeComponent, canActivate: [connectedGuard]},
+        {path:'', component: HomeComponent, canActivate: [connectedGuard]},
         {path:'redirect', component:RedirectBlankComponent},
-        {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
         {path:'profile', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'settings', component: SettingsComponent, canActivate: [connectedGuard], children: [

@@ -4,7 +4,7 @@ import { TeacherHomeComponent } from "./teacher-home/teacher-home.component";
 import { StudentHomeComponent } from "./student-home/student-home.component";
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
