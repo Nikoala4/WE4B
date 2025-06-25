@@ -1,0 +1,29 @@
+<div class="profile-selector">
+
+  <!-- Bouton "Aucune image" -->
+  <div class="profile-image-wrapper">
+    <div class="profile-image none-option"
+         [class.selected]="!selectedImage"
+         (click)="clearSelection()">
+      <span>✖</span>
+    </div>
+    <div class="remove-button-placeholder"></div>
+  </div>
+
+  <!-- Images -->
+  <div *ngFor="let img of images" class="profile-image-wrapper">
+    <div class="profile-image"
+         [class.selected]="img.id === selectedImage"
+         (click)="selectImage(img.id)">
+      <img [src]="img" alt="Profile" />
+    </div>
+    <button class="remove-button" (click)="removeImage(img.id)">×</button>
+  </div>
+
+  <!-- Ajouter une nouvelle image -->
+  <div class="add-button-wrapper">
+    <label for="addImageInput" class="add-button">+</label>
+    <input type="file" id="addImageInput" (change)="addImage($event)" accept="image/*" hidden>
+  </div>
+
+</div>

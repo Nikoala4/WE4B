@@ -9,7 +9,7 @@ export class PathResolverService {
 
   constructor(@Inject(API_ENDPOINT) private endpointUrl: string) { }
 
-  getDefaultprofileImagePath(): string {
+  getDefaultProfileImagePath(): string {
     return '/images/icons/user.png';
   }
 

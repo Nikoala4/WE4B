@@ -11,9 +11,11 @@ export class ApiProfileService {
 
   constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
   
-  getInformation(userId: string): Observable<Profile>
+  getInformation(userId?: string): Observable<Profile>
   {
     let url = new URL(this.endpointUrl + "/profile/get-info");
+
+    if (userId !== undefined)
     url.searchParams.set("user_id", userId);
 
     return this.http.get<Profile>(url.toString(), {withCredentials: true});

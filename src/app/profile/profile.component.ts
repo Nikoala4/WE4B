@@ -72,7 +72,7 @@ export class ProfileComponent {
       {
         this.loadedProfileImageSrc = this.pathResolver.getResourcePath(this.loadedProfile?.profile_image || '', FileType.PROFILE_ICON);
       } else {
-        this.loadedProfileImageSrc = this.pathResolver.getDefaultprofileImagePath();
+        this.loadedProfileImageSrc = this.pathResolver.getDefaultProfileImagePath();
       }
 
       if (data?.classes && data.classes.length > 0) {

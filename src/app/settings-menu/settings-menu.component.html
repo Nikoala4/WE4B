@@ -1,0 +1,60 @@
+<ul id="settings-menu-section">
+    <li class="settings-menu-category">
+        <h3 class="settings-title">Profil</h3>
+
+        <ul class="settings-menu-category-list">
+
+            <div *ngIf="localUrl == '/settings/account/profile'; else notProfile">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/customize.png"/>
+                    <span>Personnaliser le profil</span>
+                </li>
+            </div>
+            <ng-template #notProfile>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/account/profile">
+                        <img src="images/icons/customize.png"/>
+                        <span>Personnaliser le profil</span>
+                    </a>
+                </li>
+            </ng-template> 
+
+            <div *ngIf="localUrl == '/settings/account/infos'; else notInfos">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/info.png"/>
+                    <span>Informations</span>
+                </li>
+            </div>
+
+            <ng-template #notInfos>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/account/infos">
+                        <img src="images/icons/info.png"/>
+                        <span>Informations</span>
+                    </a>
+                </li>
+            </ng-template> 
+
+            <div *ngIf="localUrl == '/settings/account/password'; else notPassword">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/password.png"/>
+                    <span>Mot de passe</span>
+                </li>
+            </div>  
+            <ng-template #notPassword>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/account/password">
+                        <img src="images/icons/password.png"/>
+                        <span>Mot de passe</span>
+                    </a>
+                </li>
+            </ng-template>
+
+        </ul>
+    </li>
+
+    <li class="settings-menu-category">
+        <h3 class="settings-title">Accessibilité</h3>
+
+    </li>
+</ul>

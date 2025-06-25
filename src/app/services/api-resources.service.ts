@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { API_ENDPOINT } from './api-endpoint-config';
-import { File } from '../../nooble/api-objs/File';
+import { File as FileObject } from '../../nooble/api-objs/File';
 import { FileType } from '../../nooble/api-objs/FileType';
 import { FileRawResponse } from '../../nooble/api-comm/FileRawResponse';
 import { ApiUploadFileResponse } from '../../nooble/api-comm/UploadFileResponse';
@@ -21,7 +21,7 @@ export class ApiResourcesService {
     }, {withCredentials: true});
   }
 
-  getSelfFiles(type?: FileType): Observable<File[]> {
+  getSelfFiles(type?: FileType): Observable<FileObject[]> {
     let url = new URL(this.endpointUrl + "/resources/get-self-files");
 
     if (type) {

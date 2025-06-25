@@ -8,6 +8,9 @@ import { RedirectBlankComponent } from './redirectblank/redirectblank.component'
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BaseComponent } from './base-component/base-component.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AccountSettingsComponent } from './settings/account-settings/account-settings.component';
+import { ProfileAccountSettingsComponent } from './settings/account-settings/profile-accounts-settings/profile-accounts-settings.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
@@ -18,6 +21,11 @@ export const routes: Routes = [
         {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
         {path:'profile', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
+        {path:'settings', component: SettingsComponent, canActivate: [connectedGuard], children: [
+            {path:'account', component: AccountSettingsComponent, canActivate: [connectedGuard], children: [
+                {path:'profile', component: ProfileAccountSettingsComponent, canActivate: [connectedGuard]}
+            ]},
+        ]},
     ]},
 ];
 
