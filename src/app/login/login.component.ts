@@ -2,12 +2,13 @@ import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   imports: [FormsModule,
     ReactiveFormsModule,
-    NgIf
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

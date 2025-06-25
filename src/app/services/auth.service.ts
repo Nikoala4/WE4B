@@ -57,6 +57,10 @@ export class AuthService {
     );
   }
 
+  launchForgotPasswordProcess(mail_address: string): Observable<ApiLoginResponse> {
+    return this.authApi.launchForgotPasswordProcess(mail_address)
+  }
+
   reloadLogInfo(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.authApi.getLogInfo().subscribe(logInfo => {
