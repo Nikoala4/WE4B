@@ -25,7 +25,7 @@ export class LoginComponent {
 
   async submit()
   {
-    this.api.login(this.email, this.password).subscribe({
+    this.api.login(this.email.trim(), this.password).subscribe({
       next: (response) => {
         this.resultMessage = "Bonjour, " + response.first_name + " " + response.last_name;
         this.resultMessageIsError = false;
@@ -44,11 +44,6 @@ export class LoginComponent {
   forgot()
   {
     //TODO: Implement forgot password functionality
-  }
-
-  validateForm(): Boolean{
-
-    return true
   }
 
   get email(): string 
