@@ -9,7 +9,9 @@ import { API_ENDPOINT } from './services/api-endpoint-config';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes), 
+    provideRouter(routes
+      
+    ), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     { 
