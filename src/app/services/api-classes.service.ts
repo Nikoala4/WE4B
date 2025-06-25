@@ -34,7 +34,7 @@ export class ApiClassesService {
 
   getData(classId: string): Observable<ApiGetClassDataResponse>
   {
-    let url = new URL(this.endpointUrl + "/classes/get-data");
+    let url = new URL(this.endpointUrl + "/classes/data");
     url.searchParams.set("class_id", classId);
 
     return this.http.get<ApiGetClassDataRawResponse>(url.toString(), {withCredentials: true}).pipe(

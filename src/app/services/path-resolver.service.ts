@@ -9,6 +9,10 @@ export class PathResolverService {
 
   constructor(@Inject(API_ENDPOINT) private endpointUrl: string) { }
 
+  getDefaultprofileImagePath(): string {
+    return '/images/icons/user.png';
+  }
+
   getResourcePath(resource: string, resourceType: FileType): string {
     let url = new URL(this.endpointUrl + '/resources/download');
     url.searchParams.set('id', resource);

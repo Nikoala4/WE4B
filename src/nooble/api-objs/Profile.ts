@@ -1,4 +1,5 @@
 import { BadgeDescriptor } from "./BadgeDescriptor";
+import { Role } from "./Role";
 
 export interface Profile 
 {
@@ -8,5 +9,6 @@ export interface Profile
     active_decoration: string,
     active_badges: BadgeDescriptor[],
     description: string,
-    classes: string
+    role: Role,
+    classes?: string
 }

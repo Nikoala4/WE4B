@@ -1,0 +1,81 @@
+<div id="main-profile-page" class="top-banner">
+  <div class="profile-identity">
+    
+    <div class="profile-infos">
+      <div class="profile-description">
+        <h1>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</h1>
+        <h2>
+            <span>{{ loadedProfile?.role }}</span>
+        </h2>
+        <p>{{ loadedProfile?.description }}</p>
+      </div>
+    </div>    
+
+    <div class="profile-logos">
+      <a
+        href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
+        class="img-link"
+        target="_blank"
+      >
+        <img src="/images/logos/LinkedIn_icon.svg.png" alt="LinkedIn logo" />
+        <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
+      </a>
+      <a
+        href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
+        class="img-link"
+        target="_blank"
+      >
+        <img src="/images/logos/Microsoft-Teams-Logo.png" alt="Microsoft Teams logo" />
+        <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
+      </a>
+    </div>
+  </div>
+
+  <img class="profile-thumbnail" [src]="this.loadedProfileImageSrc || '/images/icons/user.png'" alt="Profile Picture" />
+</div>
+
+<div id="profilepage-main-separation" class="content-separator">
+  <div id="profile-listing">
+
+    <div *ngIf="loadedProfile?.role != 'admin'" class="profile-list">
+      <h2>Cours suivis</h2>
+
+      <ng-container *ngIf="classes.length > 0; else noCourses">
+        <ul>
+          <li *ngFor="let classItem of classes">
+            <a [routerLink]="['/classes', classItem.id]">
+              {{ classItem.data.name }}
+            </a>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #noCourses>
+        <p>Cet utilisateur n'est inscrit à aucun cours</p>
+      </ng-template>
+    </div>
+
+    <!-- Options visibles uniquement pour soi-même ou les admins -->
+    <div *ngIf="isSelf || isAdmin" class="profile-options">
+
+      <!-- Paramètres perso -->
+      <div *ngIf="isSelf">
+        <h2>Paramètres</h2>
+        <ul>
+          <li><a routerLink="/settings/account/profile">Paramètres du profil...</a></li>
+          <li><a routerLink="/settings/accessibility">Accessibilité...</a></li>
+        </ul>
+      </div>
+
+      <!-- Accès admin -->
+      <div *ngIf="isAdmin">
+        <h2>Accès administrateur</h2>
+        <ul>
+          <li><a [routerLink]="['/profile', loadedProfileId, 'edit']">Gérer l'utilisateur...</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
