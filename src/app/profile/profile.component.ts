@@ -9,7 +9,6 @@ import { FileType } from '../../nooble/api-objs/FileType';
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { ApiClassesService } from '../services/api-classes.service';
 import { ApiGetClassDataResponse } from '../../nooble/api-comm/GetClassDataResponse';
-import { Class } from '../../nooble/api-objs/Class';
 
 @Component({
   selector: 'app-profile',
@@ -44,21 +43,21 @@ export class ProfileComponent {
 
     this.route.paramMap.pipe(
       switchMap((params, index) => {
-        const id = params.get('userId');
-
         let currentUser = this.authService.getCurrentUser();
+
+        const id = params.get('userId') || currentUser?.id;
 
         if (currentUser !== null) {
           this.isAdmin = this.authService.isAdmin();
           this.isSelf = currentUser.id === id;
+        } else {
+          this.isAdmin = false;
+          this.isSelf = false;
         }
 
         if (id) {
           this.loadedProfileId = id;
           return this.profileService.getInformation(id);
-        } else if (currentUser !== null ) {
-          this.loadedProfileId = currentUser.id;
-          return this.profileService.getInformation(currentUser.id);
         } else {
           return new Observable<null>(subscriber => {
             subscriber.next(null);
@@ -92,7 +91,6 @@ export class ProfileComponent {
                   id: actualId
                 }
               });
-              console.log(this.classes);
             }
           });
         }

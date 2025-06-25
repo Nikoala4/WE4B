@@ -6,8 +6,8 @@ div#main-profile-page {
     align-items: center;
     height: 300px;
     padding: 20px;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 35vw;
+    padding-right: 35vw;
 }
 
 div#main-profile-page div.profile-identity {
@@ -108,6 +108,8 @@ div#profile-listing div.profile-options {
     background: var(--profile-options-background);
     padding: var(--profile-options-padding-vertical) var(--profile-options-padding-horizontal);
     border-radius: var(--profile-options-border-radius);
+    margin-top: 50px;
+    margin-bottom: 50px;
     box-sizing: border-box;
 }
 

@@ -8,6 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Role } from '../../nooble/api-objs/Role';
 import { Router } from '@angular/router';
 import { ApiLoginResponse } from '../../nooble/api-comm/LoginResponse';
+import lodashUtils from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +53,9 @@ export class AuthService {
   login(mail_address: string, password: string): Observable<ApiLoginResponse> {
     return this.authApi.login(mail_address, password).pipe(
       tap((response: ApiLoginResponse) => {
-        this.reloadLogInfo();
+        setTimeout(() => {
+          this.reloadLogInfo();
+        }, 2000);
       })
     );
   }
@@ -62,24 +65,29 @@ export class AuthService {
   }
 
   reloadLogInfo(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.authApi.getLogInfo().subscribe(logInfo => {
-        this.logInfo = logInfo;
-        this.authStatusChanged.next(logInfo);
+    this.authApi.getLogInfo().subscribe(logInfo => {
+      if (lodashUtils.isEqual(logInfo, this.logInfo)) return;
 
-        console.log("Log info:", logInfo);
+      this.logInfo = logInfo;
+      this.authStatusChanged.next(logInfo);
 
-        let currentUrl = this.router.url;
-        this.router.navigateByUrl('/redirect', { skipLocationChange: true }).then(() => {
-          this.router.navigateByUrl(currentUrl);
-        });
-        
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/redirect', { skipLocationChange: true }).then(() => {
+        this.router.navigateByUrl(currentUrl);
       });
-    }
+      
+    });
   }
 
   init(): void {
-    this.reloadLogInfo();
+    if (isPlatformBrowser(this.platformId)) {
+      setInterval(() => {
+        this.reloadLogInfo();
+      }, 20000); 
+
+      this.reloadLogInfo();
+    }
+
   }
 
 }

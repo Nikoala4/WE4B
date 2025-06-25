@@ -11,7 +11,9 @@
 
         <input type="password" id="login-password" formControlName="password"/>
 
-        <span class="result-text" id="login-error-text"></span>
+        <span [class]="'result-text ' + (resultMessage?(resultMessageIsError ? 'error' : 'success'):'')">
+            {{ resultMessage }}
+        </span>
 
         <button type="submit" class="main-button" [disabled]="!form.valid">
             Se connecter

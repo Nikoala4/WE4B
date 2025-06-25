@@ -18,19 +18,25 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   })
+  resultMessage: string = "";
+  resultMessageIsError: boolean = false;
 
   constructor(private api: AuthService) {}
 
   async submit()
   {
-    console.log("submitting")
-
     this.api.login(this.email, this.password).subscribe({
       next: (response) => {
-        console.log("Login successful", response);
+        this.resultMessage = "Bonjour, " + response.first_name + " " + response.last_name;
+        this.resultMessageIsError = false;
       },
       error: (error) => {
-        console.error("Login failed", error);
+        if (error.status === 401) {
+          this.resultMessage = "Nom d'utilisateur ou mot de passe incorrect";
+        } else {
+          this.resultMessage = "Une erreur est survenue";
+        }
+        this.resultMessageIsError = true;
       }
     });
   }
