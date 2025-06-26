@@ -1,6 +1,6 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ProfileImageSelectorComponent } from "../../profile-image-selector/profile-image-selector.component";
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../../services/api.service';
 import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BadgesSelectorComponent } from "../../badges-selector/badges-selector.component";

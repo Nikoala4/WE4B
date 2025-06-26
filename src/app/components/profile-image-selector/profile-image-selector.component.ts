@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
-import { PathResolverService } from '../services/path-resolver.service';
-import { FileType } from '../../nooble/api-objs/FileType';
-import { File } from '../../nooble/api-objs/File';
+import { PathResolverService } from '../../services/path-resolver.service';
+import { FileType } from '../../../nooble/api-objs/FileType';
+import { File } from '../../../nooble/api-objs/File';
 import { isPlatformBrowser, NgFor } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { PromptDialogComponent } from '../prompt-dialog/prompt-dialog.component';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({

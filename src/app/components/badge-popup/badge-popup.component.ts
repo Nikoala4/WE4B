@@ -1,11 +1,11 @@
 import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
-import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
-import { BadgeDescriptor } from '../../nooble/api-objs/BadgeDescriptor';
-import { ApiService } from '../services/api.service';
-import { PathResolverService } from '../services/path-resolver.service';
+import { ApiGetBadgeInfoResponse } from '../../../nooble/api-comm/GetBadgeInfoResponse';
+import { BadgeDescriptor } from '../../../nooble/api-objs/BadgeDescriptor';
+import { ApiService } from '../../services/api.service';
+import { PathResolverService } from '../../services/path-resolver.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { BadgePopupService } from '../services/badge-popup.service';
+import { BadgePopupService } from '../../services/badge-popup.service';
 
 @Component({
   selector: 'app-badge-popup',

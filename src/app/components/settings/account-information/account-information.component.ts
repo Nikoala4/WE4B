@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { Account } from '../../../nooble/api-objs/Account';
-import { RoleTranscriberPipe } from '../../pipes/role-transcriber.pipe';
+import { AuthService } from '../../../services/auth.service';
+import { Account } from '../../../../nooble/api-objs/Account';
+import { RoleTranscriberPipe } from '../../../pipes/role-transcriber.pipe';
 
 @Component({
   selector: 'app-account-information',

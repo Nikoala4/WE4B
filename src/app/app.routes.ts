@@ -1,19 +1,19 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RoutesComponent } from './routes/routes.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RoutesComponent } from './components/routes/routes.component';
+import { HomeComponent } from './components/home/home.component';
 import { connectedGuard } from './guards/connected.guard';
 import { disconnectedGuard } from './guards/disconnected.guard';
-import { RedirectBlankComponent } from './redirectblank/redirectblank.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ProfileComponent } from './profile/profile.component';
-import { BaseComponent } from './base-component/base-component.component';
-import { SettingsComponent } from './settings/settings.component';
-import { ProfileAccountSettingsComponent } from './settings/profile-accounts-settings/profile-accounts-settings.component';
-import { AccountInformationComponent } from './settings/account-information/account-information.component';
-import { AccountModifyPasswordComponent } from './settings/account-modify-password/account-modify-password.component';
-import { DecorationShopComponent } from './settings/decoration-shop/decoration-shop.component';
-import { BadgesShopComponent } from './settings/badges-shop/badges-shop.component';
+import { RedirectBlankComponent } from './components/redirectblank/redirectblank.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { BaseComponent } from './components/base-component/base-component.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileAccountSettingsComponent } from './components/settings/profile-accounts-settings/profile-accounts-settings.component';
+import { AccountInformationComponent } from './components/settings/account-information/account-information.component';
+import { AccountModifyPasswordComponent } from './components/settings/account-modify-password/account-modify-password.component';
+import { DecorationShopComponent } from './components/settings/decoration-shop/decoration-shop.component';
+import { BadgesShopComponent } from './components/settings/badges-shop/badges-shop.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},

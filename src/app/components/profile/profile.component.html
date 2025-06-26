@@ -71,8 +71,8 @@
       <div *ngIf="isSelf">
         <h2>Paramètres</h2>
         <ul>
-          <li><a routerLink="/settings/account/profile">Paramètres du profil...</a></li>
-          <li><a routerLink="/settings/accessibility">Accessibilité...</a></li>
+          <li><a routerLink="/settings/account/profile">Paramètres du profil</a></li>
+          <li><a routerLink="/settings/shop/badges">Acheter des badges ou des décorations</a></li>
         </ul>
       </div>
 
@@ -80,7 +80,7 @@
       <div *ngIf="isAdmin">
         <h2>Accès administrateur</h2>
         <ul>
-          <li><a [routerLink]="['/profile', loadedProfileId, 'edit']">Gérer l'utilisateur...</a></li>
+          <li><a [routerLink]="['/profile', loadedProfileId, 'edit']">Gérer l'utilisateur</a></li>
         </ul>
       </div>
 

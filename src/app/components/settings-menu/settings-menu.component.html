@@ -57,20 +57,6 @@
         <h3 class="settings-title">Magasin</h3>
 
         <ul class="settings-menu-category-list">
-            <div *ngIf="router.url == '/settings/shop/decorations'; else notDecoration">
-                <li class="settings-menu-item settings-menu-selected-item">
-                    <img src="images/icons/decoration.png"/>
-                    <span>Décorations</span>
-                </li>
-            </div>  
-            <ng-template #notDecoration>
-                <li class="settings-menu-item">
-                    <a routerLink="/settings/shop/decorations">
-                        <img src="images/icons/decoration.png"/>
-                        <span>Décorations</span>
-                    </a>
-                </li>
-            </ng-template>
             <div *ngIf="router.url == '/settings/shop/badges'; else notBadge">
                 <li class="settings-menu-item settings-menu-selected-item">
                     <img src="images/icons/badge.png"/>
@@ -82,6 +68,20 @@
                     <a routerLink="/settings/shop/badges">
                         <img src="images/icons/badge.png"/>
                         <span>Badges</span>
+                    </a>
+                </li>
+            </ng-template>
+            <div *ngIf="router.url == '/settings/shop/decorations'; else notDecoration">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/decoration.png"/>
+                    <span>Décorations</span>
+                </li>
+            </div>  
+            <ng-template #notDecoration>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/shop/decorations">
+                        <img src="images/icons/decoration.png"/>
+                        <span>Décorations</span>
                     </a>
                 </li>
             </ng-template>

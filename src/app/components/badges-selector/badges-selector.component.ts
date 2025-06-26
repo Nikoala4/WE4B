@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Inject, Input, Output, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ApiService } from '../services/api.service';
-import { PathResolverService } from '../services/path-resolver.service';
-import { BadgeDescriptor } from '../../nooble/api-objs/BadgeDescriptor';
-import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
+import { ApiService } from '../../services/api.service';
+import { PathResolverService } from '../../services/path-resolver.service';
+import { BadgeDescriptor } from '../../../nooble/api-objs/BadgeDescriptor';
+import { ApiGetBadgeInfoResponse } from '../../../nooble/api-comm/GetBadgeInfoResponse';
 
 @Component({
   selector: 'app-badges-selector',

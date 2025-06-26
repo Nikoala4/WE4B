@@ -1,16 +1,16 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { Role } from '../../nooble/api-objs/Role';
+import { AuthService } from '../../services/auth.service';
+import { Role } from '../../../nooble/api-objs/Role';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { Account } from '../../nooble/api-objs/Account';
-import { PathResolverService } from '../services/path-resolver.service';
-import { FileType } from '../../nooble/api-objs/FileType';
-import { ApiService } from '../services/api.service';
-import { Profile } from '../../nooble/api-objs/Profile';
+import { Account } from '../../../nooble/api-objs/Account';
+import { PathResolverService } from '../../services/path-resolver.service';
+import { FileType } from '../../../nooble/api-objs/FileType';
+import { ApiService } from '../../services/api.service';
+import { Profile } from '../../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-header',

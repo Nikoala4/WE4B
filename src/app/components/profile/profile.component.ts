@@ -1,17 +1,17 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { Profile } from '../../nooble/api-objs/Profile';
+import { Profile } from '../../../nooble/api-objs/Profile';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { PathResolverService } from '../services/path-resolver.service';
-import { FileType } from '../../nooble/api-objs/FileType';
+import { AuthService } from '../../services/auth.service';
+import { PathResolverService } from '../../services/path-resolver.service';
+import { FileType } from '../../../nooble/api-objs/FileType';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ApiGetClassDataResponse } from '../../nooble/api-comm/GetClassDataResponse';
-import { ApiService } from '../services/api.service';
-import { BadgeDescriptor } from '../../nooble/api-objs/BadgeDescriptor';
-import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
-import { BadgePopupService } from '../services/badge-popup.service';
-import { RoleTranscriberPipe } from '../pipes/role-transcriber.pipe';
+import { ApiGetClassDataResponse } from '../../../nooble/api-comm/GetClassDataResponse';
+import { ApiService } from '../../services/api.service';
+import { BadgeDescriptor } from '../../../nooble/api-objs/BadgeDescriptor';
+import { ApiGetBadgeInfoResponse } from '../../../nooble/api-comm/GetBadgeInfoResponse';
+import { BadgePopupService } from '../../services/badge-popup.service';
+import { RoleTranscriberPipe } from '../../pipes/role-transcriber.pipe';
 
 @Component({
   selector: 'app-profile',

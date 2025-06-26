@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Inject, Input, Output, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Decoration } from '../../nooble/api-objs/Decoration';
-import { ApiGetDecorationInformationResponse } from '../../nooble/api-comm/GetDecorationInfoResponse';
-import { ApiService } from '../services/api.service';
-import { PathResolverService } from '../services/path-resolver.service';
-import { FileType } from '../../nooble/api-objs/FileType';
+import { Decoration } from '../../../nooble/api-objs/Decoration';
+import { ApiGetDecorationInformationResponse } from '../../../nooble/api-comm/GetDecorationInfoResponse';
+import { ApiService } from '../../services/api.service';
+import { PathResolverService } from '../../services/path-resolver.service';
+import { FileType } from '../../../nooble/api-objs/FileType';
 
 @Component({
   selector: 'app-decoration-selector',
