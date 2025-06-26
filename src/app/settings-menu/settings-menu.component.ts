@@ -12,14 +12,7 @@ import { Router, RouterLink, UrlTree } from '@angular/router';
   styleUrl: './settings-menu.component.css'
 })
 export class SettingsMenuComponent {
-  localUrl: string|null = null;
-
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   };
-
-  ngOnInit()
-  {
-    this.localUrl = this.router.url;
-  }
 
 }

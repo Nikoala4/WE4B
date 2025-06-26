@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { AbstractControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-change-password',
