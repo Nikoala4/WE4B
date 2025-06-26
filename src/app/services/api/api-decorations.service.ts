@@ -1,18 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { ApiBuyDecorationResponse } from '../../nooble/api-comm/BuyDecorationResponse';
-import { ApiCreateDecorationResponse } from '../../nooble/api-comm/CreateDecorationResponse';
-import { ApiGetDecorationInformationResponse } from '../../nooble/api-comm/GetDecorationInfoResponse';
-import { Decoration } from '../../nooble/api-objs/Decoration';
+import { ApiBuyDecorationResponse } from '../../../nooble/api-comm/BuyDecorationResponse';
+import { ApiCreateDecorationResponse } from '../../../nooble/api-comm/CreateDecorationResponse';
+import { ApiGetDecorationInformationResponse } from '../../../nooble/api-comm/GetDecorationInfoResponse';
+import { Decoration } from '../../../nooble/api-objs/Decoration';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiDecorationsService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
 
   buy(decorationId: string): Observable<ApiBuyDecorationResponse>
   {

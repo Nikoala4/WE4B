@@ -1,16 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { Account } from '../../nooble/api-objs/Account';
-import { Role } from '../../nooble/api-objs/Role';
+import { Account } from '../../../nooble/api-objs/Account';
+import { Role } from '../../../nooble/api-objs/Role';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiAccountsService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
   
   addAccount(mail: string, first_name: string, last_name: string): Observable<null>
   {

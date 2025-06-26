@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { API_ENDPOINT } from './api-endpoint-config';
+import { API_ENDPOINT } from './config/api-endpoint-config';
 import { FileType } from '../../nooble/api-objs/FileType';
 
 @Injectable({

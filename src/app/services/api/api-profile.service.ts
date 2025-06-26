@@ -1,15 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { Profile } from '../../nooble/api-objs/Profile';
+import { Profile } from '../../../nooble/api-objs/Profile';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiProfileService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
   
   getInformation(userId?: string): Observable<Profile>
   {

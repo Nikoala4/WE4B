@@ -1,16 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { Activity } from '../../nooble/api-objs/Activity';
-import { ApiActivityRawResponse } from '../../nooble/api-comm/ActivityRawResponse';
+import { Activity } from '../../../nooble/api-objs/Activity';
+import { ApiActivityRawResponse } from '../../../nooble/api-comm/ActivityRawResponse';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiThreadService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
 
   get(notreadonly: boolean, count: number, offset: number): Observable<Activity[]> {
     let url = new URL(this.endpointUrl + "/thread/get");

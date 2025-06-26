@@ -7,6 +7,7 @@
          (click)="clearSelection()">
       <span>✖</span>
     </div>
+    <span class="image-title">Aucune image</span>
     <div class="remove-button-placeholder"></div>
   </div>
 
@@ -15,15 +16,16 @@
     <div class="profile-image"
          [class.selected]="img.id === selectedImage"
          (click)="selectImage(img.id)">
-      <img [src]="img" alt="Profile" />
+      <img [src]="getImageUrl(img.id)" alt="Profile" />
     </div>
+    <span class="image-title">{{img.name}}</span>
     <button class="remove-button" (click)="removeImage(img.id)">×</button>
   </div>
 
   <!-- Ajouter une nouvelle image -->
-  <div class="add-button-wrapper">
-    <label for="addImageInput" class="add-button">+</label>
-    <input type="file" id="addImageInput" (change)="addImage($event)" accept="image/*" hidden>
+  <div class="add-button-wrapper profile-image-wrapper">
+    <span class="add-button-icon">+</span>
+    <input type="file" (change)="addImage($event)" accept="image/*"/>
   </div>
 
 </div>

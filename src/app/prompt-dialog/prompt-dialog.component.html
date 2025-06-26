@@ -1,10 +1,19 @@
 <h2 mat-dialog-title>{{ data.title }}</h2>
 <mat-dialog-content>
-    <mat-form-field appearance="outline">
-    <input matInput [(ngModel)]="value" [placeholder]="data.placeholder" />
-    </mat-form-field>
+    <div *ngIf="data.providedImageUrl" style="width: 100%;box-sizing: border-box;padding: 20px;display: flex;align-items: center;justify-content: center;">
+        <div>
+            <img [src]="data.providedImageUrl" alt="Provided Image" style="height: 300px;border-radius: 4px;"/>
+        </div>
+    </div>
+
+    <input
+    [(ngModel)]="value"
+    [placeholder]="data.placeholder"
+    style="width: 100%; padding: 8px; margin-top: 12px;"
+    />
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button (click)="dialogRef.close()">Annuler</button>
-    <button mat-button color="primary" (click)="dialogRef.close(value)">OK</button>
+    <button mat-button (click)="dialogRef.close()" class="main-button">Annuler</button>
+    <span style="width:10px;"></span>
+    <button mat-button color="primary" (click)="dialogRef.close(value)" class="main-button">OK</button>
 </mat-dialog-actions>

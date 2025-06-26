@@ -11,10 +11,14 @@
         <h2> Description </h2>
         <textarea id="profile-description-input">DESCRIPTION</textarea>
     </div>
-    <div id="profile-settings-image">
-        <h2> Photo de profil </h2>
-        
-    </div>
 </div>
+<h2> Image de profile </h2>
+<app-profile-image-selector
+    id="profile-settings-image-selector"><!--
+    [selectedImage]="selectedImage"
+    (imageSelected)="onImageSelected($event)"
+    (imageRemoved)="onImageRemoved($event)"
+    (imageAdded)="onImageAdded($event)">-->
+</app-profile-image-selector>
 <button class="main-button" id="profile-settings-save-button"> Sauvegarder </button>
 

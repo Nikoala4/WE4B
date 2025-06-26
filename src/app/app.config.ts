@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
-import { API_ENDPOINT } from './services/api-endpoint-config';
+import { API_ENDPOINT } from './services/config/api-endpoint-config';
 
 export const appConfig: ApplicationConfig = {
   providers: [

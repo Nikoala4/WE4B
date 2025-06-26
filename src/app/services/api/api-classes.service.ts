@@ -1,21 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { ApiCreateNewClassResponse } from '../../nooble/api-comm/CreateNewClassResponse';
-import { ApiGetClassDataResponse } from '../../nooble/api-comm/GetClassDataResponse';
-import { ApiGetClassDataRawResponse } from '../../nooble/api-comm/GetClassDataRawResponse';
-import { ContainerSectionData } from '../../nooble/api-objs/Section';
-import { ApiGetClassContentResponse } from '../../nooble/api-comm/GetClassContentResponse';
-import { Class } from '../../nooble/api-objs/Class';
-import { ApiSearchClassRawResponse } from '../../nooble/api-comm/SearchClassRawResponse';
+import { ApiCreateNewClassResponse } from '../../../nooble/api-comm/CreateNewClassResponse';
+import { ApiGetClassDataResponse } from '../../../nooble/api-comm/GetClassDataResponse';
+import { ApiGetClassDataRawResponse } from '../../../nooble/api-comm/GetClassDataRawResponse';
+import { ContainerSectionData } from '../../../nooble/api-objs/Section';
+import { ApiGetClassContentResponse } from '../../../nooble/api-comm/GetClassContentResponse';
+import { Class } from '../../../nooble/api-objs/Class';
+import { ApiSearchClassRawResponse } from '../../../nooble/api-comm/SearchClassRawResponse';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiClassesService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
 
   addAccountToClass(userId: string, classId: string): Observable<null>
   {

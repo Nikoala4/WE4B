@@ -1,5 +1,5 @@
 export interface ApiUploadFileRawResponse {
-    id: string,
-    sent_date: number,
+    new_file: string,
+    date: number,
     size: number
 }

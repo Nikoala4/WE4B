@@ -1,17 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiLoginResponse } from '../../nooble/api-comm/LoginResponse';
-import { ApiLogInfoResponse } from '../../nooble/api-comm/LogInfoResponse';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { AuthService } from './auth.service';
+import { ApiLoginResponse } from '../../../nooble/api-comm/LoginResponse';
+import { ApiLogInfoResponse } from '../../../nooble/api-comm/LogInfoResponse';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiAuthenticationService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
 
   login(mail_address: string, password: string): Observable<ApiLoginResponse>
   {

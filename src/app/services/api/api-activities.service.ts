@@ -1,15 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { ApiActivityFileInitializationResponse } from '../../nooble/api-comm/ActivityFileInitializationResponse';
+import { ApiActivityFileInitializationResponse } from '../../../nooble/api-comm/ActivityFileInitializationResponse';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiActivitiesService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
 
   initActivity(activityName: string): Observable<ApiActivityFileInitializationResponse>
   {

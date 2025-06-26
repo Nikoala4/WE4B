@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../../nooble/api-objs/Account';
-import { ApiAuthenticationService } from './api-authentication.service';
 import { ApiLogInfoResponse } from '../../nooble/api-comm/LogInfoResponse';
 import { Observable, Subject, tap } from 'rxjs';
 import { Inject, PLATFORM_ID } from '@angular/core';
@@ -9,6 +8,7 @@ import { Role } from '../../nooble/api-objs/Role';
 import { Router } from '@angular/router';
 import { ApiLoginResponse } from '../../nooble/api-comm/LoginResponse';
 import lodashUtils from 'lodash';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AuthService {
   logInfo: ApiLogInfoResponse | null = null
 
   constructor(
-    private authApi: ApiAuthenticationService,
+    private api: ApiService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router
   ) {
@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   login(mail_address: string, password: string): Observable<ApiLoginResponse> {
-    return this.authApi.login(mail_address, password).pipe(
+    return this.api.authentication.login(mail_address, password).pipe(
       tap((response: ApiLoginResponse) => {
         setTimeout(() => {
           this.reloadLogInfo();
@@ -61,11 +61,11 @@ export class AuthService {
   }
 
   launchForgotPasswordProcess(mail_address: string): Observable<ApiLoginResponse> {
-    return this.authApi.launchForgotPasswordProcess(mail_address)
+    return this.api.authentication.launchForgotPasswordProcess(mail_address)
   }
 
   reloadLogInfo(): void {
-    this.authApi.getLogInfo().subscribe(logInfo => {
+    this.api.authentication.getLogInfo().subscribe(logInfo => {
       if (lodashUtils.isEqual(logInfo, this.logInfo)) return;
 
       this.logInfo = logInfo;
@@ -81,10 +81,6 @@ export class AuthService {
 
   init(): void {
     if (isPlatformBrowser(this.platformId)) {
-      setInterval(() => {
-        this.reloadLogInfo();
-      }, 20000); 
-
       this.reloadLogInfo();
     }
 

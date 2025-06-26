@@ -1,17 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_ENDPOINT } from './api-endpoint-config';
-import { ApiBuyBadgeResponse } from '../../nooble/api-comm/BuyBadgeResponse';
-import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
-import { ApiListBadgesResponse } from '../../nooble/api-comm/ListBadgesResponse';
+import { ApiBuyBadgeResponse } from '../../../nooble/api-comm/BuyBadgeResponse';
+import { ApiGetBadgeInfoResponse } from '../../../nooble/api-comm/GetBadgeInfoResponse';
+import { ApiListBadgesResponse } from '../../../nooble/api-comm/ListBadgesResponse';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ApiBadgesService {
 
-  constructor(@Inject(API_ENDPOINT) private endpointUrl: string, private http: HttpClient) {}
+  constructor(private endpointUrl: string, private http: HttpClient) {}
   
   buy(badgeName: string): Observable<ApiBuyBadgeResponse>
   {

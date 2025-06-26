@@ -1,5 +1,4 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { ApiProfileService } from '../services/api-profile.service';
 import { Profile } from '../../nooble/api-objs/Profile';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
@@ -7,8 +6,8 @@ import { AuthService } from '../services/auth.service';
 import { PathResolverService } from '../services/path-resolver.service';
 import { FileType } from '../../nooble/api-objs/FileType';
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
-import { ApiClassesService } from '../services/api-classes.service';
 import { ApiGetClassDataResponse } from '../../nooble/api-comm/GetClassDataResponse';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -30,11 +29,10 @@ export class ProfileComponent {
   classes: {data: ApiGetClassDataResponse, id: string}[] = [];
 
   constructor(
-    private profileService: ApiProfileService,
+    private apiService: ApiService,
     private route: ActivatedRoute,
     private authService: AuthService,
     private pathResolver: PathResolverService,
-    private classesService: ApiClassesService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -57,7 +55,7 @@ export class ProfileComponent {
 
         if (id) {
           this.loadedProfileId = id;
-          return this.profileService.getInformation(id);
+          return this.apiService.profile.getInformation(id);
         } else {
           return new Observable<null>(subscriber => {
             subscriber.next(null);
@@ -81,7 +79,7 @@ export class ProfileComponent {
         for (let classId of data.classes) {
           let actualId = classId;
 
-          this.classesService.getData(classId).subscribe(classData => {
+          this.apiService.classes.getData(classId).subscribe(classData => {
             loadedClasses.push(classData);
 
             if (actualId == data.classes![data.classes!.length - 1]) {

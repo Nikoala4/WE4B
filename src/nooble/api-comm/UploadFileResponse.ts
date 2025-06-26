@@ -1,5 +1,5 @@
 export interface ApiUploadFileResponse {
-    id: string,
-    sent_date: Date,
+    new_file: string,
+    date: Date,
     size: number
 }
