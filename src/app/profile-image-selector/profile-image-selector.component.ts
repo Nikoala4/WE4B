@@ -6,6 +6,7 @@ import { isPlatformBrowser, NgFor } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { PromptDialogComponent } from '../prompt-dialog/prompt-dialog.component';
 import { ApiService } from '../services/api.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-profile-image-selector',
@@ -98,17 +99,28 @@ export class ProfileImageSelectorComponent implements OnInit {
   }
 
   removeImage(id: string): void {
-    this.apiService.resources.delete(id).subscribe({
-      next: () => {
-        if (this.selectedImage === id) {
-          this.clearSelection();
-          this.currentImage = null;
-        }
-
-        this.images = this.images.filter(img => img.id !== id);
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: "Êtes vous sûr de supprimer l'image?",
+        text: "Cette action est tirée vers cible!"
       }
-    })
+    }).afterClosed().subscribe({
+      next: (value) => {
+        if (!value) return;
 
+        this.apiService.resources.delete(id).subscribe({
+          next: () => {
+            if (this.selectedImage === id) {
+              this.clearSelection();
+              this.currentImage = null;
+            }
+
+            this.images = this.images.filter(img => img.id !== id);
+          }
+        })
+      }
+
+    })
   }
 
   clearSelection(): void {

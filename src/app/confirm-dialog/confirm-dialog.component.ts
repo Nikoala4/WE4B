@@ -12,11 +12,11 @@ export const INPUT_IMAGE = new InjectionToken<string>('INPUT_IMAGE');
     CommonModule,
     FormsModule
   ],
-  templateUrl: './alert-dialog.component.html'
+  templateUrl: './confirm-dialog.component.html'
 })
-export class AlertDialogComponent {
+export class ConfirmDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<AlertDialogComponent>,
+    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { title: string; text: string; }
   ) {  }
 }
