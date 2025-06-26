@@ -12,6 +12,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AccountSettingsComponent } from './settings/account-settings/account-settings.component';
 import { ProfileAccountSettingsComponent } from './settings/account-settings/profile-accounts-settings/profile-accounts-settings.component';
 import { AccountInformationComponent } from './settings/account-settings/account-information/account-information.component';
+import { AccountModifyPasswordComponent } from './settings/account-settings/account-modify-password/account-modify-password.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
@@ -25,7 +26,8 @@ export const routes: Routes = [
         {path:'settings', component: SettingsComponent, canActivate: [connectedGuard], children: [
             {path:'account', component: AccountSettingsComponent, canActivate: [connectedGuard], children: [
                 {path:'profile', component: ProfileAccountSettingsComponent, canActivate: [connectedGuard]},
-                {path:'infos', component: AccountInformationComponent, canActivate: [connectedGuard]}
+                {path:'infos', component: AccountInformationComponent, canActivate: [connectedGuard]},
+                {path:'password', component: AccountModifyPasswordComponent, canActivate: [connectedGuard]}
             ]},
         ]},
     ]},
