@@ -14,7 +14,7 @@ import { ApiGetBadgeInfoResponse } from '../../../nooble/api-comm/GetBadgeInfoRe
 })
 export class BadgesSelectorComponent {
   ownedBadges: BadgeDescriptor[] = [];
-  badgeInfo: {[key: string]: ApiGetBadgeInfoResponse} = {}
+  badgeInfo: {[key: string]: ApiGetBadgeInfoResponse | undefined} = {}
 
   @Input() selectedBadges: string[] = [];
   @Input() currentSelectedBadges: string[] = [];

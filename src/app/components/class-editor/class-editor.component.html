@@ -1,0 +1,49 @@
+<div id="main-class-content" class="class-content" #mainClassContent>
+
+    <div class="class-title-content">
+        <a class="class-back-link" routerLink="/">
+        <img src="/images/icons/back.png" alt="Retour" />
+        </a>
+        <h1 #classTitle>{{classData? classData.name:errorMessage}}</h1>
+    </div>
+    <p class="class-description">{{classData? classData.description: errorMessageDetails}}</p>
+    <hr/>
+
+    <button class="main-button icon-button" (click)="saveClassContent()">
+        <img src="/images/icons/save.png"/>
+        <span>Sauvegarder</span>
+    </button>
+
+    <app-tab-group>
+        <button tab-button
+            [class.selected]="selectedTab == 0"
+            (click)="selectTab(0)" class="view-tab-button">Paramètres généraux</button>
+        <button tab-button
+            [class.selected]="selectedTab == 1"
+            (click)="selectTab(1)" class="view-tab-button">Aperçu</button>
+        <button tab-button
+            [class.selected]="selectedTab == 2"
+            (click)="selectTab(2)" class="view-tab-button">Édition</button>
+        <button tab-button [class.selected]="selectedTab==3" (click)="selectTab(3)" class="view-tab-button" *ngIf="currentlyAdmin">Comptes liés </button>
+
+        <app-class-settings
+            tab-content
+            *ngIf="selectedTab == 0"
+            [name]="form.name"
+            [description]="form.description"
+            (nameChange)="form.name = $event"
+            (descriptionChange)="form.description = $event"
+            (delete)="onDeleteRequested()"/>
+        <app-section-display tab-content [displayedSection]="classContentSection"
+            *ngIf="classContentSection !== null && selectedTab == 1"/>
+        <app-section-display tab-content [editable]="true" [displayedSection]="classContentSection"
+            *ngIf="classContentSection !== null && selectedTab == 2"/>
+        <app-students-edition tab-content *ngIf="selectedTab == 3"/>
+    </app-tab-group>
+
+    <button class="main-button icon-button" (click)="saveClassContent()">
+        <img src="/images/icons/save.png"/>
+        <span>Sauvegarder</span>
+    </button>
+    
+</div>

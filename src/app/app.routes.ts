@@ -14,21 +14,26 @@ import { AccountInformationComponent } from './components/settings/account-infor
 import { AccountModifyPasswordComponent } from './components/settings/account-modify-password/account-modify-password.component';
 import { DecorationShopComponent } from './components/settings/decoration-shop/decoration-shop.component';
 import { BadgesShopComponent } from './components/settings/badges-shop/badges-shop.component';
+import { ClassComponent } from './components/class/class.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
     {path:'forgot-password', component: ForgotPasswordComponent, canActivate: [disconnectedGuard]},
     {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
     {path:'', component:BaseComponent, canActivate: [connectedGuard], children: [
-        {path:'', component: HomeComponent, canActivate: [connectedGuard]},
         {path:'redirect', component:RedirectBlankComponent},
+
+        {path:'', component: HomeComponent, canActivate: [connectedGuard]},
+
         {path:'profile', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
+
+        {path:'class/:classId', component: ClassComponent, canActivate: [connectedGuard]},
+
         {path:'settings', component: SettingsComponent, canActivate: [connectedGuard], children: [
             {path:'account/profile', component: ProfileAccountSettingsComponent, canActivate: [connectedGuard]},
             {path:'account/infos', component: AccountInformationComponent, canActivate: [connectedGuard]},
             {path:'account/password', component: AccountModifyPasswordComponent, canActivate: [connectedGuard]},
-
 
             {path:'shop/decorations', component: DecorationShopComponent, canActivate: [connectedGuard]},
             {path:'shop/badges', component: BadgesShopComponent, canActivate: [connectedGuard]}

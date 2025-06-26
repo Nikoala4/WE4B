@@ -1,0 +1,6 @@
+<div class="elements-list">
+    <div class="element-thumbnail" *ngFor="let element of selectionList" (click)="onSelected(element.name)">
+        <img [src]="element.url"/>
+        <span>{{element.name}}</span>
+    </div>
+</div>

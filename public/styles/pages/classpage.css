@@ -6,7 +6,7 @@ div#classpage-main-separation {
 
 div#classpage-main-separation div#main-class-content {
     position: relative;
-    width: calc(100% - var(--activity-thread-width));
+    width: calc(100vw - var(--activity-thread-width));
     box-sizing: border-box;
 
     padding: 0px var(--classpage-padding);

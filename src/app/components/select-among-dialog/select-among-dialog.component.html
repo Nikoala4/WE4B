@@ -1,0 +1,4 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content>
+    <app-select-among-list [selectionList]="data.selectionList" (select)="dialogRef.close($event)"></app-select-among-list>
+</mat-dialog-content>

@@ -1,0 +1,9 @@
+<div id="classpage-main-separation" class="content-separator">
+    <div [ngSwitch]="role">
+        <app-class-overview *ngSwitchCase="'student'"/>
+        <app-class-editor *ngSwitchCase="'admin'"/>
+        <app-class-editor *ngSwitchCase="'teacher'"/>
+        <app-class-editor *ngSwitchCase="'teacher_admin'"/>
+        <div *ngSwitchDefault></div>
+    </div>
+</div>

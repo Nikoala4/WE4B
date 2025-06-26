@@ -1,1 +1,20 @@
-<p>class-overview works!</p>
+<div id="main-class-content" class="class-content" #mainClassContent>
+
+    <div class="class-title-content">
+        <a class="class-back-link" routerLink="/">
+            <img src="/images/icons/back.png" alt="Retour" />
+        </a>
+        <h1 #classTitle>{{classData? classData.name:errorMessage}}</h1>
+    </div>
+    <p class="class-description">{{classData? classData.description: errorMessageDetails}}</p>
+    <hr/>
+
+    <a [routerLink]="['class', classId, 'accounts']">Comptes liés à ce cours</a>
+
+    <app-section-display
+        *ngIf="classContentSection !== null"
+        [displayedSection]="classContentSection!">
+    </app-section-display>
+
+</div>
+

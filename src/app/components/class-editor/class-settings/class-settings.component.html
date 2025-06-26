@@ -1,0 +1,16 @@
+<div id="admin-class-handler">
+  <h2>Identité</h2>
+  <label>Nom</label>
+  <input [value]="name" (input)="onNameChange($event)" />
+
+  <label>Description brève</label>
+  <input [value]="description" (input)="onDescriptionChange($event)" />
+
+  <hr />
+
+  <h2>Gestion</h2>
+  <button class="main-button icon-button" (click)="delete.emit()" [disabled]="!currentlyAdmin">
+    <img src="/images/icons/delete.png" />
+    <span>Supprimer le cours</span>
+  </button>
+</div>

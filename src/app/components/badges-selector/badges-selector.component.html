@@ -7,7 +7,7 @@
         (click)="toggleBadge(badge[0])"
     >
         <img [src]="getBadgeThumbnail(badge)" [alt]="badge[0]">
-        <span>{{ badgeInfo[badge[0]].title }}</span>
+        <span>{{ badgeInfo[badge[0]]?.title }}</span>
     </div>
     </div>
 </div>
