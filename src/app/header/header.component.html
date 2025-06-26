@@ -27,7 +27,7 @@
 <span class="header-space" *ngIf="isAdmin && isTeacher"></span>
 
 <!-- Lien vers la page de profil -->
-<a id="header-user-icon" [routerLink]="'/profile'">
+<a id="header-user-icon" routerLink="/profile">
   <img
     [src]="currentUserImage"
     alt="Avatar utilisateur"

@@ -11,12 +11,14 @@ import { ApiService } from '../services/api.service';
 import { BadgeDescriptor } from '../../nooble/api-objs/BadgeDescriptor';
 import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
 import { BadgePopupService } from '../services/badge-popup.service';
+import { RoleTranscriberPipe } from '../pipes/role-transcriber.pipe';
 
 @Component({
   selector: 'app-profile',
   imports: [
     RouterLink,
-    CommonModule
+    CommonModule,
+    RoleTranscriberPipe
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'

@@ -13,7 +13,7 @@
             </div>
           </div>
           <h2>
-              <span>{{ loadedProfile?.role }}</span>
+              <span>{{ loadedProfile?.role | roleTranscriber | titlecase }}</span>
           </h2>
           <p>{{ loadedProfile?.description }}</p>
         </div>

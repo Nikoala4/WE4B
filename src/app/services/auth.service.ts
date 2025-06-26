@@ -64,6 +64,19 @@ export class AuthService {
     return request;
   }
 
+  logout()
+  {
+    let request = this.api.authentication.logout()
+    
+    request.subscribe({
+      next: () => {
+        this.reloadLogInfo();
+      }
+    });
+
+    return request;
+  }
+
   launchForgotPasswordProcess(mail_address: string): Observable<ApiLoginResponse> {
     return this.api.authentication.launchForgotPasswordProcess(mail_address)
   }

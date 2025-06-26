@@ -54,7 +54,37 @@
     </li>
 
     <li class="settings-menu-category">
-        <h3 class="settings-title">Accessibilité</h3>
+        <h3 class="settings-title">Magasin</h3>
 
+        <ul class="settings-menu-category-list">
+            <div *ngIf="localUrl == '/settings/shop/decorations'; else notDecoration">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/decoration.png"/>
+                    <span>Décorations</span>
+                </li>
+            </div>  
+            <ng-template #notDecoration>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/account/password">
+                        <img src="images/icons/decoration.png"/>
+                        <span>Décorations</span>
+                    </a>
+                </li>
+            </ng-template>
+            <div *ngIf="localUrl == '/settings/shop/badges'; else notBadge">
+                <li class="settings-menu-item settings-menu-selected-item">
+                    <img src="images/icons/badge.png"/>
+                    <span>Badges</span>
+                </li>
+            </div>  
+            <ng-template #notBadge>
+                <li class="settings-menu-item">
+                    <a routerLink="/settings/account/password">
+                        <img src="images/icons/badge.png"/>
+                        <span>Badges</span>
+                    </a>
+                </li>
+            </ng-template>
+        </ul>
     </li>
 </ul>

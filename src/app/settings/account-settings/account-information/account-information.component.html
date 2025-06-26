@@ -1,0 +1,31 @@
+<h1>Informations sur le compte</h1>
+<div class="info-content">
+  <div class="info-section">
+    <h2>Profile</h2>
+    <p>Nom: {{accountData?.profile?.last_name}}</p>
+    <p>Prénom: {{accountData?.profile?.first_name}}</p>
+  </div>
+
+  <div class="info-section">
+    <h2>Role</h2>
+    <p>{{ accountData?.role | roleTranscriber | titlecase }}</p>
+  </div>
+
+  <div class="info-section">
+    <h2>Adresse mail associée</h2>
+    <p>{{ accountData?.mail }}</p>
+  </div>
+
+  <div class="info-section">
+    <h2>Coffre-fort</h2>
+    <p>Quota: {{accountData?.safe?.quota}} nooblards</p>
+  </div>
+
+</div>
+
+<div class="actions-section">
+  <button class="main-button icon-button" (click)="logout()">
+    <img src="assets/images/icons/disconnect.png" />
+    <span>Se déconnecter</span>
+  </button>
+</div>
