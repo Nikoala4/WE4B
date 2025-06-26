@@ -9,6 +9,8 @@
     <p class="class-description">{{classData? classData.description: errorMessageDetails}}</p>
     <hr/>
 
+    <a [routerLink]="['/class', classId, 'users']">Comptes liés à ce cours</a>
+
     <button class="main-button icon-button" (click)="saveClassContent()">
         <img src="/images/icons/save.png"/>
         <span>Sauvegarder</span>

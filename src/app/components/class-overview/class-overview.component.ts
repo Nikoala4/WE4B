@@ -24,7 +24,6 @@ export class ClassOverviewComponent implements OnInit {
 
   errorMessage: string = '';
   errorMessageDetails: string = '';
-  sectionInitialized = false;
   
   classId: string | null = null;
   classData: ApiGetClassDataResponse | null = null;

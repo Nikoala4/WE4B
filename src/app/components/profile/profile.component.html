@@ -52,7 +52,7 @@
       <ng-container *ngIf="classes.length > 0; else noCourses">
         <ul>
           <li *ngFor="let classItem of classes">
-            <a [routerLink]="['/classes', classItem.id]">
+            <a [routerLink]="['/class', classItem.id]">
               {{ classItem.data.name }}
             </a>
           </li>

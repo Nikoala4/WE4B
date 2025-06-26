@@ -120,6 +120,8 @@ export class ClassEditorComponent {
             text: "En espérant que vos étudiants vous réponde la même"
           }
         })
+
+        this.loadContent();
       },
       error: () => {
         this.dialogs.open(AlertDialogComponent, {

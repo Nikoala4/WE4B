@@ -9,7 +9,7 @@
     <p class="class-description">{{classData? classData.description: errorMessageDetails}}</p>
     <hr/>
 
-    <a [routerLink]="['class', classId, 'accounts']">Comptes liés à ce cours</a>
+    <a [routerLink]="['class', classId, 'users']">Comptes liés à ce cours</a>
 
     <app-section-display
         *ngIf="classContentSection !== null"

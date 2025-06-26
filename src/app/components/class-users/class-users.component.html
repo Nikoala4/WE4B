@@ -1,0 +1,36 @@
+<div id="classpage-main-separation" class="content-separator">
+  <div id="main-class-content" class="class-content">
+    
+    <!-- Titre -->
+    <div class="class-title-content">
+      <a class="class-back-link" [routerLink]="['/class', classId]">
+        <img src="/images/icons/back.png" />
+      </a>
+      <h1 id="class-title">
+        {{ classData?.name }} - {{ classData?.description }}
+      </h1>
+    </div>
+
+    <!-- Liste des comptes -->
+    <h2>Comptes associés à ce cours</h2>
+
+    <div id="users" class="users-list">
+      <a
+        *ngFor="let user of accounts"
+        [href]="'/profile/' + user.id"
+        class="user-preview-link"
+      >
+        <div class="user-preview">
+          <img [src]="getImageUrl(user.profile.profile_image)" />
+
+          <div class="user-description">
+            <h1>
+              {{ user.profile.first_name }} {{ user.profile.last_name }}
+            </h1>
+            <p>{{ user.profile.role | roleTranscriber | titlecase }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

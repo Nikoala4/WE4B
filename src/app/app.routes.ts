@@ -15,6 +15,7 @@ import { AccountModifyPasswordComponent } from './components/settings/account-mo
 import { DecorationShopComponent } from './components/settings/decoration-shop/decoration-shop.component';
 import { BadgesShopComponent } from './components/settings/badges-shop/badges-shop.component';
 import { ClassComponent } from './components/class/class.component';
+import { ClassUsersComponent } from './components/class-users/class-users.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
@@ -29,6 +30,7 @@ export const routes: Routes = [
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
 
         {path:'class/:classId', component: ClassComponent, canActivate: [connectedGuard]},
+        {path:'class/:classId/users', component: ClassUsersComponent, canActivate: [connectedGuard]},
 
         {path:'settings', component: SettingsComponent, canActivate: [connectedGuard], children: [
             {path:'account/profile', component: ProfileAccountSettingsComponent, canActivate: [connectedGuard]},
