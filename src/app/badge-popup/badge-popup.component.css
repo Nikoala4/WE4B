@@ -1,0 +1,42 @@
+div.badge-popup
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    cursor: pointer;
+
+    background: #000b;
+    color: white;
+}
+
+div.badge-popup div.badge-popup-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    gap: 7vh;
+}
+
+div.badge-popup h1.badge-title {
+    font-size: 5vh;
+    font-weight: lighter;
+}
+
+div.badge-popup img.badge-image {
+    width: 30vh;
+    height: auto;
+}
+
+div.badge-popup span.badge-description {
+    font-size: 3vh;
+}

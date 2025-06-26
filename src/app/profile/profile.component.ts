@@ -5,16 +5,18 @@ import { Observable, switchMap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { PathResolverService } from '../services/path-resolver.service';
 import { FileType } from '../../nooble/api-objs/FileType';
-import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ApiGetClassDataResponse } from '../../nooble/api-comm/GetClassDataResponse';
 import { ApiService } from '../services/api.service';
+import { BadgeDescriptor } from '../../nooble/api-objs/BadgeDescriptor';
+import { ApiGetBadgeInfoResponse } from '../../nooble/api-comm/GetBadgeInfoResponse';
+import { BadgePopupService } from '../services/badge-popup.service';
 
 @Component({
   selector: 'app-profile',
   imports: [
     RouterLink,
-    NgIf,
-    NgFor
+    CommonModule
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
@@ -25,6 +27,7 @@ export class ProfileComponent {
   loadedProfileId: string = "";
   isAdmin: boolean = false;
   isSelf: boolean = false;
+  decorationUrl: string = '';
 
   classes: {data: ApiGetClassDataResponse, id: string}[] = [];
 
@@ -33,6 +36,7 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private authService: AuthService,
     private pathResolver: PathResolverService,
+    private badgePopupService: BadgePopupService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -66,11 +70,21 @@ export class ProfileComponent {
 
     ).subscribe(data => {
       this.loadedProfile = data;
+
       if (this.loadedProfile?.profile_image)
       {
         this.loadedProfileImageSrc = this.pathResolver.getResourcePath(this.loadedProfile?.profile_image || '', FileType.PROFILE_ICON);
       } else {
         this.loadedProfileImageSrc = this.pathResolver.getDefaultProfileImagePath();
+      }
+
+      if (this.loadedProfile?.active_decoration)
+      {
+        this.apiService.decorations.getInformation(this.loadedProfile.active_decoration).subscribe({
+          next: (decorationInformation) => {
+            this.decorationUrl = this.pathResolver.getResourcePath(decorationInformation.image, FileType.DECORATION_BANNER);
+          }
+        })
       }
 
       if (data?.classes && data.classes.length > 0) {
@@ -96,5 +110,14 @@ export class ProfileComponent {
     });
   }
 
+  getBadgeThumbnail(badge: BadgeDescriptor)
+  {
+    return this.pathResolver.getBadgeThumbnailPath(...badge);
+  }
+
+  openBadge(badge: BadgeDescriptor)
+  {
+    this.badgePopupService.openPopup(...badge);
+  }
 
 }

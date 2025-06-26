@@ -1,37 +1,46 @@
-<div id="main-profile-page" class="top-banner">
-  <div class="profile-identity">
-    
-    <div class="profile-infos">
-      <div class="profile-description">
-        <h1>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</h1>
-        <h2>
-            <span>{{ loadedProfile?.role }}</span>
-        </h2>
-        <p>{{ loadedProfile?.description }}</p>
+<div class="top-banner profile-banner" [style]="'background-image: url(' + decorationUrl + ');'">
+  <div class="profile-card">
+    <div class="profile-identity">
+      
+      <div class="profile-infos">
+        <div class="profile-description">
+          <div class="profile-title">
+            <h1>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</h1>
+            <div class="profile-badges-list">
+              <button class="badge-button">
+                <img *ngFor="let badge of loadedProfile?.active_badges" [src]="getBadgeThumbnail(badge)" (click)="openBadge(badge)"/>
+              </button>
+            </div>
+          </div>
+          <h2>
+              <span>{{ loadedProfile?.role }}</span>
+          </h2>
+          <p>{{ loadedProfile?.description }}</p>
+        </div>
+      </div>    
+
+      <div class="profile-logos">
+        <a
+          href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
+          class="img-link"
+          target="_blank"
+        >
+          <img src="/images/logos/LinkedIn_icon.svg.png" alt="LinkedIn logo" />
+          <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
+        </a>
+        <a
+          href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
+          class="img-link"
+          target="_blank"
+        >
+          <img src="/images/logos/Microsoft-Teams-Logo.png" alt="Microsoft Teams logo" />
+          <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
+        </a>
       </div>
-    </div>    
-
-    <div class="profile-logos">
-      <a
-        href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
-        class="img-link"
-        target="_blank"
-      >
-        <img src="/images/logos/LinkedIn_icon.svg.png" alt="LinkedIn logo" />
-        <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
-      </a>
-      <a
-        href="https://youtu.be/dQw4w9WgXcQ?si=P-2GDqOQpbUTdIEf"
-        class="img-link"
-        target="_blank"
-      >
-        <img src="/images/logos/Microsoft-Teams-Logo.png" alt="Microsoft Teams logo" />
-        <span>{{ loadedProfile?.first_name }} {{ loadedProfile?.last_name }}</span>
-      </a>
     </div>
-  </div>
 
-  <img class="profile-thumbnail" [src]="this.loadedProfileImageSrc || '/images/icons/user.png'" alt="Profile Picture" />
+    <img class="profile-thumbnail" [src]="this.loadedProfileImageSrc || '/images/icons/user.png'" alt="Profile Picture" />
+  </div>
 </div>
 
 <div id="profilepage-main-separation" class="content-separator">

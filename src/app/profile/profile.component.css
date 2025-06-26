@@ -1,25 +1,40 @@
-div#main-profile-page {
+.profile-banner {
     position: relative;
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 300px;
-    padding: 20px;
-    padding-left: 35vw;
-    padding-right: 35vw;
+    justify-content: center;
+
+    aspect-ratio: 3;
+    max-width: 100vw;
+
+    background-size: cover;
 }
 
-div#main-profile-page div.profile-identity {
+.profile-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    height: 300px;
+}
+
+.profile-banner div.profile-identity {
     flex-grow: 1;
 
     display: flex;
     flex-direction: column;
 
+    width: 30vw;
     height: 100%;
 }
 
-div#main-profile-page div.profile-infos {
+.profile-banner div.profile-infos {
     flex-grow: 1;
 
     display: flex;
@@ -27,20 +42,20 @@ div#main-profile-page div.profile-infos {
     align-items: start;
 }
 
-div#main-profile-page div.profile-description {
+.profile-banner div.profile-description {
     flex: 1;
 
 }
 
-div#main-profile-page div.profile-description h1, div#main-profile-page div.profile-description h2, div#main-profile-page div.profile-description p {
+.profile-banner div.profile-description h1, .profile-banner div.profile-description h2, .profile-banner div.profile-description p {
     margin: 0px;    
 }
 
-div#main-profile-page div.profile-description h2 {
+.profile-banner div.profile-description h2 {
     opacity: 0.7;
 }
 
-div#main-profile-page ul.profile-coordinates {
+.profile-banner ul.profile-coordinates {
     display: flex;
     flex-direction: column;
     margin: 0px;
@@ -49,15 +64,15 @@ div#main-profile-page ul.profile-coordinates {
     padding-right: 20px;
 }
 
-div#main-profile-page ul.profile-coordinates li {
+.profile-banner ul.profile-coordinates li {
     list-style-type: none;
 }
 
-div#main-profile-page ul.profile-coordinates li h2 {
+.profile-banner ul.profile-coordinates li h2 {
     margin: 0px;
 }
 
-div#main-profile-page div.profile-logos {
+.profile-banner div.profile-logos {
     position: relative;
 
     display: flex;
@@ -67,7 +82,7 @@ div#main-profile-page div.profile-logos {
     justify-content: space-around;
 }
 
-div#main-profile-page div.profile-logos a {
+.profile-banner div.profile-logos a {
     max-height: 100%;
 
     display: flex;
@@ -75,11 +90,11 @@ div#main-profile-page div.profile-logos a {
     align-items: center;
 }
 
-div#main-profile-page div.profile-logos img {
+.profile-banner div.profile-logos img {
     padding: 5px;
 }
 
-div#main-profile-page img.profile-thumbnail {
+.profile-banner img.profile-thumbnail {
     box-sizing: border-box;
     height: 100%;
     aspect-ratio: 1;
@@ -126,3 +141,30 @@ div#profile-listing div.profile-options li {
     margin: 0px;
 }
 
+.profile-badges-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 1.7em;
+    margin: 10px 0px;
+}
+
+.profile-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 10px;
+}
+
+button.badge-button {
+    border: none;
+    background: none;
+    max-height: 100%;
+}
+
+button.badge-button img {
+    border: none;
+    background: none;
+    max-height: 100%;
+}

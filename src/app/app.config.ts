@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { API_ENDPOINT } from './services/config/api-endpoint-config';
 
 export const appConfig: ApplicationConfig = {
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     { 
       provide: API_ENDPOINT,
       useValue: 'http://localhost:8622'
-    }
+    },
+    provideAnimations()
   ]
 };

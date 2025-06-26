@@ -5,8 +5,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BadgesSelectorComponent } from "../../../badges-selector/badges-selector.component";
 import { DecorationSelectorComponent } from "../../../decoration-selector/decoration-selector.component";
-import { BadgeDescriptor } from '../../../../nooble/api-objs/BadgeDescriptor';
-import { first } from 'lodash';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertDialogComponent } from '../../../alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-profile-accounts-settings',
@@ -36,7 +36,11 @@ export class ProfileAccountSettingsComponent {
   onBadgeSelectionChanged(newSelection: string[]) {
     this.activeBadges = newSelection;
   }
-  constructor(@Inject(PLATFORM_ID) private platformId: string, private apiService: ApiService) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    private apiService: ApiService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit()
   {
@@ -83,7 +87,6 @@ export class ProfileAccountSettingsComponent {
       active_badges: this.selectedBadges,
       active_decoration: this.selectedDecoration
     }
-    alert(JSON.stringify(object));
 
     this.apiService.profile.update(
       this.first_name!,
@@ -94,11 +97,16 @@ export class ProfileAccountSettingsComponent {
       this.description
     ).subscribe({
       next: () => {
-        alert("Modification enregistrée!")
-
         this.activeBadges = this.selectedBadges;
         this.activeDecoration = this.selectedDecoration;
         this.currentImage = this.selectedImage;
+
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: "Modification enregistrées!",
+            text: "Votre profil est à présent flambant neuf!"
+          }
+        })
       }
     })
   }
