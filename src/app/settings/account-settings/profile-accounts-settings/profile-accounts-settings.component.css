@@ -1,0 +1,13 @@
+div.title-with-button-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+div.button-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: end;
+}

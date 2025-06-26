@@ -1,26 +1,25 @@
-import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
-import { ApiProfileService } from '../services/api/api-profile.service';
-import { ApiResourcesService } from '../services/api/api-resources.service';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { PathResolverService } from '../services/path-resolver.service';
 import { FileType } from '../../nooble/api-objs/FileType';
 import { File } from '../../nooble/api-objs/File';
 import { isPlatformBrowser, NgFor } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { PromptDialogComponent } from '../prompt-dialog/prompt-dialog.component';
-import { read } from 'node:fs';
 import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-profile-image-selector',
   imports: [
-    NgFor
+    NgFor,
+    
   ],
   templateUrl: './profile-image-selector.component.html',
   styleUrl: './profile-image-selector.component.css'
 })
 export class ProfileImageSelectorComponent implements OnInit {
   images: File[] = [];
-  selectedImage: string|null = null;
+  @Input() selectedImage: string|null = null;
+  @Input() currentImage: string|null = null
 
   @Output() imageSelected = new EventEmitter<string | null>();
 
@@ -39,12 +38,6 @@ export class ProfileImageSelectorComponent implements OnInit {
         this.images = response;
       }
     });
-
-    this.apiService.profile.getInformation().subscribe({
-      next: (response) => {
-        this.selectedImage = response.profile_image
-      }
-    })
   }
 
   getImageUrl(id: string)
@@ -52,9 +45,14 @@ export class ProfileImageSelectorComponent implements OnInit {
     return this.pathResolver.getResourcePath(id, FileType.PROFILE_ICON);
   }
 
-  selectImage(url: string): void {
-    this.selectedImage = url;
-    this.imageSelected.emit(url);
+  selectImage(id: string): void {
+    if (this.selectedImage == id)
+    {
+      this.selectedImage = this.currentImage;
+    } else {
+      this.selectedImage = id;
+    }
+    this.imageSelected.emit(id);
   }
 
   addImage(event: Event): void {
@@ -104,6 +102,7 @@ export class ProfileImageSelectorComponent implements OnInit {
       next: () => {
         if (this.selectedImage === id) {
           this.clearSelection();
+          this.currentImage = null;
         }
 
         this.images = this.images.filter(img => img.id !== id);

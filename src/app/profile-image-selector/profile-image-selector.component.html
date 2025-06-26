@@ -4,8 +4,9 @@
   <div class="profile-image-wrapper">
     <div class="profile-image none-option"
          [class.selected]="!selectedImage"
+         [class.current]="!currentImage"
          (click)="clearSelection()">
-      <span>✖</span>
+      <span>×</span>
     </div>
     <span class="image-title">Aucune image</span>
     <div class="remove-button-placeholder"></div>
@@ -15,6 +16,7 @@
   <div *ngFor="let img of images" class="profile-image-wrapper">
     <div class="profile-image"
          [class.selected]="img.id === selectedImage"
+         [class.current]="img.id === currentImage"
          (click)="selectImage(img.id)">
       <img [src]="getImageUrl(img.id)" alt="Profile" />
     </div>

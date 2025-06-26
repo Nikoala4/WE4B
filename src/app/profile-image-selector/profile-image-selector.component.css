@@ -32,8 +32,13 @@
 }
 
 .profile-image.selected {
-  border-color: #1976d2;
-  box-shadow: 0 0 4px #1976d2;
+  border-color: #19add2;
+  box-shadow: 0 0 4px #19add2;
+}
+
+.profile-image.current {
+  border-color: #2b8f00;
+  box-shadow: 0 0 4px #2b8f00;
 }
 
 .profile-image img {

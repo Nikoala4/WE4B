@@ -9,6 +9,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { Account } from '../../nooble/api-objs/Account';
 import { PathResolverService } from '../services/path-resolver.service';
 import { FileType } from '../../nooble/api-objs/FileType';
+import { ApiService } from '../services/api.service';
+import { Profile } from '../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-header',
@@ -18,35 +20,47 @@ import { FileType } from '../../nooble/api-objs/FileType';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: Account | null = null;
+  currentProfile: Profile | null = null;
   currentUserImage: string = '';
   adminEnabled = false;
 
-  constructor(private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object, private pathResolver: PathResolverService) {}
+  constructor(
+    private authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private pathResolver: PathResolverService,
+    private apiService: ApiService
+  ) {}
 
-  reload(): void {
+  reload(profile: Profile | null): void {
     if (this.authService.isLoggedIn()) {
-      this.currentUser = this.authService.getCurrentUser()!;
+      this.currentProfile = this.apiService.profile.lastKnownProfile!;
 
-      if (this.currentUser.profile.profile_image !== null) {
-        this.currentUserImage = this.pathResolver.getResourcePath(this.currentUser.profile.profile_image, FileType.PROFILE_ICON);
+      if (this.currentProfile.profile_image !== null) {
+        this.currentUserImage = this.pathResolver.getResourcePath(this.currentProfile.profile_image, FileType.PROFILE_ICON);
       } else {
         this.currentUserImage = "/images/icons/user.png";
       }
 
     } else {
-      this.currentUser = null;
+      this.currentProfile = null;
       this.currentUserImage = "/images/icons/user.png";
     }
   }
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     // S'abonner à l'observable du service AuthService pour écouter les changements d'utilisateur
     this.authService.authStatusChanged.subscribe(authState => {
-      this.reload();
+      if (authState === null) this.reload(null)
+      else this.apiService.profile.getInformation();
     });
 
-    this.reload();
+    this.apiService.profile.profileChanged.subscribe(newProfile => {
+      this.reload(newProfile);
+    });
+
+    this.reload(null);
 
     if (isPlatformBrowser(this.platformId)) {
       this.adminEnabled = this.getCookie('admin_enabled') === 'true';
@@ -54,11 +68,11 @@ export class HeaderComponent implements OnInit {
   }
 
   get isAdmin(): boolean {
-    return (this.currentUser?.role == Role.ADMIN || this.currentUser?.role == Role.TEACHER_ADMIN) ?? false;
+    return (this.currentProfile?.role == Role.ADMIN || this.currentProfile?.role == Role.TEACHER_ADMIN) ?? false;
   }
 
   get isTeacher(): boolean {
-    return (this.currentUser?.role == Role.TEACHER || this.currentUser?.role == Role.TEACHER_ADMIN) ?? false;
+    return (this.currentProfile?.role == Role.TEACHER || this.currentProfile?.role == Role.TEACHER_ADMIN) ?? false;
   }
 
   onAdminSwitchChange(): void {

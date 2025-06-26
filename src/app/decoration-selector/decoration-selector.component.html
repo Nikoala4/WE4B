@@ -1,1 +1,29 @@
-<p>decoration-selector works!</p>
+<div class="decorations-grid">
+    <div 
+        class="decoration-item"
+        [class.selected]="selectedDecoration === null"
+        [class.current]="currentDecoration === null"
+        (click)="selectDecoration(null)">
+        
+        <div class="decoration-thumbnail">
+            <img src="/images/no-decoration.png" alt="No decoration" />
+        </div>
+        
+        <span class="decoration-name">Aucune décoration</span>
+    </div>
+
+    <div 
+        *ngFor="let decoration of ownedDecorations" 
+        class="decoration-item"
+        [class.selected]="selectedDecoration === decoration.id"
+        [class.current]="decoration.id === currentDecoration"
+        (click)="selectDecoration(decoration.id)">
+        
+        <div class="decoration-thumbnail">
+            <img [src]="getDecorationThumbnail(decoration.image)" [alt]="decoration.name" />
+        </div>
+        
+        <span class="decoration-name">{{ decoration.name }}</span>
+    </div>
+</div>
+

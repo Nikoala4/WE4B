@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImagesSelectorComponent } from './images-selector.component';
+import { BadgesSelectorComponent } from './badges-selector.component';
 
-describe('ImagesSelectorComponent', () => {
-  let component: ImagesSelectorComponent;
-  let fixture: ComponentFixture<ImagesSelectorComponent>;
+describe('BadgesSelectorComponent', () => {
+  let component: BadgesSelectorComponent;
+  let fixture: ComponentFixture<BadgesSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ImagesSelectorComponent]
+      imports: [BadgesSelectorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ImagesSelectorComponent);
+    fixture = TestBed.createComponent(BadgesSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

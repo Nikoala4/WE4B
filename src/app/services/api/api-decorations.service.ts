@@ -32,9 +32,9 @@ export class ApiDecorationsService {
     }, {withCredentials: true});
   }
 
-  getInfo(decorationId: string): Observable<ApiGetDecorationInformationResponse>
+  getInformation(decorationId: string): Observable<ApiGetDecorationInformationResponse>
   {
-    let url = new URL(this.endpointUrl = "/decorations/get-info");
+    let url = new URL(this.endpointUrl + "/decorations/get-info");
     url.searchParams.set("decoration", decorationId);
 
     return this.http.get<ApiGetDecorationInformationResponse>(url.toString(), {withCredentials: true});

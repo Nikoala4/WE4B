@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../../nooble/api-objs/Account';
 import { ApiLogInfoResponse } from '../../nooble/api-comm/LogInfoResponse';
-import { Observable, Subject, tap } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Role } from '../../nooble/api-objs/Role';
@@ -51,13 +51,17 @@ export class AuthService {
   }
 
   login(mail_address: string, password: string): Observable<ApiLoginResponse> {
-    return this.api.authentication.login(mail_address, password).pipe(
-      tap((response: ApiLoginResponse) => {
+    let request = this.api.authentication.login(mail_address, password)
+    
+    request.subscribe({
+      next: (response: ApiLoginResponse) => {
         setTimeout(() => {
           this.reloadLogInfo();
         }, 2000);
-      })
-    );
+      }
+    });
+
+    return request;
   }
 
   launchForgotPasswordProcess(mail_address: string): Observable<ApiLoginResponse> {

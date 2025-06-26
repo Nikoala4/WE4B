@@ -1,24 +1,47 @@
-<h1> Personnaliser le profil </h1>
+<div class="title-with-button-line">
+    <h1> Personnaliser le profil </h1>
+    <button class="main-button" (click)="onSaveClicked()"> Sauvegarder </button>
+</div>
 <div id="profile-settings-horizontal-editor">
     <div id="profile-settings-description">
         <h2> Identité </h2>
         <div class="settings-row">
-            <label> Prénom : </label> <input id="profile-surname-input" value="FIRST_NAME"/>
+            <label> Prénom : </label> <input id="profile-surname-input" [(ngModel)]="first_name"/>
         </div>
         <div class="settings-row">
-            <label> Nom : </label> <input id="profile-name-input" value="LAST_NAME"/>
+            <label> Nom : </label> <input id="profile-name-input" [(ngModel)]="last_name"/>
         </div>
         <h2> Description </h2>
-        <textarea id="profile-description-input">DESCRIPTION</textarea>
+        <textarea id="profile-description-input" [(ngModel)]="description"></textarea>
     </div>
 </div>
+
 <h2> Image de profile </h2>
 <app-profile-image-selector
-    id="profile-settings-image-selector"><!--
+    id="profile-settings-image-selector"
     [selectedImage]="selectedImage"
-    (imageSelected)="onImageSelected($event)"
-    (imageRemoved)="onImageRemoved($event)"
-    (imageAdded)="onImageAdded($event)">-->
+    [currentImage]="currentImage"
+    (imageSelected)="onProfileImageSelected($event)">
 </app-profile-image-selector>
-<button class="main-button" id="profile-settings-save-button"> Sauvegarder </button>
 
+<h2> Badges affichés </h2>
+<app-badges-selector
+    (selectionChanged)="onBadgesSelectionChanged($event)"
+    [currentSelectedBadges]="activeBadges"
+    [selectedBadges]="selectedBadges"
+>
+
+</app-badges-selector>
+
+<h2> Décoration </h2>
+<app-decoration-selector
+  [currentDecoration]="activeDecoration"
+  [selectedDecoration]="selectedDecoration"
+  (decorationSelected)="onDecorationSelected($event)"
+>
+
+</app-decoration-selector>
+
+<div class="button-line">
+    <button class="main-button" (click)="onSaveClicked()"> Sauvegarder </button>
+</div> 

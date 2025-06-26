@@ -1,0 +1,16 @@
+<div *ngIf="ownedBadges.length > 0; else noBadgeText">
+    <div class="badge-grid">
+    <div 
+        class="badge"
+        *ngFor="let badge of ownedBadges"
+        [class.selected]="isSelected(badge[0])"
+        (click)="toggleBadge(badge[0])"
+    >
+        <img [src]="getBadgeThumbnail(badge)" [alt]="badge[0]">
+        <span>{{ badgeInfo[badge[0]]?.title ?? "" }}</span>
+    </div>
+    </div>
+</div>
+<ng-template #noBadgeText>
+    <p class="nothing-info">Vous n'avez pas encore acheté de badge</p>
+</ng-template>

@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Profile } from '../../../nooble/api-objs/Profile';
+import loadashUtils from 'lodash';
 
 export class ApiProfileService {
 
   constructor(private endpointUrl: string, private http: HttpClient) {}
+
+  profileChanged = new Subject<Profile>();
+  lastKnownProfile: Profile | null = null;
   
   getInformation(userId?: string): Observable<Profile>
   {
@@ -13,10 +17,21 @@ export class ApiProfileService {
     if (userId !== undefined)
     url.searchParams.set("user_id", userId);
 
-    return this.http.get<Profile>(url.toString(), {withCredentials: true});
+    let request = this.http.get<Profile>(url.toString(), {withCredentials: true})
+    request.subscribe({
+      next: (response) => {
+        if (!loadashUtils.isEqual(response, this.lastKnownProfile))
+        {
+          this.lastKnownProfile = response;
+          this.profileChanged.next(this.lastKnownProfile);
+        }
+      }
+    })
+
+    return request;
   }
 
-  modify(userId: string, firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string): Observable<null>
+  modify(userId: string, firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string | null): Observable<null>
   {
     return this.http.post<null>(this.endpointUrl + "/profile/modify", {
       user_id: userId,
@@ -29,9 +44,9 @@ export class ApiProfileService {
     }, {withCredentials: true});
   }
 
-  update(firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string): Observable<null>
+  update(firstName: string, lastName: string, profileImage: string|null, activeDecoration: string|null, activeBadges: string[], description: string | null): Observable<null>
   {
-    return this.http.post<null>(this.endpointUrl + "/profile/update", {
+    let request = this.http.post<null>(this.endpointUrl + "/profile/update", {
       first_name: firstName,
       last_name: lastName,
       profile_image: profileImage,
@@ -39,6 +54,14 @@ export class ApiProfileService {
       active_badges: activeBadges,
       description: description
     }, {withCredentials: true})
+    
+    request.subscribe({
+      next: () => {
+        this.getInformation();
+      }
+    });
+
+    return request;
   }
 }
 
