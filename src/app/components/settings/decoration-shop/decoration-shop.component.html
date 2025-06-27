@@ -1,1 +1,36 @@
-<p>decoration-shop works!</p>
+<div class="shop-container">
+  <div class="quota">
+      <div class="price">
+        <span>{{ safe.quota }}</span>
+        <img src="/images/logos/nooblard.png"/>
+      </div>
+  </div>
+
+  <div class="decorations">
+    <h2>Décorations obtenues</h2>
+    <button class="decoration-card" *ngFor="let decoration of ownedDecorations">
+      <img [src]="getDecorationThumbnail(decoration.image)" alt="{{ decoration.name }}" class="deco-img" />
+      <div class="decoration-specs">
+        <h3>{{ decoration.name }}</h3>
+        <div class="price">
+            <span>{{ decoration.price }}</span>
+            <img src="/images/logos/nooblard.png"/>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <span class="separator"></span>
+
+  <div class="decorations">
+    <h2>Nouvelles décorations</h2>
+    <button class="decoration-card" *ngFor="let decoration of newDecorations" (click)="launchDecorationPurchase(decoration)">
+      <img [src]="getDecorationThumbnail(decoration.image)" alt="{{ decoration.name }}" class="deco-img" />
+      <h3>{{ decoration.name }}</h3>
+      <div class="price" [class.too-expensive]="decoration.price > safe.quota">
+        <span>{{ decoration.price }}</span>
+        <img src="/images/logos/nooblard.png"/>
+      </div>
+    </button>
+  </div>
+</div>

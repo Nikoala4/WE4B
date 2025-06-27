@@ -19,7 +19,7 @@
         <button class="badge-card" *ngFor="let badge of reachableBadges" (click)="onBuyBadgeClicked(badge.badge)">
             <img [src]="getBadgeImage(badge.badge)" alt="{{ badge.details.title }}" class="badge-img" />
             <h3>{{ badge.details.title }}</h3>
-            <div class="price">
+            <div class="price" [class.too-expensive]="(safe?.quota ?? -1) < badge.details.price">
                 <span>{{ badge.details.price }}</span>
                 <img src="/images/logos/nooblard.png"/>
             </div>
@@ -28,7 +28,7 @@
         <button class="badge-card unreachable-badge" *ngFor="let badge of unreachableBadges"  (click)="onBuyBadgeClicked(badge.badge)">
             <img [src]="getBadgeImage(badge.badge)" alt="{{ badge.details.title }}" class="badge-img" />
             <h3>{{ badge.details.title }}</h3>
-            <div class="price">
+            <div class="price" [class.too-expensive]="(safe?.quota ?? -1) < badge.details.price">
                 <span>{{ badge.details.price }}</span>
                 <img src="/images/logos/nooblard.png"/>
             </div>

@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Acheter cette décoration?</h2>
+
+<div class="decoration-description">
+    <h3>{{ details?.name }}</h3>
+
+    <img [src]="getDecorationThumbnail()" class="badge-thumbnail" [class.disabled]="!isPurchasable()"/>
+
+</div>
+
+<div *ngIf="details !== null && quota < details.price">
+    <p class="error-text">Vous n'avez pas assez de nooblards pour vous offrir cette décoration</p>
+</div>
