@@ -1,0 +1,27 @@
+p.error-text {
+    color: red;
+}
+
+div.badge-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.badge-description h3 {
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+img.badge-thumbnail {
+    max-width: 30%;
+}
+
+div.badge-description p {
+    font-size: 20px;
+}
+
+img.badge-thumbnail.disabled {
+    opacity: 0.8;
+    filter: grayscale();
+}

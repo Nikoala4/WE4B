@@ -19,9 +19,18 @@ export class ActivitySectionExporter extends SectionExporter<ActivitySectionData
         return new ActivitySection(data);
     }
 
-    override createNew(section_types_map: SectionTypesMap): Promise<ActivitySection> {
-        alert("Not implemented yet.")
-        throw new Error("Method not implemented.");
+    override async createNew(section_types_map: SectionTypesMap): Promise<ActivitySection> {
+        let newActivity = await section_types_map.getSectionAdder().promptNewActivityFile()
+
+        if (newActivity === null) throw new ReferenceError();
+
+        return new ActivitySection({
+            id: newActivity.new_file,
+            javascript: newActivity.javascript,
+            editable_javascript: newActivity.editable_javascript,
+            css: newActivity.css,
+            arguments: newActivity.arguments
+        })
     }
 }
 

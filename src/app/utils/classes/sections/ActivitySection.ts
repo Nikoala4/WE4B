@@ -17,7 +17,8 @@ export interface ActivitySectionData {
     javascript: string
     editable_javascript: string
     css: string
-    id: string
+    id: string,
+    arguments: object
 }
 
 export class ActivitySection extends Section<ActivitySectionData, {file_id: string}>

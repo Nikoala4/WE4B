@@ -1,0 +1,13 @@
+<mat-dialog-content>
+    <app-buy-badge-dialog-content
+    [reachable]="reachable"
+    [badge]="this.data.badge"
+    [details]="details"
+    [quota]="quota"/>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="main-button" (click)="dialogRef.close(false)">Annuler</button>
+    <span style="width: 10px;"></span>
+    <button class="main-button" [style]="isPurchasable()?'background: #3fa300':''" (click)="onBuyLaunched()" [disabled]="!isPurchasable()">Acheter</button>
+</mat-dialog-actions>

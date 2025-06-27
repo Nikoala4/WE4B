@@ -10,6 +10,7 @@ import { ActivitySectionExporter } from '../utils/classes/section_exporters/Acti
 import { IntegrationSectionExporter } from '../utils/classes/section_exporters/IntegrationSectionExporter';
 import { VideoSectionExporter } from '../utils/classes/section_exporters/VideoSectionExporter';
 import { AudioSectionExporter } from '../utils/classes/section_exporters/AudioSectionExporter';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,10 @@ export class SectionExporterService {
   public sections_map;
 
   constructor(
-    dialogs: MatDialog
+    dialogs: MatDialog,
+    apiService: ApiService
   ) {
-    this.sections_map = new SectionTypesMap(dialogs);
+    this.sections_map = new SectionTypesMap(dialogs, apiService);
 
     this.sections_map.addTypeExporter(new ContainerSectionExporter());
     this.sections_map.addTypeExporter(new RawTextSectionExporter());

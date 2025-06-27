@@ -12,6 +12,7 @@ import { RichTextSectionExporter } from "./section_exporters/RichTextSectionExpo
 import { SectionExporter } from "./section_exporters/SectionExporter";
 import { VideoSectionExporter } from "./section_exporters/VideoSectionExporter";
 import { SectionData } from "./sections/Section";
+import { ApiService } from "../../services/api.service";
 
 /*
 
@@ -23,12 +24,12 @@ export class SectionTypesMap
     private _defined_types: {[key:string]: SectionExporter<any, any>}
     private _sectionAdder: SectionAdder;
 
-    constructor(private dialogs: MatDialog)
+    constructor(private dialogs: MatDialog, private apiService: ApiService)
     {
         // Cet objet a pour clés les nom des types des sections, et pour valeur les exporteurs de section. 
         this._defined_types = {}
 
-        this._sectionAdder = new SectionAdder(this, dialogs)
+        this._sectionAdder = new SectionAdder(this, dialogs, apiService)
     }
 
     addTypeExporter(type_exporter: SectionExporter<any, any>): void

@@ -27,7 +27,7 @@ div.badge-popup div.badge-popup-preview {
     gap: 7vh;
 }
 
-div.badge-popup h1.badge-title {
+div.badge-popup h3.badge-title {
     font-size: 5vh;
     font-weight: lighter;
 }

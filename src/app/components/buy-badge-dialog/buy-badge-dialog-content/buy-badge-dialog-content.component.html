@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Acheter ce badge?</h2>
+
+<div class="badge-description">
+    <h3>{{ details?.title }}</h3>
+
+    <img [src]="getBadgeThumbnail()" class="badge-thumbnail" [class.disabled]="!isPurchasable()"/>
+
+    <p>{{ details?.description }}<p>
+
+</div>
+
+<div *ngIf="!reachable">
+    <p class="error-text">Vous n'êtes pas elligible à ce badge</p>
+</div>
+
+<div *ngIf="details !== null && quota < details.price">
+    <p class="error-text">Vous n'avez pas assez de nooblards pour vous offrir ce badge</p>
+</div>

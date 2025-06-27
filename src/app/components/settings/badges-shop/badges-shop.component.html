@@ -1,1 +1,37 @@
-<p>badges-shop works!</p>
+<div class="shop-container">
+    <div class="quota">
+        <div class="price">
+            <span>{{ safe?.quota ?? "..." }}</span>
+            <img src="/images/logos/nooblard.png"/>
+        </div>
+    </div>
+
+    <h2>Badges obtenus</h2>
+    <div class="badges">
+        <button class="badge-card" *ngFor="let badge of ownedBadges" (click)="onOwnedBadgeClicked(badge.badge)">
+            <img [src]="getBadgeImage(badge.badge)" alt="{{ badge.details.title }}" class="badge-img" />
+            <h3>{{ badge.details.title }}</h3>
+        </button>
+    </div>
+
+    <h2>Badges disponibles</h2>
+    <div class="badges">
+        <button class="badge-card" *ngFor="let badge of reachableBadges" (click)="onBuyBadgeClicked(badge.badge)">
+            <img [src]="getBadgeImage(badge.badge)" alt="{{ badge.details.title }}" class="badge-img" />
+            <h3>{{ badge.details.title }}</h3>
+            <div class="price">
+                <span>{{ badge.details.price }}</span>
+                <img src="/images/logos/nooblard.png"/>
+            </div>
+        </button>
+
+        <button class="badge-card unreachable-badge" *ngFor="let badge of unreachableBadges"  (click)="onBuyBadgeClicked(badge.badge)">
+            <img [src]="getBadgeImage(badge.badge)" alt="{{ badge.details.title }}" class="badge-img" />
+            <h3>{{ badge.details.title }}</h3>
+            <div class="price">
+                <span>{{ badge.details.price }}</span>
+                <img src="/images/logos/nooblard.png"/>
+            </div>
+        </button>
+    </div>
+</div>
