@@ -4,4 +4,4 @@ export interface ApiGetClassDataRawResponse
     last_modification: number,
     last_modifier: string,
     name: string
-}
+} 

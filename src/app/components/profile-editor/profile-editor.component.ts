@@ -51,7 +51,7 @@ export class ProfileEditorComponent {
   ) {
     if (!isPlatformBrowser(platformId)) return;
 
-    this.currentUser = this.authService.getCurrentUser()
+    this.currentUser = this.authService.currentUser
 
     this.reloadUserData();
 

@@ -33,12 +33,12 @@ export class ActivitySection extends Section<ActivitySectionData, {file_id: stri
         let activity;
 
         // préparation du code javascript en mode lecture (voir Activity::getJavascript dans src/CustomeFeatures/Activity.php)
-        eval(data.javascript + '\n\nactivity = new Activity(data.id, data.arguments)');
+        window.eval(data.javascript + '\n\nactivity = new Activity(data.id, data.arguments)');
         
         this._activity = activity;
 
         // préparation du code javascript en mode lecture (voir Activity::getEditableJavascript dans src/CustomeFeatures/Activity.php)
-        eval(data.editable_javascript + '\n\nactivity = new Activity(data.id, data.arguments)');
+        window.eval(data.editable_javascript + '\n\nactivity = new Activity(data.id, data.arguments)');
         
         this._editable_activity = activity;
     }

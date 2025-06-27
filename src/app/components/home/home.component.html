@@ -1,6 +1,12 @@
-<p>
-    <a routerLink='/routes'>Pages existantes</a>
-</p>
+<div id="homepage-main-separation" class="content-separator">
+    <div id="homepage-content" class="main-page-content">
+        <h1>Bonjour, {{account.profile.first_name}} {{account.profile.last_name}}!</h1>
+
+        <app-class-list></app-class-list>
+
+        </div>
+</div>
+
 <app-admin-home />  
 <app-teacher-home />
 <app-student-home />

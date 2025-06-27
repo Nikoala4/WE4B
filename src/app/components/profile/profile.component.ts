@@ -47,7 +47,7 @@ export class ProfileComponent {
 
     this.route.paramMap.pipe(
       switchMap((params, index) => {
-        let currentUser = this.authService.getCurrentUser();
+        let currentUser = this.authService.currentUser;
 
         const id = params.get('userId') || currentUser?.id;
 

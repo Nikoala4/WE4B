@@ -27,13 +27,13 @@ export class ClassComponent implements OnInit {
 
   ngOnInit()
   {
-    let account = this.authService.getCurrentUser();
+    let account = this.authService.currentUser;
 
     if (account === null){
       return;
     }
 
-    this.role = this.authService.getCurrentUser()!.role;
+    this.role = this.authService.currentUser!.role;
   }
 
 }

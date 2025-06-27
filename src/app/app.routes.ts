@@ -22,8 +22,8 @@ import { adminGuard } from './guards/admin.guard';
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
     {path:'forgot-password', component: ForgotPasswordComponent, canActivate: [disconnectedGuard]},
-    {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
     {path:'', component:BaseComponent, canActivate: [connectedGuard], children: [
+        {path:'routes', component: RoutesComponent, canActivate: [connectedGuard]},
         {path:'redirect', component:RedirectBlankComponent},
 
         {path:'', component: HomeComponent, canActivate: [connectedGuard]},

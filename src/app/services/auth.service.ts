@@ -46,7 +46,7 @@ export class AuthService {
     return this.logInfo?.account?.role === Role.STUDENT;
   }
 
-  getCurrentUser(): Account | null {
+  get currentUser(): Account | null {   
     return this.logInfo?.account ?? null;
   }
 

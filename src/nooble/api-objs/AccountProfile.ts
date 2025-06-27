@@ -6,7 +6,7 @@ export interface AccountProfile
     last_name: string,
     active_decoration: string | null,
     active_badges: BadgeDescriptor[],
-    classes: string[],
+    classes: string[], //ids
     profile_image: string | null,
     description: string
 }

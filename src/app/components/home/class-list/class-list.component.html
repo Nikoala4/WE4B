@@ -1,0 +1,6 @@
+<h2 *ngIf="adminView">Tous les cours</h2>
+<h2 *ngIf="!adminView">Vos cours</h2>
+<app-search-bar></app-search-bar>
+<div id="classes" class="classes-list">
+    <app-class-tile *ngFor="let classe of classes" [classe]="classe"></app-class-tile>
+</div>

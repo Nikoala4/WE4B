@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Account } from '../../../../nooble/api-objs/Account';
+import { RouterLink } from '@angular/router';
 import { RoleTranscriberPipe } from '../../../pipes/role-transcriber.pipe';
 
 @Component({
