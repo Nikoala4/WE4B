@@ -18,6 +18,7 @@ import { ClassComponent } from './components/class/class.component';
 import { ClassUsersComponent } from './components/class-users/class-users.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 import { adminGuard } from './guards/admin.guard';
+import { DecorationBuilderComponent } from './components/settings/decoration-builder/decoration-builder.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
@@ -41,7 +42,8 @@ export const routes: Routes = [
             {path:'account/password', component: AccountModifyPasswordComponent, canActivate: [connectedGuard]},
 
             {path:'shop/decorations', component: DecorationShopComponent, canActivate: [connectedGuard]},
-            {path:'shop/badges', component: BadgesShopComponent, canActivate: [connectedGuard]}
+            {path:'shop/badges', component: BadgesShopComponent, canActivate: [connectedGuard]},
+            {path:'shop/decoration-builder', component: DecorationBuilderComponent, canActivate: [adminGuard]}
         ]},
     ]},
 ];

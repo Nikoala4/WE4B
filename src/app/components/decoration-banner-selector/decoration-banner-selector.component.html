@@ -1,0 +1,20 @@
+<div class="decoration-selector">
+
+  <!-- Images -->
+  <div *ngFor="let img of images" class="decoration-image-wrapper">
+    <div class="decoration-image"
+         [class.selected]="img.id === selectedImage"
+         (click)="selectImage(img.id)">
+      <img [src]="getImageUrl(img.id)" alt="decoration" />
+    </div>
+    <span class="image-title">{{img.name}}</span>
+    <button class="remove-button" (click)="removeImage(img.id)">×</button>
+  </div>
+
+  <!-- Ajouter une nouvelle image -->
+  <div class="add-button-wrapper decoration-image-wrapper">
+    <span class="add-button-icon">+</span>
+    <input type="file" (change)="addImage($event)" accept="image/*"/>
+  </div>
+
+</div>

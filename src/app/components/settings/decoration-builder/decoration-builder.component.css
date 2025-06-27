@@ -1,0 +1,22 @@
+.error-messages {
+  margin-top: 5px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-bottom: 3px;
+}
+
+.settings-row input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.settings-row {
+    margin: 20px 0px;
+}
+
+button {
+    margin-top: 20px;
+}

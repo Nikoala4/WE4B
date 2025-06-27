@@ -7,6 +7,7 @@ import { BadgesSelectorComponent } from "../../badges-selector/badges-selector.c
 import { DecorationSelectorComponent } from "../../decoration-selector/decoration-selector.component";
 import { MatDialog } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../../alert-dialog/alert-dialog.component';
+import { Decoration } from '../../../../nooble/api-objs/Decoration';
 
 @Component({
   selector: 'app-profile-accounts-settings',
@@ -111,7 +112,7 @@ export class ProfileAccountSettingsComponent {
     })
   }
 
-  onDecorationSelected(decoration: string | null): void {
-    this.selectedDecoration = decoration;
+  onDecorationSelected(decoration: Decoration | null): void {
+    this.selectedDecoration = decoration?.id ?? null;
   }
 }

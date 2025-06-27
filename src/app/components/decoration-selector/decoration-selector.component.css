@@ -8,7 +8,6 @@
   position: relative;
   aspect-ratio: 2/1;
   border-radius: 8px;
-  overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.2s ease;
@@ -57,5 +56,26 @@
 .decoration-name {
   font-size: 12px;
   font-weight: 500;
+}
+
+
+.remove-button {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
 }
 

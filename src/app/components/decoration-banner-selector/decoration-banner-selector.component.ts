@@ -7,22 +7,26 @@ import { MatDialog } from '@angular/material/dialog';
 import { PromptDialogComponent } from '../prompt-dialog/prompt-dialog.component';
 import { ApiService } from '../../services/api.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 
 @Component({
-  selector: 'app-profile-image-selector',
+  selector: 'app-decoration-banner-selector',
   imports: [
     NgFor,
     
   ],
-  templateUrl: './profile-image-selector.component.html',
-  styleUrl: './profile-image-selector.component.css'
+  templateUrl: './decoration-banner-selector.component.html',
+  styleUrl: './decoration-banner-selector.component.css'
 })
-export class ProfileImageSelectorComponent implements OnInit {
+export class DecorationBannerSelectorComponent implements OnInit {
   images: File[] = [];
-  @Input() selectedImage: string|null = null;
-  @Input() currentImage: string|null = null
+  @Input() selectedImage: string = '';
+  @Input() currentImage: string = ''
+  @Input() selectCurrentImage: boolean = true;
 
-  @Output() imageSelected = new EventEmitter<string | null>();
+  @Input() bannerFilesModified = new EventEmitter<null>()
+
+  @Output() imageSelected = new EventEmitter<string>();
 
   constructor(
     private apiService: ApiService,
@@ -34,26 +38,38 @@ export class ProfileImageSelectorComponent implements OnInit {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.apiService.resources.getSelfFiles(FileType.PROFILE_ICON).subscribe({
+    this.bannerFilesModified.subscribe({
+      next: () => {
+        this.refresh()
+      }
+    })
+
+    this.refresh();
+
+  }
+
+  refresh()
+  {
+    this.apiService.resources.getSelfFiles(FileType.DECORATION_BANNER).subscribe({
       next: (response) => {
         this.images = response;
+
+        if (this.selectedImage === '') 
+          {
+            this.selectImage(this.images[0].id);
+          }
       }
     });
   }
 
   getImageUrl(id: string)
   {
-    return this.pathResolver.getResourcePath(id, FileType.PROFILE_ICON);
+    return this.pathResolver.getResourcePath(id, FileType.DECORATION_BANNER);
   }
 
   selectImage(id: string): void {
-    if (this.selectedImage == id)
-    {
-      this.selectedImage = this.currentImage;
-    } else {
-      this.selectedImage = id;
-    }
-    this.imageSelected.emit(this.selectedImage);
+    this.selectedImage = id;
+    this.imageSelected.emit(id);
   }
 
   addImage(event: Event): void {
@@ -69,22 +85,21 @@ export class ProfileImageSelectorComponent implements OnInit {
           let {
             base64,
             file: fileResult
-          }  = await this.squareImage(reader.result as string);
+          }  = await this.adjustImageDimensions(reader.result as string);
 
           this.dialog.open(PromptDialogComponent, {
             data: { title: 'Comment appelleriez-vous cette image?', placeholder: 'La laque dessine', providedImageUrl: base64 }
           }).afterClosed().subscribe(chosen_name => {
             if (chosen_name) {
-              this.apiService.resources.upload(chosen_name, FileType.PROFILE_ICON, fileResult).subscribe({
+              this.apiService.resources.upload(chosen_name, FileType.DECORATION_BANNER, fileResult).subscribe({
                 next: (response) => {
-                  console.log(response);
                   this.images.push({
                     id: response.new_file,
                     size: response.size,
                     sent_date: response.date,
                     name: chosen_name,
                     filename: file.name,
-                    filetype: FileType.PROFILE_ICON
+                    filetype: FileType.DECORATION_BANNER
                   })
                 }
               })
@@ -111,24 +126,27 @@ export class ProfileImageSelectorComponent implements OnInit {
         this.apiService.resources.delete(id).subscribe({
           next: () => {
             if (this.selectedImage === id) {
-              this.clearSelection();
-              this.currentImage = null;
+              this.selectedImage = this.images[0].id
+              this.imageSelected.emit(this.selectedImage)
             }
 
             this.images = this.images.filter(img => img.id !== id);
-          }
+          },
+        error: () => {
+          this.dialog.open(AlertDialogComponent, {
+            data: {
+              title: "Impossible de supprimer cette bannière de décoration",
+              text: "Veuillez vous assurer qu'il n'y a pas de décoration associée à cette banière dans un premier temps. "
+            }
+          })
+        }
         })
       }
 
     })
   }
 
-  clearSelection(): void {
-    this.selectedImage = null;
-    this.imageSelected.emit(null);
-  }
-
-  async squareImage(image_base64: string)
+  async adjustImageDimensions(image_base64: string)
   {
     var image = new Image();
 
@@ -143,7 +161,7 @@ export class ProfileImageSelectorComponent implements OnInit {
     await p;
 
     let canvas = document.createElement("canvas");
-    canvas.width = 300;
+    canvas.width = 900;
     canvas.height = 300;
     const ctx = canvas.getContext("2d")!;
 
