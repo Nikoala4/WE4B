@@ -21,11 +21,11 @@ export class SettingsMenuComponent {
     private authService: AuthService,
     public router: Router
   ) {
-    this.user = authService.getCurrentUser();
+    this.user = authService.currentUser;
 
     authService.authStatusChanged.subscribe({
       next: () => {
-        this.user = authService.getCurrentUser();
+        this.user = authService.currentUser;
       }
     })
   };
