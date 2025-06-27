@@ -2,14 +2,14 @@
     <div 
         class="decoration-item"
         [class.selected]="selectedDecoration === null"
-        [class.current]="currentDecoration === null"
+        [class.current]="currentDecoration === null && overwriteOrNothing === 'nothing'"
         (click)="selectDecoration(null)">
         
         <div class="decoration-thumbnail">
-            <img src="/images/logos/no-decoration.png" alt="No decoration" />
+            <img [src]="(overwriteOrNothing === 'nothing'?'/images/logos/no-decoration.png' : '/images/logos/add-decoration.png')" alt="No decoration" />
         </div>
         
-        <span class="decoration-name">Aucune décoration</span>
+        <span class="decoration-name">{{overwriteOrNothing === 'nothing'?'Aucun décoration':'Nouvelle décoration'}}</span>
     </div>
 
     <div 
@@ -24,6 +24,10 @@
         </div>
         
         <span class="decoration-name">{{ decoration.name }}</span>
+
+        <div *ngIf="overwriteOrNothing === 'overwrite'">
+            <button class="remove-button" (click)="deleteDecoration(decoration.id)">×</button>
+        </div>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-input[type="text"], input[type="email"], input[type="password"], input:not([type]), textarea
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input:not([type]), textarea
 {
     box-sizing: border-box;
     padding: var(--fields-padding);

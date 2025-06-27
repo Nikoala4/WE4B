@@ -71,6 +71,7 @@
                     </a>
                 </li>
             </ng-template>
+
             <div *ngIf="router.url == '/settings/shop/decorations'; else notDecoration">
                 <li class="settings-menu-item settings-menu-selected-item">
                     <img src="images/icons/decoration.png"/>
@@ -85,6 +86,23 @@
                     </a>
                 </li>
             </ng-template>
+
+            <div *ngIf="user?.role == 'admin' || user?.role == 'teacher_admin'">
+                <div *ngIf="router.url == '/settings/shop/decoration-builder'; else notDecorationBuilder">
+                    <li class="settings-menu-item settings-menu-selected-item">
+                        <img src="images/icons/add.png"/>
+                        <span>Créer</span>
+                    </li>
+                </div>  
+                <ng-template #notDecorationBuilder>
+                    <li class="settings-menu-item">
+                        <a routerLink="/settings/shop/decoration-builder">
+                            <img src="images/icons/add.png"/>
+                            <span>Créer</span>
+                        </a>
+                    </li>
+                </ng-template>
+            </div>
         </ul>
     </li>
 </ul>

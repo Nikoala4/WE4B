@@ -9,6 +9,7 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
 import { AlertDialogComponent } from '../../alert-dialog/alert-dialog.component';
 import { ProfileImageSelectorComponent } from "../../profile-image-selector/profile-image-selector.component";
 import { DecorationSelectorComponent } from "../../decoration-selector/decoration-selector.component";
+import { Decoration } from '../../../../nooble/api-objs/Decoration';
 
 @Component({
   selector: 'app-misc-profile-settings',
@@ -92,9 +93,9 @@ export class MiscProfileSettingsComponent {
     this.selectedProfileImage = imageId;
   }
 
-  onDecorationSelected(decorationId: string | null)
+  onDecorationSelected(decoration: Decoration | null)
   {
-    this.selectedDecoration = decorationId;
+    this.selectedDecoration = decoration?.id ?? null;
   }
 
   saveProfile() {

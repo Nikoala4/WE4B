@@ -5,6 +5,9 @@ import { ApiGetDecorationInformationResponse } from '../../../nooble/api-comm/Ge
 import { ApiService } from '../../services/api.service';
 import { PathResolverService } from '../../services/path-resolver.service';
 import { FileType } from '../../../nooble/api-objs/FileType';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-decoration-selector',
@@ -16,23 +19,41 @@ import { FileType } from '../../../nooble/api-objs/FileType';
 export class DecorationSelectorComponent {
   ownedDecorations: Decoration[] = [];
 
-  @Input() currentDecoration: string|null = null;
+  @Input() currentDecoration: string | null = null;
   @Input() selectedDecoration: string | null = null;
-  @Output() decorationSelected = new EventEmitter<string | null>();
+  @Output() decorationSelected = new EventEmitter<Decoration | null>();
+  @Output() decorationDeleted = new EventEmitter<Decoration | null>();
+
+  @Input() onDecorationsChanged: EventEmitter<null> = new EventEmitter()
+
+  @Input() overwriteOrNothing : 'overwrite' | 'nothing' = 'nothing'
 
   constructor(
     private apiService: ApiService,
     private pathResolver: PathResolverService,
+    private dialogs: MatDialog,
     @Inject(PLATFORM_ID) private platformId: string
   ) {}
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    this.onDecorationsChanged.subscribe({
+      next: () => {
+        this.refresh()
+      }
+    })
+
+    this.refresh()
+
+  }
+
+  refresh()
+  {
+    this.ownedDecorations = [];
+
     this.apiService.safe.getDecorations().subscribe({
       next: (response) => {
-        this.selectedDecoration = this.currentDecoration;
-
         for (let decoration of response)
         {
           let currentDecorationId = decoration;
@@ -58,12 +79,49 @@ export class DecorationSelectorComponent {
       this.selectedDecoration = decoration;
     }
     
-    this.decorationSelected.emit(decoration);
+    this.decorationSelected.emit(
+      this.selectedDecoration === null?null : 
+        this.ownedDecorations.filter((decoration) => decoration.id === this.selectedDecoration)[0]
+    );
   }
 
   getDecorationThumbnail(imageId: string)
   {
     return this.pathResolver.getResourcePath(imageId, FileType.DECORATION_BANNER);
+  }
+
+  deleteDecoration(decorationId: string)
+  {
+    this.dialogs.open(ConfirmDialogComponent, {
+      data: {
+        title: "Supprimer cette décoration?",
+        text: "Les détentaires de cette décoration seront remboursés gracieusement."
+      }
+    }).afterClosed().subscribe({
+      next: (response) => {
+        if (response)
+        {
+          this.apiService.decorations.delete(decorationId).subscribe({
+            next: () => {
+              this.dialogs.open(AlertDialogComponent, {
+                data: {
+                  title: "Décoration effacée!",
+                  text: "Qu'elle repose en paix dès à présent."
+                }
+              })
+
+              if (decorationId === this.selectedDecoration)
+              {
+                this.selectedDecoration = null;
+              }
+
+              this.refresh();
+              this.decorationDeleted.emit();
+            }
+          })
+        }
+      }
+    })
   }
 
 }

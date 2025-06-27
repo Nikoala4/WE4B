@@ -1,0 +1,47 @@
+<h2>Paramètres</h2>
+
+<form [formGroup]="form">
+    <div class="settings-row">
+        <label>Nom de la décoration : </label>
+        <input type="text" formControlName="name"/>
+        <div class="error-messages" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            <div *ngIf="form.get('name')?.errors?.['required']" class="error-message">
+                Le nom de la décoration est requis
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-row">
+        <label>Prix : </label>
+        <input type="number" formControlName="price"/>
+        <div class="error-messages" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+            <div *ngIf="form.get('price')?.errors?.['required']" class="error-message">
+                Le prix est requis
+            </div>
+            <div *ngIf="form.get('price')?.errors?.['min']" class="error-message">
+                Le prix doit être supérieur ou égal à 0
+            </div>
+        </div>
+    </div>
+
+    <h2>Bannière</h2>
+    <app-decoration-banner-selector
+    [selectCurrentImage]="false"
+    [selectedImage]="decorationBannerImage"
+    (imageSelected)="this.onImageSelected($event)"/>
+</form> 
+
+<h2>Appliquer à ...</h2>
+
+<app-decoration-selector
+overwriteOrNothing="overwrite"
+[currentDecoration]="null"
+[selectedDecoration]="overwrittenDecoration"
+[onDecorationsChanged]="decorationEvent"
+(decorationDeleted)="bannerImageEvent.emit()"
+(decorationSelected)="onDecorationSelected($event)"/>
+
+<button class="main-button icon-button" [disabled]="form.invalid" (click)="saveBanner()">
+    <img [src]="overwrittenDecoration === null?'/images/icons/add.png':'/images/icons/save.png'"/>
+    <span>{{overwrittenDecoration === null?'Ajouter la bannière':'Enregistrer'}}</span>
+</button>
