@@ -1,0 +1,34 @@
+<div class="edit-user-settings-panel">
+    <h2>Rôles de l'utilisateur</h2>
+
+    <div class="checkboxes-list" [class.disabled]="isCurrentUser()">
+        <div class="settings-row">
+            <label>Étudiant</label>
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="roles.student" (change)="onRoleChange()" [disabled]="roles.admin || roles.teacher" />
+                <span class="checkbox-style"></span>
+            </div>
+        </div>
+        <div class="settings-row">
+            <label>Enseignant</label>
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="roles.teacher" (change)="onRoleChange()" [disabled]="roles.student" />
+                <span class="checkbox-style"></span>
+            </div>
+        </div>
+        <div class="settings-row">
+            <label>Administrateur</label>
+            <div class="checkbox">
+                <input type="checkbox" [(ngModel)]="roles.admin" (change)="onRoleChange()" [disabled]="roles.student" />
+                <span class="checkbox-style"></span>
+            </div>
+        </div>
+        <button class="main-button icon-button" (click)="saveRoles()" [disabled]="this.resultingRole() == null || this.resultingRole() == editingAccount.role">
+            <img src="/images/icons/save.png" />
+            <span>Enregistrer</span>
+        </button>
+    </div>
+    <small *ngIf="isCurrentUser()">Vous ne pouvez pas modifier vos propres rôles</small>
+    <small *ngIf="!isCurrentUser()">Un étudiant ne peut être ni enseignant, ni administrateur.</small>
+</div>
+

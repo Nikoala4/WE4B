@@ -1,0 +1,35 @@
+div.edit-user-settings-panel {
+    padding: 20px;
+}
+
+div.checkboxes-list.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+div.settings-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: var(--settings-row-margin-bottom);
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.settings-row:not(.reverse) label {
+    margin-right: var(--settings-row-spacing);
+}
+
+div.settings-row.reverse label {
+    margin-left: var(--settings-row-spacing);
+}
+
+div.settings-row input {
+    flex-grow: 1;
+}
+
+div.checkboxes-list {
+    max-width: var(--settings-checkbox-list-max-width);
+    align-self: center;
+}
+

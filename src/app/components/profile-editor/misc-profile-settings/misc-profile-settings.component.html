@@ -1,0 +1,56 @@
+<div class="edit-user-settings-panel">
+    <h2>Adresse mail</h2>
+    <div class="settings-row">
+        <label>Adresse mail :</label>
+        <input [(ngModel)]="email" (input)="canSaveEmail()" />
+    </div>
+    <button class="main-button icon-button" (click)="saveEmail()" [disabled]="!canSaveEmail()">
+        <img src="/images/icons/save.png" />
+        <span>Enregistrer</span>
+    </button>
+
+    <hr />
+    <div id="user-profile-settings-description">
+        <h2>Identité</h2>
+        <div class="settings-row">
+            <label>Prénom :</label>
+            <input [(ngModel)]="first_name" />
+        </div>
+        <div class="settings-row">
+            <label>Nom :</label>
+            <input [(ngModel)]="last_name" />
+        </div>
+        <h2>Description</h2>
+        <textarea [(ngModel)]="description"></textarea>
+
+        <h2>Image de profile</h2>
+        <app-profile-image-selector
+        [currentImage]="editingAccount.profile.profile_image"
+        [selectedImage]="selectedProfileImage"
+        (imageSelected)="onImageSelected($event)"></app-profile-image-selector>
+
+        <h2>Décoration</h2>
+        <app-decoration-selector
+        [currentDecoration]="editingAccount.profile.active_decoration"
+        [selectedDecoration]="selectedDecoration"
+        (decorationSelected)="onDecorationSelected($event)"></app-decoration-selector>
+    </div>
+
+    <button class="main-button icon-button" (click)="saveProfile()">
+        <img src="/images/icons/save.png" />
+        <span>Enregistrer</span>
+    </button>
+
+    <hr />
+    <h2>Zone à risques</h2>
+    <button
+        class="main-button icon-button"
+        (click)="deleteUser()"
+        [disabled]="isCurrentUser()"
+        >
+        <img src="/images/icons/delete.png" />
+        <span>Supprimer l'utilisateur</span>
+    </button>
+    <small *ngIf="isCurrentUser()">Vous ne pouvez pas vous supprimer vous-même</small>
+</div>
+

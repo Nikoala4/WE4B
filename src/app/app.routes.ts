@@ -16,6 +16,8 @@ import { DecorationShopComponent } from './components/settings/decoration-shop/d
 import { BadgesShopComponent } from './components/settings/badges-shop/badges-shop.component';
 import { ClassComponent } from './components/class/class.component';
 import { ClassUsersComponent } from './components/class-users/class-users.component';
+import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent, canActivate: [disconnectedGuard]},
@@ -28,6 +30,7 @@ export const routes: Routes = [
 
         {path:'profile', component: ProfileComponent, canActivate: [connectedGuard]},
         {path:'profile/:userId', component: ProfileComponent, canActivate: [connectedGuard]},
+        {path:'profile/:userId/edit', component: ProfileEditorComponent, canActivate: [adminGuard]},
 
         {path:'class/:classId', component: ClassComponent, canActivate: [connectedGuard]},
         {path:'class/:classId/users', component: ClassUsersComponent, canActivate: [connectedGuard]},

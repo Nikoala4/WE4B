@@ -1,0 +1,21 @@
+<div class="content-separator" id="edit-page-main-separation">
+  <div id="edit-page-content">
+    <h1> Éditer l'utilisateur - {{ editingAccount?.profile?.first_name }} {{ editingAccount?.profile?.last_name }} </h1>
+
+    <app-tab-group>
+      <button tab-button (click)="selectTab(0)" [class.selected]="selectedTab === 0">Paramètres généraux</button>
+      <button tab-button (click)="selectTab(1)" [class.selected]="selectedTab === 1">Rôles</button>
+      <button tab-button id="classes-access-button" [disabled]="!hasClassAccess()" (click)="selectTab(2)" [class.selected]="selectedTab === 2">
+        Cours inscrits
+      </button>
+  
+      <app-misc-profile-settings tab-content *ngIf="selectedTab === 0 && editingAccount != null && currentUser != null"
+        [editingAccount]="editingAccount" [currentUser]="currentUser" (update)="reloadUserData()"></app-misc-profile-settings>
+      <app-account-role-settings tab-content *ngIf="selectedTab === 1 && editingAccount != null && currentUser != null"
+        [editingAccount]="editingAccount" [currentUser]="currentUser" (update)="reloadUserData()"></app-account-role-settings>
+      <app-account-classes-selection tab-content *ngIf="selectedTab === 2 && editingAccount != null && currentUser != null"
+        [editingAccount]="editingAccount" [currentUser]="currentUser" (update)="reloadUserData()"></app-account-classes-selection>
+
+    </app-tab-group>
+  </div>
+</div>

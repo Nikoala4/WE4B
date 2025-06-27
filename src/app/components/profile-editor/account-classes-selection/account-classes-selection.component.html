@@ -1,0 +1,32 @@
+<div class="edit-user-settings-panel">
+    <h2>Cours inscrits</h2>
+
+    <div class="search-bar">
+    <input type="text" placeholder="Rechercher..." [(ngModel)]="classSearchTerm" (input)="searchClasses()" />
+    <button class="icon-button main-button">
+        <img src="/images/icons/search.png" />
+    </button>
+    </div>
+
+    <div id="classes" class="classes-list">
+    <a
+        *ngFor="let c of filteredClasses"
+        [href]="'/class/' + c.id"
+        class="class-preview-link"
+        target="_blank"
+    >
+        <div class="class-preview" [style.backgroundImage]="'url(data:image/png;base64,' + c.thumbnail + ')'">
+        <span class="class-edit-icon">
+            <img src="/images/icons/edit.png" />
+        </span>
+        <h1>{{ c.name }}</h1>
+        <p>{{ c.description }}</p>
+        </div>
+    </a>
+
+    <button id="add-class-button" (click)="modifyClasses()">
+        <img src="/images/icons/edit.png" />
+        <span class="class-edit-icon">Ajouter / Supprimer des cours...</span>
+    </button>
+    </div>
+</div>

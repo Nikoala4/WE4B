@@ -18,6 +18,8 @@ export class ApiProfileService {
     url.searchParams.set("user_id", userId);
 
     let request = this.http.get<Profile>(url.toString(), {withCredentials: true})
+
+    if (userId === undefined)
     request.subscribe({
       next: (response) => {
         if (!loadashUtils.isEqual(response, this.lastKnownProfile))
