@@ -22,9 +22,25 @@ L'api nécessite d'avoir :
 
 **Attention : l'api ne fonctionnera pas avec une version de python3 inférieure à python3.11!**
 
-## 2. Installer l'api
+## 2. Installer la base de données. 
 
-### 2.1 Téléchargement
+Ce projet est fourni avec deux archives : `uploaded.zip` et `nooble-we4b-si40-sy43.zip`. 
+
+Le fichier uploaded.zip sera à installer après l'installation de l'API. 
+
+Pour installer le fichier `nooble-we4b-si40-sy43`.zip, extrayez-le, puis, lancez la commande qui suit : 
+
+```sh
+$ mongorestore ./nooble-we4b-si40-sy43 --db nooble-we4b-si40-sy43
+```
+
+Assurez-vous que le dossier `nooble-we4b-si40-sy43` ne contient pas un sous-dossier `nooble-we4b-si40-sy43`. 
+
+Si vous voulez importer le projet sous un autre nom, assurez-vous de mettre le même nom de base de données dans la configuration de l'API plus tard. 
+
+## 3. Installer l'api
+
+### 3.1 Téléchargement
 
 Commencez par install l'API depuis son [lien github](https://github.com/Kaki-In/nooble-apiarist):
 
@@ -38,7 +54,7 @@ $ git clone https://github.com/Kaki-In/nooble-apiarist
 Dans tous les cas, vous pouvez aussi [télécharger le fichier .zip](https://github.com/Kaki-In/nooble-apiarist/archive/refs/heads/master.zip) et l'
 extraire dans le dossier voulu. 
 
-### 2.2 Installation
+### 3.2 Installation
 
 Pour installer l'api, lancez simplement le fichier `install.py` dans un terminal. 
 
@@ -50,7 +66,7 @@ $ python -m pip install --upgrade pip
 Le module `pyvips` permet d'améliorer les performances de traitement d'images et pourrait ne pas être installé sous Windows. L'absence de ce module n'impactera l'API qu'en termes de performance. Cependant, assurez-vous dans ce cas que le module Pillow a pu être installé avec succès. 
 
 
-### 2.3 Configuration
+### 3.3 Configuration
 
 Après installation, votre configuration se trouvera dans le dossier suivant : 
 
@@ -76,7 +92,7 @@ Vous y trouverez les fichiers suivants :
 
 Si vous disposez d'une archive "uploaded" fourni avec ce devoir, placez son contenu dans le dossier `uploaded` du dossier de configuration. Assurez-vous de ne pas avoir un sous-dossier unique nommé `uploaded` dans ce dossier : les sous-dossiers de `[HOME]/.nooble/uploaded/` doivent correspondre à des dates. 
 
-#### 2.3.1 Configuration de la base de données
+#### 3.3.1 Configuration de la base de données
 
 Le fichier par défaut de la base de données est celui qui suit:
 
@@ -104,7 +120,7 @@ Le fichier par défaut de la base de données est celui qui suit:
     - `default_users_nooblards`: le quota par défaut d'un utilisateur
 - `tables`: le nom des collections dans la base de données
 
-#### 2.3.2 Configuration de l'API
+#### 3.3.2 Configuration de l'API
 
 Le fichier par défaut de l'API est celui qui suit:
 
@@ -138,7 +154,7 @@ Le fichier par défaut de l'API est celui qui suit:
     - `token_duration_minutes`: durée de validité des jetons, en minutes 
     - `tokens_size`: taille des jetons générés. 
 
-#### 2.3.3 Configuration du serveur SMTP
+#### 3.3.3 Configuration du serveur SMTP
 
 **L'API ne fait pas office de serveur SMTP. Sans cette configuration, il vous sera totalement impossible de recevoir les mails contenant votre mot de passe, lequel est hashé dans la base de données**
 
@@ -176,7 +192,7 @@ Le fichier par défaut du serveur SMTP est celui qui suit:
 
 
 
-#### 2.3.4 Configuration du gestionnaire de ressources
+#### 3.3.4 Configuration du gestionnaire de ressources
 
 Le fichier de configuration par défaut du gestionnaire de ressources est celui qui suit:
 
@@ -190,17 +206,17 @@ Le fichier de configuration par défaut du gestionnaire de ressources est celui 
 - `base_directory`: dossier contenant les élément uploadés vers le serveur et le fichiers d'activité
 - `random_filenames_length`: longueur des noms de fichier générés. 
 
-### 2.4 Démarrage de l'API
+### 3.4 Démarrage de l'API
 
 Une fois la configuration effectuée, il vous suffira de lancer l'API en démarrant le fichier `main.py`. 
 
 Vous pourrez ensuite visualiser les différentes fonctionnalités de l'API en vous rendant directement vers son lien d'accès ([http://localhost:8622](http://localhost:8622) d'après la configuration initiale), ainsi qu'effectuer certaines requêtes "à la main" comme le besoin vous en vient. 
 
-## 3. Installer le projet Angular
+## 4. Installer le projet Angular
 
 Pour installer le projet angular, veuillez suivre les étapes suivantes : 
- - installez les dépendances avec `npm install`
- - configurez la connexion avec l'API dans le fichier `src/app/app.config.ts`
+1. installez les dépendances avec `npm install`
+2. configurez la connexion avec l'API dans le fichier `src/app/app.config.ts`
 
  ```javascript
     { 
@@ -214,7 +230,7 @@ Pour installer le projet angular, veuillez suivre les étapes suivantes :
 ***Il est extrêmement conseillé d'utiliser une version Angular récente (créé sous Angular 19) et une version node paire.***
 
 
-## 4. Notes finales
+## 5. Notes finales
 
 Il est à noter que : 
  - très peu de serveurs SMTP sont fonctionnels sans utiliser OAuth2, et la plupart des serveurs tels que GMail, Orange, etc... risquent de bloquer certains des mails envoyés. Si vous n'arrivez pas à créer un compte faute de mails non reçus, il vous suffira d'encoder le mot de passe en sha256 et de l'appliquer directement dans la base de données. 
