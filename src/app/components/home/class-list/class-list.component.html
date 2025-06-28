@@ -3,6 +3,8 @@
 <app-search-bar
 (search)="onSearch($event)"></app-search-bar>
 
-<div id="classes" class="classes-list" *ngFor="let classe of classes">
-    <app-class-tile *ngIf="searchTerms == '' || classe.classe.name.includes(searchTerms) || classe.classe.description.includes(searchTerms)" [classe]="classe.classe" [classId]="classe.id"/>
+<div id="classes" class="classes-list">
+    <ng-container  *ngFor="let classe of classes">
+        <app-class-tile *ngIf="searchTerms == '' || classe.classe.name.includes(searchTerms) || classe.classe.description.includes(searchTerms)" [classe]="classe.classe" [classId]="classe.id"/>
+    </ng-container>
 </div>
