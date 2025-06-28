@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDataResponse';
 import { Account } from '../../../../nooble/api-objs/Account';
 import { ClassListComponent } from "../class-list/class-list.component";
@@ -23,6 +23,8 @@ export class AdminHomeComponent implements OnInit{
 
   classes_pattern: string = ''
   accounts_pattern: string = ''
+
+    usersChangedEvent = new EventEmitter<null>()
 
   constructor(
     private apiService: ApiService
@@ -72,6 +74,7 @@ export class AdminHomeComponent implements OnInit{
     this.apiService.accounts.searchAccount(this.accounts_pattern, 10, this.found_users.length).subscribe({
       next: (response) => {
         this.found_users = this.found_users.concat(response)
+        this.usersChangedEvent.emit();
       }
     });
   }

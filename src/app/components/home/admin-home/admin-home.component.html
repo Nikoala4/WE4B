@@ -13,7 +13,8 @@
 
 <app-users-list
 [users]="found_users_objects"
-(submit)="reloadUsers($event)"/>
+(submit)="reloadUsers($event)"
+[usersChanged]="usersChangedEvent"/>
 
 <button (click)="searchNextUsers()" class="main-button icon-button">
     <img src="/images/icons/add.png"/>

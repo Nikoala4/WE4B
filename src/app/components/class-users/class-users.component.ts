@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RoleTranscriberPipe } from '../../pipes/role-transcriber.pipe';
 import { FormsModule } from '@angular/forms';
@@ -11,15 +11,16 @@ import { FileType } from '../../../nooble/api-objs/FileType';
 import { ApiService } from '../../services/api.service';
 import { map } from 'rxjs';
 import { Profile } from '../../../nooble/api-objs/Profile';
+import { UsersListComponent } from "../home/users-list/users-list.component";
 
 @Component({
   selector: 'app-class-users',
   imports: [
     RouterLink,
     CommonModule,
-    RoleTranscriberPipe,
-    FormsModule
-  ],
+    FormsModule,
+    UsersListComponent
+],
   templateUrl: './class-users.component.html',
   styleUrl: './class-users.component.css'
 })
@@ -31,7 +32,8 @@ export class ClassUsersComponent implements OnInit {
   errorMessage: string = '';
   errorMessageDetails: string = '';
 
-  accounts: {id: string, profile: Profile}[] = [];
+  usersIds: string[] = []
+  usersChangedEvent = new EventEmitter<null>()
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
@@ -77,26 +79,12 @@ export class ClassUsersComponent implements OnInit {
 
     this.apiService.classes.getAccounts(this.classId!).subscribe({
       next: (accounts) => {
-        let classAccounts = [];
+        this.usersIds = accounts;
 
-        for (let account of accounts)
-        {
-          let actualAccountId = account;
-
-          this.apiService.profile.getInformation(actualAccountId).subscribe({
-            next: (profileData) => {
-              classAccounts.push({id: actualAccountId, profile: profileData});
-
-              if (actualAccountId === accounts[accounts.length - 1])
-              {
-                this.accounts = classAccounts;
-              }
-            }
-          })
-        }
+        this.usersChangedEvent.emit();
       },
       error: (error) => {
-      this.handleError(error?.status || 0);
+        this.handleError(error?.status || 0);
       }
     })
   }

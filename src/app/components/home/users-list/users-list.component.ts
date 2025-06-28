@@ -24,7 +24,10 @@ export class UsersListComponent implements OnInit {
 
   @Output() submit: EventEmitter<string> = new EventEmitter();
 
+  @Input() usersChanged: EventEmitter<null> = new EventEmitter();
+
   searchTerms: string = ''
+  loadedUsers: {id: string, profile: Profile}[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
@@ -34,11 +37,19 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    this.usersChanged.subscribe({
+      next: () => {
+        this.loadUsers();
+      }
+    })
+
     this.loadUsers();
   }
 
   loadUsers() 
   {
+    this.loadedUsers = this.users;
+
     for (let userId of this.usersIds){
       let currentUserId = userId;
 
