@@ -1,0 +1,9 @@
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.search-bar input {
+    flex-grow: 1;
+}

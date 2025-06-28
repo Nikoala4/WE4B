@@ -16,8 +16,6 @@ export class SearchBarComponent {
   onSearch(): void {
     const query = this.searchQuery.trim();
     
-    if (query) {
-      this.search.emit(query);
-    }
+    this.search.emit(query);
   }
 }

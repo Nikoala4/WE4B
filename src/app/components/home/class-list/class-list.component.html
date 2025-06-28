@@ -1,7 +1,8 @@
 <h2>Vos cours</h2>
 
-<app-search-bar></app-search-bar>
+<app-search-bar
+(search)="onSearch($event)"></app-search-bar>
 
-<div id="classes" class="classes-list">
-    <app-class-tile *ngFor="let classe of classes" [classe]="classe.classe" [classId]="classe.id"/>
+<div id="classes" class="classes-list" *ngFor="let classe of classes">
+    <app-class-tile *ngIf="searchTerms == '' || classe.classe.name.includes(searchTerms) || classe.classe.description.includes(searchTerms)" [classe]="classe.classe" [classId]="classe.id"/>
 </div>
