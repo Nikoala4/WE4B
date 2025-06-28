@@ -50,8 +50,6 @@ export class ClassUsersComponent implements OnInit {
       map((params, index) => {
         const id = params.get('classId');
 
-        console.log(id);
-
         return id;
       })
     ).subscribe(async (classId) => {

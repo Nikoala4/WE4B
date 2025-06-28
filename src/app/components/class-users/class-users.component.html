@@ -15,7 +15,7 @@
     <h2>Comptes associés à ce cours</h2>
 
     <app-users-list
-    *ngIf="usersIds"
+    *ngIf="usersIds.length > 0"
     [usersIds]="usersIds"/>
   </div>
 </div>
