@@ -10,7 +10,9 @@ import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDat
   imports: [
     ClassTileComponent,
     SearchBarComponent,
-    CommonModule
+    CommonModule,
+    NgFor,
+    NgIf
   ],
   templateUrl: './class-list.component.html',
   styleUrl: './class-list.component.css'
@@ -19,6 +21,8 @@ export class ClassListComponent implements OnInit {
 
   @Input() classesIds: string[] = [];
   @Input() classes: {id: string, classe: ApiGetClassDataResponse}[] = [];
+  @Input() admin: boolean = false
+
 
   @Output() submit: EventEmitter<string> = new EventEmitter();
 

@@ -23,7 +23,7 @@ export class ClassTileComponent {
 
   ngOnInit()
   {
-    console.log(this.classe, this.classId);
+    
   }
 
   get isTeacher()

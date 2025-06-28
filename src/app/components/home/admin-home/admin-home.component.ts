@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDataResponse';
 import { Account } from '../../../../nooble/api-objs/Account';
 import { ClassListComponent } from "../class-list/class-list.component";
@@ -16,7 +16,7 @@ import { UsersListComponent } from "../users-list/users-list.component";
   templateUrl: './admin-home.component.html',
   styleUrl: './admin-home.component.css'
 })
-export class AdminHomeComponent {
+export class AdminHomeComponent implements OnInit{
 
   found_classes: Class[] = [];
   found_users: Account[] = [];
@@ -39,6 +39,7 @@ export class AdminHomeComponent {
     this.classes_pattern = pattern
 
     this.found_classes = [];
+    this.classes_pattern = pattern
     this.searchNextClasses();
   }
 

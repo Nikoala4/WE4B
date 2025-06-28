@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { StudentOrTeacherHomeComponent } from "./student-or-teacher-home/student-or-teacher-home.component";
 import { AuthService } from '../../services/auth.service';
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService
+  ) {}
 
   get currentUser()
   {
