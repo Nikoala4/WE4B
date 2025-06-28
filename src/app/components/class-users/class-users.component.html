@@ -14,7 +14,8 @@
     <!-- Liste des comptes -->
     <h2>Comptes associés à ce cours</h2>
 
-    <p style="display:none">{{usersIds}}</p>
+    <!-- Force reload -->
+    <p style="display:none">{{usersIds}}</p> 
 
     <app-users-list
     [usersIds]="usersIds"/>
