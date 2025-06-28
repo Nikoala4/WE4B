@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { SearchBarComponent } from "../../searchbar/searchbar.component";
 import { Account } from '../../../../nooble/api-objs/Account';
 import { ApiService } from '../../../services/api.service';
 import { UserTileComponent } from "../user-tile/user-tile.component";
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { platform } from 'os';
+import { Profile } from '../../../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-users-list',
@@ -15,25 +17,33 @@ import { CommonModule } from '@angular/common';
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css'
 })
-export class UsersListComponent {
+export class UsersListComponent implements OnInit {
 
   @Input() usersIds: string[] = [];
-  @Input() users: Account[] = [];
+  @Input() users: {id: string, profile: Profile}[] = [];
 
   @Output() submit: EventEmitter<string> = new EventEmitter();
 
   searchTerms: string = ''
 
   constructor(
-    private api: ApiService
+    @Inject(PLATFORM_ID) private platformId: string,
+    private api: ApiService,
   ) {}
 
   ngOnInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.loadUsers();
+  }
+
+  loadUsers() 
+  {
     for (let userId of this.usersIds){
       let currentUserId = userId;
 
-      this.api.accounts.getAccountInformation(currentUserId).subscribe(account => {
-        this.users.push(account)
+      this.api.profile.getInformation(currentUserId).subscribe(profile => {
+        this.users.push({id: currentUserId, profile})
       })
 
     };

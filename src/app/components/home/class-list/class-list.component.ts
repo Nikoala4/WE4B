@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { ClassTileComponent } from "../class-tile/class-tile.component";
 import { SearchBarComponent } from "../../../components/searchbar/searchbar.component";
@@ -23,16 +23,23 @@ export class ClassListComponent implements OnInit {
   @Input() classes: {id: string, classe: ApiGetClassDataResponse}[] = [];
   @Input() admin: boolean = false
 
-
   @Output() submit: EventEmitter<string> = new EventEmitter();
 
   searchTerms: string = ''
 
   constructor(
-    private api: ApiService
+    @Inject(PLATFORM_ID) private platformId: string,
+    private api: ApiService,
   ) {}
 
   ngOnInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.loadClasses();
+  }
+
+  loadClasses()
+  {
     for (let classeId of this.classesIds){
       let currentClassId = classeId;
 
@@ -47,9 +54,7 @@ export class ClassListComponent implements OnInit {
           }
         })
       })
-
     };
-
   }
 
   onSearch(terms: string)

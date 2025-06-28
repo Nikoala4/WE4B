@@ -4,6 +4,6 @@
 
 <div class="users-list">
     <ng-container  *ngFor="let account of users">
-        <app-user-tile *ngIf="searchTerms == '' || account.profile.first_name.toUpperCase().includes(searchTerms) || account.profile.last_name.toUpperCase().includes(searchTerms) || account.profile.description.toUpperCase().includes(searchTerms)" [userData]="account"/>
+        <app-user-tile *ngIf="searchTerms == '' || account.profile.first_name.toUpperCase().includes(searchTerms) || account.profile.last_name.toUpperCase().includes(searchTerms) || account.profile.description.toUpperCase().includes(searchTerms)" [userProfile]="account.profile"/>
     </ng-container>
 </div>

@@ -76,4 +76,15 @@ export class AdminHomeComponent implements OnInit{
     });
   }
 
+  get found_users_objects()
+  {
+    return this.found_users.map(user => ({
+      id: user.id,
+      profile: {
+        ...user.profile,
+        role: user.role
+      }
+    }))
+  }
+
 }

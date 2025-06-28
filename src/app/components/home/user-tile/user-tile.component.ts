@@ -4,6 +4,7 @@ import { Account } from '../../../../nooble/api-objs/Account';
 import { PathResolverService } from '../../../services/path-resolver.service';
 import { FileType } from '../../../../nooble/api-objs/FileType';
 import { RoleTranscriberPipe } from '../../../pipes/role-transcriber.pipe';
+import { Profile } from '../../../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-user-tile',
@@ -14,7 +15,8 @@ import { RoleTranscriberPipe } from '../../../pipes/role-transcriber.pipe';
   styleUrl: './user-tile.component.css'
 })
 export class UserTileComponent {
-  @Input() userData!: Account
+  @Input() userProfile!: Profile
+  @Input() userId!: string
 
   constructor(
     private apiService: ApiService,
@@ -23,11 +25,11 @@ export class UserTileComponent {
 
   getUserProfileImageUrl()
   {
-    if (this.userData.profile.profile_image === null)
+    if (this.userProfile.profile_image === null)
     {
       return this.pathResolver.getDefaultProfileImagePath()
     } else {
-      return this.pathResolver.getResourcePath(this.userData.profile.profile_image, FileType.PROFILE_ICON);
+      return this.pathResolver.getResourcePath(this.userProfile.profile_image, FileType.PROFILE_ICON);
     }
   }
   
