@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { Account } from '../../../nooble/api-objs/Account';
 import { PathResolverService } from '../../services/path-resolver.service';
 import { FileType } from '../../../nooble/api-objs/FileType';
 import { ApiService } from '../../services/api.service';
@@ -23,7 +22,6 @@ import { Profile } from '../../../nooble/api-objs/Profile';
 })
 export class HeaderComponent implements OnInit {
   currentProfile: Profile | null = null;
-  currentUserImage: string = '';
   adminEnabled = false;
 
   constructor(
@@ -35,19 +33,12 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   reload(profile: Profile | null): void {
-    if (this.authService.isLoggedIn()) {
-      this.currentProfile = this.apiService.profile.lastKnownProfile!;
+    this.currentProfile = profile!;
+  }
 
-      if (this.currentProfile.profile_image !== null) {
-        this.currentUserImage = this.pathResolver.getResourcePath(this.currentProfile.profile_image, FileType.PROFILE_ICON);
-      } else {
-        this.currentUserImage = "/images/icons/user.png";
-      }
-
-    } else {
-      this.currentProfile = null;
-      this.currentUserImage = "/images/icons/user.png";
-    }
+  get currentUserImage()
+  {
+    return (this.currentProfile && this.currentProfile.profile_image)?this.pathResolver.getResourcePath(this.currentProfile.profile_image, FileType.PROFILE_ICON):"/images/icons/user.png";
   }
 
   ngOnInit(): void {
@@ -55,15 +46,14 @@ export class HeaderComponent implements OnInit {
 
     // S'abonner à l'observable du service AuthService pour écouter les changements d'utilisateur
     this.authService.authStatusChanged.subscribe(authState => {
-      if (authState === null) this.reload(null)
-      else this.apiService.profile.getInformation();
+      if (authState.connected === false) this.reload(null)
+      
+      else this.reload({...authState.account!.profile, role:authState.account!.role})
     });
 
     this.apiService.profile.profileChanged.subscribe(newProfile => {
       this.reload(newProfile);
     });
-
-    this.reload(null);
 
     if (isPlatformBrowser(this.platformId)) {
       this.adminEnabled = this.cookiesService.adminEnabled
