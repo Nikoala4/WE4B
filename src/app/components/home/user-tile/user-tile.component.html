@@ -1,0 +1,14 @@
+<a [href]="['profile', userData.id]" href="'user-preview-link'">
+    <div class="user-preview">
+        <img [src]="getUserProfileImageUrl()"/>
+
+        <div class="user-description">
+            <h1>
+                {{userData.profile.first_name}} {{userData.profile.last_name}}
+                <span class="user-roles"> - {{userData.role | roleTranscriber }}</span>
+            </h1>
+
+            <p>{{userData.profile.description}}</p>
+        </div>
+    </div>
+</a>

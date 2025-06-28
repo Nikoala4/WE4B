@@ -1,0 +1,11 @@
+<h2>Vos cours</h2>
+
+<app-search-bar
+(search)="onSearch($event)"
+(submit)="onSubmit($event)"></app-search-bar>
+
+<div class="users-list">
+    <ng-container  *ngFor="let account of users">
+        <app-user-tile *ngIf="searchTerms == '' || account.profile.first_name.toUpperCase().includes(searchTerms) || account.profile.last_name.toUpperCase().includes(searchTerms) || account.profile.description.toUpperCase().includes(searchTerms)" [userData]="account"/>
+    </ng-container>
+</div>

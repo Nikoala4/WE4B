@@ -1,9 +1,21 @@
-<p>Admin home</p>
+<h2>Tous les cours</h2>
 
 <app-class-list
 [classes]="found_classes_objects"
-(submit)="reloadClasses()"></app-class-list>
+(submit)="reloadClasses($event)"/>
 
-<button (click)="searchNextClasses()">
-    Charger plus
+<button (click)="searchNextClasses()" class="main-button icon-button">
+    <img src="/images/icons/add.png"/>
+    <span>Charger plus</span>
+</button>
+
+<h2>Tous les utilisateurs</h2>
+
+<app-users-list
+[users]="found_users"
+(submit)="reloadUsers($event)"/>
+
+<button (click)="searchNextUsers()" class="main-button icon-button">
+    <img src="/images/icons/add.png"/>
+    <span>Charger plus</span>
 </button>

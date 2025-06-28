@@ -15,13 +15,13 @@ export class SearchBarComponent {
   @Output() submit = new EventEmitter<string>()
 
   onSearch(): void {
-    const query = this.searchQuery.trim();
+    const query = this.searchQuery.trim().toUpperCase();
     
     this.search.emit(query);
   }
 
   onSubmit(): void {
-    const query = this.searchQuery.trim();
+    const query = this.searchQuery.trim().toUpperCase();
     
     this.submit.emit(query);
   }
