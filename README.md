@@ -230,6 +230,14 @@ Pour installer le projet angular, veuillez suivre les étapes suivantes :
 ***Il est extrêmement conseillé d'utiliser une version Angular récente (créé sous Angular 19) et une version node paire.***
 
 
+Vous disposerez des comptes suivants : 
+ - angular.student@gmail.com : compte étudiant
+ - angular.teacher@gmail.com : compte enseignant
+ - angular.teacher-admin@gmail.com : compte enseignant-administrateur
+ - angular.admin@gmail.com : compte administrateur
+
+Le mot de passe de ces comptes est pour tous "nooble-angular". 
+
 ## 5. Notes finales
 
 Il est à noter que : 
