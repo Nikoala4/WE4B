@@ -74,6 +74,8 @@ Vous y trouverez les fichiers suivants :
     1. `templates/mail`: les patrons à appliquer aux mails
  6. `uploaded` (une fois une ressources chargée sur le serveur): les ressources du serveur. 
 
+Si vous disposez d'une archive "uploaded" fourni avec ce devoir, placez son contenu dans le dossier `uploaded` du dossier de configuration. Assurez-vous de ne pas avoir un sous-dossier unique nommé `uploaded` dans ce dossier : les sous-dossiers de `[HOME]/.nooble/uploaded/` doivent correspondre à des dates. 
+
 #### 2.3.1 Configuration de la base de données
 
 Le fichier par défaut de la base de données est celui qui suit:
@@ -154,8 +156,8 @@ Le fichier par défaut du serveur SMTP est celui qui suit:
         "smtp_password": "any",
         "smtp_port": 587,
         "smtp_username": "your.email@gmail.com",
-        "uses_ssl": True,
-        "uses_starttls": False
+        "uses_ssl": true,
+        "uses_starttls": false
     }
 }
 ```
@@ -207,7 +209,7 @@ Pour installer le projet angular, veuillez suivre les étapes suivantes :
 
  - démarrez Angular avec `ng serve`
 
-***Il est extrêmement conseillé d'utiliser une version Angular récente (créé sous Angular 19) et une version npm paire.***
+***Il est extrêmement conseillé d'utiliser une version Angular récente (créé sous Angular 19) et une version node paire.***
 
 
 ## 4. Notes finales
@@ -216,7 +218,7 @@ Il est à noter que :
  - très peu de serveurs SMTP sont fonctionnels sans utiliser OAuth2, et la plupart des serveurs tels que GMail, Orange, etc... risquent de bloquer certains des mails envoyés. Si vous n'arrivez pas à créer un compte faute de mails non reçus, il vous suffira d'encoder le mot de passe en sha256 et de l'appliquer directement dans la base de données. 
  - vous pourriez voir ce message en lançant l'API : 
 ```
-Warning: could not use the pyvips package because of the following error"
+Warning: could not use the pyvips package because of the following error: <une erreur>
 We will use the PIL library, that could be slow. Sorry for that issue. Please install the libvips module, and the libvips42 package. 
 ```
    Ce message n'indique pas une défaillance de l'API. 
