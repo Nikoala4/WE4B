@@ -26,7 +26,7 @@ L'api nécessite d'avoir :
 
 Ce projet est fourni avec deux archives : `uploaded.zip` et `nooble-we4b-si40-sy43.zip`. 
 
-Le fichier uploaded.zip sera à installer après l'installation de l'API. 
+Le fichier `uploaded.zip` sera à installer après l'installation de l'API. 
 
 Pour installer le fichier `nooble-we4b-si40-sy43`.zip, extrayez-le, puis, lancez la commande qui suit : 
 
@@ -90,7 +90,7 @@ Vous y trouverez les fichiers suivants :
     1. `templates/mail`: les patrons à appliquer aux mails
  6. `uploaded` (une fois une ressources chargée sur le serveur): les ressources du serveur. 
 
-Si vous disposez d'une archive "uploaded" fourni avec ce devoir, placez son contenu dans le dossier `uploaded` du dossier de configuration. Assurez-vous de ne pas avoir un sous-dossier unique nommé `uploaded` dans ce dossier : les sous-dossiers de `[HOME]/.nooble/uploaded/` doivent correspondre à des dates. 
+Vous devriez disposer d'une archive `uploaded` fournie avec le projet. Placez son contenu dans le dossier `uploaded` du dossier de configuration. Assurez-vous de ne pas avoir un sous-dossier unique nommé `uploaded` dans ce dossier ; les sous-dossiers de `[HOME]/.nooble/uploaded/` doivent correspondre à des dates. 
 
 #### 3.3.1 Configuration de la base de données
 
