@@ -33,7 +33,6 @@ export class ClassUsersComponent implements OnInit {
   errorMessageDetails: string = '';
 
   usersIds: string[] = []
-  usersChangedEvent = new EventEmitter<null>()
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
@@ -80,8 +79,6 @@ export class ClassUsersComponent implements OnInit {
     this.apiService.classes.getAccounts(this.classId!).subscribe({
       next: (accounts) => {
         this.usersIds = accounts;
-
-        this.usersChangedEvent.emit();
       },
       error: (error) => {
         this.handleError(error?.status || 0);

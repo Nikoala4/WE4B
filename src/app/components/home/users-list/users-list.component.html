@@ -3,7 +3,7 @@
 (submit)="onSubmit($event)"></app-search-bar>
 
 <div class="users-list">
-    <ng-container  *ngFor="let account of loadedUsers">
+    <ng-container  *ngFor="let account of allUsers">
         <app-user-tile *ngIf="searchTerms == '' || account.profile.first_name.toUpperCase().includes(searchTerms) || account.profile.last_name.toUpperCase().includes(searchTerms) || account.profile.description.toUpperCase().includes(searchTerms)" [userProfile]="account.profile" [userId]="account.id"/>
     </ng-container>
 </div>
