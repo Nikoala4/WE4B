@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Class } from '../../../../nooble/api-objs/Class';
 import { RouterLink } from '@angular/router';
+import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDataResponse';
 
 @Component({
   selector: 'app-class-tile',
@@ -9,7 +9,13 @@ import { RouterLink } from '@angular/router';
   styleUrl: './class-tile.component.css'
 })
 export class ClassTileComponent {
-  @Input() classe!: Class
+  @Input() classe!: ApiGetClassDataResponse
+  @Input() classId!: string
 
   constructor(){}
+
+  ngOnInit()
+  {
+    console.log(this.classe, this.classId);
+  }
 }

@@ -25,7 +25,7 @@ export class StudentOrTeacherHomeComponent {
 
   get classes()
   {
-    return this.currentUser?.profile.classes;
+    return this.currentUser?.profile.classes ?? [];
   }
 
 }

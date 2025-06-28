@@ -2,7 +2,8 @@
     <div id="homepage-content" class="main-page-content">
         <h1>Bonjour, {{currentUser?.profile?.first_name}} {{currentUser?.profile?.last_name}}!</h1>
 
-        <app-class-list></app-class-list>
+        <app-class-list
+        [classesIds]="this.classes"></app-class-list>
 
         </div>
 </div>

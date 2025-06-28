@@ -18,11 +18,9 @@ import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDat
 export class ClassListComponent implements OnInit {
 
   @Input() classesIds: string[] = [];
-  classes: ApiGetClassDataResponse[] = [];
+  classes: {id: string, classe: ApiGetClassDataResponse}[] = [];
 
   constructor(
-    private account: AuthService,
-    private cookies: CookiesService,
     private api: ApiService
   ) {}
 
@@ -32,10 +30,13 @@ export class ClassListComponent implements OnInit {
 
       this.api.classes.getData(currentClassId).subscribe(classe => {
         this.classes.push({
-          description: classe.description,
-          last_modification: classe.last_modification,
-          last_modifier: classe.last_modifier,
-          name: classe.name
+          id: currentClassId,
+          classe: {
+            description: classe.description,
+            last_modification: classe.last_modification,
+            last_modifier: classe.last_modifier,
+            name: classe.name
+          }
         })
       })
 
