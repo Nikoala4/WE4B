@@ -1,12 +1,14 @@
 
-<div *ngSwitch="role">
+<div [ngSwitch]="role">
 
     <!-- admins have their own display -->
-    <app-admin-home *ngSwitchCase="'admin'"/>  
+    <app-admin-home *ngSwitchCase="'admin'"/>
 
     <!-- undefined roles should be filtered -->
-    <p *ngSwitchCase="undefined">Chargment</p>
+    <p *ngSwitchCase="undefined">Chargement</p>
 
     <!-- both teachers and students have the same display -->
     <app-student-or-teacher-home *ngSwitchDefault/>
+
 </div>
+
