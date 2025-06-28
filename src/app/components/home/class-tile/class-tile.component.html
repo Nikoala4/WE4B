@@ -1,9 +1,9 @@
 <a routerLink="class/{{ classId }}" class="class-preview-link">
-    <div class="class-preview" style="background-image: url('/images/class_image.png')">
+    <div class="class-preview">
         <span class="class-edit-icon" *ngIf="isTeacher">
             <img src="/images/icons/edit.png" />
         </span>
-        
+
         <h1>{{ classe.name }}</h1>
         <p>{{ classe.description }}</p>
     </div>

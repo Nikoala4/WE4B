@@ -27,7 +27,7 @@ div.classes-list a.class-preview-link.hidden, div.classes-list div.class-preview
 div.classes-list div.class-preview, button#add-class-button {
     position: relative;
 
-    min-width: var(--classes-list-preview-min-width);
+    width: var(--classes-list-preview-width);
 
     margin: var(--classes-list-margin);
     flex-grow: 0;
@@ -61,18 +61,6 @@ div.classes-list div.class-preview h1 {
     margin-bottom: var(--classes-list-class-preview-spacing);
 
     font-size: var(--classes-list-class-preview-title-size);
-
-    background: var(--classes-list-class-content-background);
-    padding: var(--classes-list-class-title-padding);
-    box-shadow: 0px 0px var(--classes-list-class-title-shadow-strength) var(--classes-list-class-title-shadow-strength) var(--classes-list-class-content-background);
-    border-radius: var(--classes-list-class-title-shadow-strength);
-}
-
-div.classes-list div.class-preview p {
-    background: var(--classes-list-class-content-background);
-    padding: var(--classes-list-class-description-padding);
-    box-shadow: 0px 0px var(--classes-list-class-description-shadow-strength) var(--classes-list-class-description-shadow-strength) var(--classes-list-class-content-background);
-    border-radius: var(--classes-list-class-description-shadow-strength);
 }
 
 div.classes-list div.class-preview span.class-edit-icon {
