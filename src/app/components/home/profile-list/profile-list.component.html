@@ -1,0 +1,5 @@
+<h2>Tous les utilisateurs</h2>
+<app-search-bar></app-search-bar>
+<div id="users" class="users-list">
+    <app-profile-tile *ngFor="let account of accounts" [account]="account"></app-profile-tile>
+</div>

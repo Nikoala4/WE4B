@@ -1,0 +1,16 @@
+<a routerLink="/profile/{{ account.id }}" class="user-preview-link">
+    <div class="user-preview">
+        <img src="data:image/png;base64,{{ account.profile.profile_image }}" />
+
+        <div class="user-description">
+            <h1>{{ account.profile.first_name }} {{ account.profile.last_name }}<span class="user-roles">&nbsp;
+                <span *ngIf="isStudent">Étudiant </span>
+                <span *ngIf="isTeacher">Enseignant </span>
+                <span *ngIf="isAdmin">Administrateur </span>
+            </span>
+            </h1>
+            <p>{{ account.profile.description }}</p>
+        </div>
+    </div>
+
+</a>

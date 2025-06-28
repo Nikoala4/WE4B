@@ -1,9 +1,10 @@
-<p>Admin home</p>
-
 <app-class-list
 [classes]="found_classes_objects"
-(submit)="reloadClasses()"></app-class-list>
+[admin]="true"
+(submit)="reloadClasses($event)"></app-class-list>
 
 <button (click)="searchNextClasses()">
     Charger plus
 </button>
+
+<app-profile-list></app-profile-list>

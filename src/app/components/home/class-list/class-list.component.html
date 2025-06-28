@@ -1,10 +1,13 @@
-<h2>Vos cours</h2>
+<h2 *ngIf="admin">Tous les cours</h2>
+<h2 *ngIf="!admin">Vos cours</h2>
 
 <app-search-bar
 (search)="onSearch($event)"
 (submit)="onSubmit($event)"></app-search-bar>
 
-<div id="classes" class="classes-list">
+
+
+<div id="global-classes" class="classes-list">
     <ng-container  *ngFor="let classe of classes">
         <app-class-tile *ngIf="searchTerms == '' || classe.classe.name.includes(searchTerms) || classe.classe.description.includes(searchTerms)" [classe]="classe.classe" [classId]="classe.id"/>
     </ng-container>
