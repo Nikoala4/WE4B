@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ApiLoginResponse } from '../../nooble/api-comm/LoginResponse';
 import lodashUtils from 'lodash';
 import { ApiService } from './api.service';
+import { CookiesService } from './cookies.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     private api: ApiService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router
+    private router: Router,
+    private cookies: CookiesService
   ) {
     this.init();
   }
@@ -35,15 +37,25 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.logInfo?.account?.role === Role.ADMIN || this.logInfo?.account?.role === Role.TEACHER_ADMIN;
+    return this.logInfo?.account?.role === Role.ADMIN || (this.logInfo?.account?.role === Role.TEACHER_ADMIN && this.cookies.adminEnabled);
   }
 
   isTeacher(): boolean {
-    return this.logInfo?.account?.role === Role.TEACHER || this.logInfo?.account?.role === Role.TEACHER_ADMIN;
+    return this.logInfo?.account?.role === Role.TEACHER || (this.logInfo?.account?.role === Role.TEACHER_ADMIN && !this.cookies.adminEnabled);
   }
 
   isStudent(): boolean {
     return this.logInfo?.account?.role === Role.STUDENT;
+  }
+
+  get currentRole(): Role.ADMIN | Role.STUDENT | Role.TEACHER | undefined
+  {
+    if (this.currentUser?.role === Role.TEACHER_ADMIN)
+    {
+      return this.cookies.adminEnabled? Role.ADMIN : Role.TEACHER;
+    } else {
+      return this.currentUser?.role ?? undefined;
+    }
   }
 
   get currentUser(): Account | null {   

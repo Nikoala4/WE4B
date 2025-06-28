@@ -1,12 +1,12 @@
-<div id="homepage-main-separation" class="content-separator">
-    <div id="homepage-content" class="main-page-content">
-        <h1>Bonjour, {{account.profile.first_name}} {{account.profile.last_name}}!</h1>
 
-        <app-class-list></app-class-list>
+<div *ngSwitch="role">
 
-        </div>
+    <!-- admins have their own display -->
+    <app-admin-home *ngSwitchCase="'admin'"/>  
+
+    <!-- undefined roles should be filtered -->
+    <p *ngSwitchCase="undefined">Chargment</p>
+
+    <!-- both teachers and students have the same display -->
+    <app-student-or-teacher-home *ngSwitchDefault/>
 </div>
-
-<app-admin-home />  
-<app-teacher-home />
-<app-student-home />
