@@ -1,7 +1,8 @@
 <h2>Vos cours</h2>
 
 <app-search-bar
-(search)="onSearch($event)"></app-search-bar>
+(search)="onSearch($event)"
+(submit)="onSubmit($event)"></app-search-bar>
 
 <div id="classes" class="classes-list">
     <ng-container  *ngFor="let classe of classes">

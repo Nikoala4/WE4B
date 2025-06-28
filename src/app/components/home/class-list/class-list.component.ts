@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { ClassTileComponent } from "../class-tile/class-tile.component";
@@ -18,7 +18,9 @@ import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDat
 export class ClassListComponent implements OnInit {
 
   @Input() classesIds: string[] = [];
-  classes: {id: string, classe: ApiGetClassDataResponse}[] = [];
+  @Input() classes: {id: string, classe: ApiGetClassDataResponse}[] = [];
+
+  @Output() submit: EventEmitter<string> = new EventEmitter();
 
   searchTerms: string = ''
 
@@ -49,6 +51,11 @@ export class ClassListComponent implements OnInit {
   onSearch(terms: string)
   {
     this.searchTerms = terms;
+  }
+
+  onSubmit(terms: string)
+  {
+    this.submit.emit(terms);
   }
 
 }

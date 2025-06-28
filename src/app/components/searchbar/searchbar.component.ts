@@ -12,10 +12,18 @@ export class SearchBarComponent {
   searchQuery: string = '';
 
   @Output() search = new EventEmitter<string>();
+  @Output() submit = new EventEmitter<string>()
 
   onSearch(): void {
     const query = this.searchQuery.trim();
     
     this.search.emit(query);
   }
+
+  onSubmit(): void {
+    const query = this.searchQuery.trim();
+    
+    this.submit.emit(query);
+  }
 }
+
