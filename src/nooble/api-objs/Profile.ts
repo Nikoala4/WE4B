@@ -10,5 +10,5 @@ export interface Profile
     active_badges: BadgeDescriptor[],
     description: string,
     role: Role,
-    classes?: string
+    classes?: string[]
 }
