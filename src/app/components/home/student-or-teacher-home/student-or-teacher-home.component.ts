@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ClassListComponent } from '../class-list/class-list.component';
 import { AuthService } from '../../../services/auth.service';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-student-or-teacher-home',
@@ -14,11 +15,17 @@ export class StudentOrTeacherHomeComponent {
 
   constructor(
     private authService: AuthService,
+    private apiService: ApiService
   ) {}
 
   get currentUser()
   {
     return this.authService.currentUser;
+  }
+
+  get classes()
+  {
+    return this.currentUser?.profile.classes;
   }
 
 }
