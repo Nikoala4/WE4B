@@ -19,6 +19,11 @@ export class HomeComponent {
   
   constructor(private authService: AuthService) {}
 
+  get currentUser()
+  {
+    return this.authService.currentUser;
+  }
+
   get role()
   {
     return this.authService.currentRole;

@@ -11,7 +11,11 @@ import { ApiGetClassDataResponse } from '../../../../nooble/api-comm/GetClassDat
 
 @Component({
   selector: 'app-class-list',
-  imports: [NgIf, ClassTileComponent, NgFor, SearchBarComponent],
+  imports: [
+    ClassTileComponent,
+    NgFor,
+    SearchBarComponent
+  ],
   templateUrl: './class-list.component.html',
   styleUrl: './class-list.component.css'
 })
