@@ -1,0 +1,34 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>Nouvel utilisateur</h2>
+
+  <form [formGroup]="userForm" style="display: flex; flex-direction: column;">
+    <label for="first-name">Prénom :</label>
+    <input id="first-name" type="text" formControlName="first_name" />
+
+    <label for="last-name">Nom de famille :</label>
+    <input id="last-name" type="text" formControlName="last_name" />
+
+    <label for="mail-address">Adresse mail :</label>
+    <input id="mail-address" type="email" formControlName="mail_address" />
+
+    <p class="error" *ngIf="error_message !== ''">
+      Une erreur est intervenue : {{ error_message }}
+    </p>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="dialogRef.close(null)" class="main-button">
+    Annuler
+  </button>
+  <span style="width: 10px;"></span>
+  <button
+    mat-button
+    color="primary"
+    class="main-button"
+    (click)="createUser()"
+    [disabled]="userForm.invalid"
+  >
+    OK
+  </button>
+</mat-dialog-actions>

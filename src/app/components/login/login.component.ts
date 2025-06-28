@@ -46,6 +46,11 @@ export class LoginComponent {
     //TODO: Implement forgot password functionality
   }
 
+  get isCurrentlyConnected()
+  {
+    return this.api.currentRole != undefined;
+  }
+
   get email(): string 
   {
     return this.form.get('email')?.value as string;

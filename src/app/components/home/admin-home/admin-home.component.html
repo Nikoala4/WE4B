@@ -4,10 +4,17 @@
 [classes]="found_classes_objects"
 (submit)="reloadClasses($event)"/>
 
-<button (click)="searchNextClasses()" class="main-button icon-button">
-    <img src="/images/icons/add.png"/>
-    <span>Charger plus</span>
-</button>
+<div class="actions-list">
+    <button (click)="searchNextClasses()" class="main-button icon-button">
+        <img src="/images/icons/search.png"/>
+        <span>Charger plus</span>
+    </button>
+
+    <button (click)="createClass()" class="main-button icon-button">
+        <img src="/images/icons/add.png"/>
+        <span>Nouveau cours...</span>
+    </button>
+</div>
 
 <h2>Tous les utilisateurs</h2>
 
@@ -15,8 +22,14 @@
 [users]="found_users_objects"
 (submit)="reloadUsers($event)"/>
 
-<button (click)="searchNextUsers()" class="main-button icon-button">
-    <img src="/images/icons/add.png"/>
-    <span>Charger plus</span>
-</button>
+<div class="actions-list">
+    <button (click)="searchNextUsers()" class="main-button icon-button">
+        <img src="/images/icons/search.png"/>
+        <span>Charger plus</span>
+    </button>
 
+    <button (click)="createUser()" class="main-button icon-button">
+        <img src="/images/icons/add.png"/>
+        <span>Nouvel utilisateur...</span>
+    </button>
+</div>  

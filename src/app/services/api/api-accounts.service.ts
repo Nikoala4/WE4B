@@ -7,9 +7,9 @@ export class ApiAccountsService {
 
   constructor(private endpointUrl: string, private http: HttpClient) {}
   
-  addAccount(mail: string, first_name: string, last_name: string): Observable<null>
+  addAccount(mail: string, first_name: string, last_name: string): Observable<{new_account: string}>
   {
-    return this.http.post<null>(this.endpointUrl + "/accounts/add", {
+    return this.http.post<{new_account:string}>(this.endpointUrl + "/accounts/add", {
       mail,
       first_name,
       last_name

@@ -10,6 +10,7 @@ import { AlertDialogComponent } from '../../alert-dialog/alert-dialog.component'
 import { ProfileImageSelectorComponent } from "../../profile-image-selector/profile-image-selector.component";
 import { DecorationSelectorComponent } from "../../decoration-selector/decoration-selector.component";
 import { Decoration } from '../../../../nooble/api-objs/Decoration';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-misc-profile-settings',
@@ -39,7 +40,8 @@ export class MiscProfileSettingsComponent {
 
   constructor(
     private apiService: ApiService,
-    private dialogs: MatDialog
+    private dialogs: MatDialog,
+    private router: Router
   ) {};
 
   ngOnInit()
@@ -130,7 +132,11 @@ export class MiscProfileSettingsComponent {
       next: (accepted: boolean) => {
         if (accepted)
         {
-          this.apiService.accounts.deleteAccount(this.editingAccount.id)
+          this.apiService.accounts.deleteAccount(this.editingAccount.id).subscribe({
+            next: () => {
+              this.router.navigateByUrl('/');
+            }
+          })
         }
       }
     });

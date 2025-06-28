@@ -6,6 +6,10 @@ import { ApiSearchClassRawResponse } from '../../../../nooble/api-comm/SearchCla
 import { ApiService } from '../../../services/api.service';
 import { Class } from '../../../../nooble/api-objs/Class';
 import { UsersListComponent } from "../users-list/users-list.component";
+import { MatDialog } from '@angular/material/dialog';
+import { CreateUserDialogComponent } from '../../create-user-dialog/create-user-dialog.component';
+import { Router } from '@angular/router';
+import { CreateClassDialogComponent } from '../../create-class-dialog/create-class-dialog.component';
 
 @Component({
   selector: 'app-admin-home',
@@ -24,10 +28,10 @@ export class AdminHomeComponent implements OnInit{
   classes_pattern: string = ''
   accounts_pattern: string = ''
 
-    usersChangedEvent = new EventEmitter<null>()
-
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private dialogs: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit()
@@ -54,6 +58,18 @@ export class AdminHomeComponent implements OnInit{
     });
   }
 
+  createClass()
+  {
+    this.dialogs.open(CreateClassDialogComponent).afterClosed().subscribe({
+      next: (newClassId) => {
+        if (newClassId)
+        {
+          this.router.navigate(['class', newClassId]);
+        }
+      }
+    })
+  }
+
   get found_classes_objects()
   {
     return this.found_classes.map(classe => ({
@@ -74,9 +90,20 @@ export class AdminHomeComponent implements OnInit{
     this.apiService.accounts.searchAccount(this.accounts_pattern, 10, this.found_users.length).subscribe({
       next: (response) => {
         this.found_users = this.found_users.concat(response)
-        this.usersChangedEvent.emit();
       }
     });
+  }
+
+  createUser()
+  {
+    this.dialogs.open(CreateUserDialogComponent).afterClosed().subscribe({
+      next: (newUserId) => {
+        if (newUserId)
+        {
+          this.router.navigate(['profile', newUserId, "edit"]);
+        }
+      }
+    })
   }
 
   get found_users_objects()

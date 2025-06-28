@@ -1,0 +1,31 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>Nouveau cours</h2>
+
+  <form [formGroup]="classForm" style="display: flex; flex-direction: column;">
+    <label for="name">Nom :</label>
+    <input id="name" type="text" formControlName="name" />
+
+    <label for="description">Description brève :</label>
+    <input id="description" type="text" formControlName="description" />
+
+    <p class="error" *ngIf="error_message !== ''">
+      Une erreur est intervenue : {{ error_message }}
+    </p>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="dialogRef.close(null)" class="main-button">
+    Annuler
+  </button>
+  <span style="width: 10px;"></span>
+  <button
+    mat-button
+    color="primary"
+    class="main-button"
+    (click)="createClass()"
+    [disabled]="classForm.invalid"
+  >
+    OK
+  </button>
+</mat-dialog-actions>

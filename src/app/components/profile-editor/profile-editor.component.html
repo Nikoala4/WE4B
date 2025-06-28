@@ -14,7 +14,7 @@
       <app-account-role-settings tab-content *ngIf="selectedTab === 1 && editingAccount != null && currentUser != null"
         [editingAccount]="editingAccount" [currentUser]="currentUser" (update)="reloadUserData()"></app-account-role-settings>
       <app-account-classes-selection tab-content *ngIf="selectedTab === 2 && editingAccount != null && currentUser != null"
-        [editingAccount]="editingAccount" [currentUser]="currentUser" (update)="reloadUserData()"></app-account-classes-selection>
+        (update)="reloadUserData()"></app-account-classes-selection>
 
     </app-tab-group>
   </div>
