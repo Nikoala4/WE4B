@@ -11,15 +11,16 @@ import { FileType } from '../../../nooble/api-objs/FileType';
 import { ApiService } from '../../services/api.service';
 import { map } from 'rxjs';
 import { Profile } from '../../../nooble/api-objs/Profile';
+import { UsersListComponent } from "../home/users-list/users-list.component";
 
 @Component({
   selector: 'app-class-users',
   imports: [
     RouterLink,
     CommonModule,
-    RoleTranscriberPipe,
-    FormsModule
-  ],
+    FormsModule,
+    UsersListComponent
+],
   templateUrl: './class-users.component.html',
   styleUrl: './class-users.component.css'
 })
@@ -31,7 +32,7 @@ export class ClassUsersComponent implements OnInit {
   errorMessage: string = '';
   errorMessageDetails: string = '';
 
-  accounts: {id: string, profile: Profile}[] = [];
+  usersIds: string[] = []
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
@@ -77,23 +78,7 @@ export class ClassUsersComponent implements OnInit {
 
     this.apiService.classes.getAccounts(this.classId!).subscribe({
       next: (accounts) => {
-        let classAccounts = [];
-
-        for (let account of accounts)
-        {
-          let actualAccountId = account;
-
-          this.apiService.profile.getInformation(actualAccountId).subscribe({
-            next: (profileData) => {
-              classAccounts.push({id: actualAccountId, profile: profileData});
-
-              if (actualAccountId === accounts[accounts.length - 1])
-              {
-                this.accounts = classAccounts;
-              }
-            }
-          })
-        }
+        this.usersIds = accounts;
       },
       error: (error) => {
       this.handleError(error?.status || 0);
