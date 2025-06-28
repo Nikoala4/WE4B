@@ -15,6 +15,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { Profile } from '../../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-class-editor',
@@ -46,6 +47,8 @@ export class ClassEditorComponent {
     name: '',
     description: ''
   };
+
+  lastModifierIdentity: Profile | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
@@ -93,6 +96,12 @@ export class ClassEditorComponent {
           name: data.name,
           description: data.description
         }
+
+        this.apiService.profile.getInformation(this.classData.last_modifier).subscribe({
+          next: (response) => {
+            this.lastModifierIdentity = response
+          }
+        })
       },
       error: (error) => {
       this.handleError(error?.status || 0);

@@ -7,6 +7,9 @@
         <h1 #classTitle>{{classData? classData.name:errorMessage}}</h1>
     </div>
     <p class="class-description">{{classData? classData.description: errorMessageDetails}}</p>
+
+    <p> Modifié par <a [routerLink]="'/profile/' + classData?.last_modifier">{{lastModifierIdentity?.first_name}} {{lastModifierIdentity?.last_name}}</a> à {{ classData?.last_modification | date }}</p>
+
     <hr/>
 
     <a [routerLink]="['class', classId, 'users']">Comptes liés à ce cours</a>

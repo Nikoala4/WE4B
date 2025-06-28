@@ -7,6 +7,7 @@ import { SectionExporterService } from '../../services/section-exporter.service'
 import { Section } from '../../utils/classes/sections/Section';
 import { SectionDisplayComponent } from "../section-display/section-display.component";
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Profile } from '../../../nooble/api-objs/Profile';
 
 @Component({
   selector: 'app-class-overview',
@@ -28,6 +29,8 @@ export class ClassOverviewComponent implements OnInit {
   classId: string | null = null;
   classData: ApiGetClassDataResponse | null = null;
   classContentSection: Section<any, any> | null = null
+
+  lastModifierIdentity: Profile | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,6 +67,12 @@ export class ClassOverviewComponent implements OnInit {
     this.apiService.classes.getData(this.classId!).subscribe({
       next: (data) => {
         this.classData = data;
+
+        this.apiService.profile.getInformation(this.classData.last_modifier).subscribe({
+          next: (response) => {
+            this.lastModifierIdentity = response
+          }
+        })
       },
       error: (error) => {
       this.handleError(error?.status || 0);
