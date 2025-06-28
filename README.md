@@ -31,7 +31,7 @@ Commencez par install l'API depuis son [lien github](https://github.com/Kaki-In/
 Sur Linux, ouvrez un terminal (`CTRL+MAJ+T`) et placez-vous dans le dossier dans lequel vous voulez placer l'API:
 
 ```sh
-$ cd .../ // lien vers le dossier
+$ cd .../ # lien vers le dossier
 $ git clone https://github.com/Kaki-In/nooble-apiarist
 ```
 
