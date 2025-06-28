@@ -12,6 +12,9 @@ div.users-list {
 
     gap: var(--users-list-margin);
 
+    padding: var(--users-list-margin);
+    box-sizing: border-box;
+
     overflow-x: hidden;
     overflow-y: auto;
 

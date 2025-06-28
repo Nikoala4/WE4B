@@ -15,7 +15,7 @@
             {{ resultMessage }}
         </span>
 
-        <button type="submit" class="main-button" [disabled]="isCurrentlyConnected || !form.valid">
+        <button type="submit" class="main-button" [disabled]="isConnecting || !form.valid">
             Se connecter
         </button>
 

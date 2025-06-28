@@ -18,14 +18,19 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   })
+  
   resultMessage: string = "";
   resultMessageIsError: boolean = false;
 
-  constructor(private api: AuthService) {}
+  isConnecting: boolean = false
+
+  constructor(private auth: AuthService) {}
 
   async submit()
   {
-    this.api.login(this.email.trim(), this.password).subscribe({
+    this.isConnecting = true;
+
+    this.auth.login(this.email.trim(), this.password).subscribe({
       next: (response) => {
         this.resultMessage = "Bonjour, " + response.first_name + " " + response.last_name;
         this.resultMessageIsError = false;
@@ -37,6 +42,7 @@ export class LoginComponent {
           this.resultMessage = "Une erreur est survenue";
         }
         this.resultMessageIsError = true;
+        this.isConnecting = false
       }
     });
   }
@@ -44,11 +50,6 @@ export class LoginComponent {
   forgot()
   {
     //TODO: Implement forgot password functionality
-  }
-
-  get isCurrentlyConnected()
-  {
-    return this.api.currentRole != undefined;
   }
 
   get email(): string 
