@@ -194,6 +194,8 @@ Le fichier de configuration par défaut du gestionnaire de ressources est celui 
 
 Une fois la configuration effectuée, il vous suffira de lancer l'API en démarrant le fichier `main.py`. 
 
+Vous pourrez ensuite visualiser les différentes fonctionnalités de l'API en vous rendant directement vers son lien d'accès ([http://localhost:8622](http://localhost:8622) d'après la configuration initiale), ainsi qu'effectuer certaines requêtes "à la main" comme le besoin vous en vient. 
+
 ## 3. Installer le projet Angular
 
 Pour installer le projet angular, veuillez suivre les étapes suivantes : 
