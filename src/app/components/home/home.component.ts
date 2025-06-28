@@ -4,6 +4,7 @@ import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { StudentOrTeacherHomeComponent } from "./student-or-teacher-home/student-or-teacher-home.component";
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { ThreadListComponent } from "../thread-list/thread-list.component";
 
 
 @Component({
@@ -11,8 +12,9 @@ import { CommonModule } from '@angular/common';
   imports: [
     AdminHomeComponent,
     StudentOrTeacherHomeComponent,
-    CommonModule
-  ],
+    CommonModule,
+    ThreadListComponent
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

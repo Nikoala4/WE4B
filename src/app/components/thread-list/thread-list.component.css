@@ -1,0 +1,10 @@
+div.activity-author {
+    text-wrap: nowrap;
+}
+
+div.activity-author button {
+    margin-left: 10px;
+    padding: 0px 5px;
+    height: 100%
+}
+

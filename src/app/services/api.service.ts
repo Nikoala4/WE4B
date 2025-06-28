@@ -10,6 +10,7 @@ import { ApiResourcesService } from './api/api-resources.service';
 import { ApiSafeService } from './api/api-safe.service';
 import { API_ENDPOINT } from './config/api-endpoint-config';
 import { HttpClient } from '@angular/common/http';
+import { ApiThreadService } from './api/api-thread.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,17 +25,19 @@ export class ApiService {
   private _profile: ApiProfileService;
   private _resources: ApiResourcesService;
   private _safe: ApiSafeService;
+  private _thread: ApiThreadService;
 
   constructor(@Inject(API_ENDPOINT) apiEndpoint: string, httpClient: HttpClient) {
-    this._accounts = new ApiAccountsService(apiEndpoint, httpClient)
-    this._activities = new ApiActivitiesService(apiEndpoint, httpClient)
-    this._authentication = new ApiAuthenticationService(apiEndpoint, httpClient)
-    this._badges = new ApiBadgesService(apiEndpoint, httpClient)
-    this._classes = new ApiClassesService(apiEndpoint, httpClient)
-    this._decorations = new ApiDecorationsService(apiEndpoint, httpClient)
-    this._profile = new ApiProfileService(apiEndpoint, httpClient)
-    this._resources = new ApiResourcesService(apiEndpoint, httpClient)
-    this._safe = new ApiSafeService(apiEndpoint, httpClient)
+    this._accounts = new ApiAccountsService(apiEndpoint, httpClient);
+    this._activities = new ApiActivitiesService(apiEndpoint, httpClient);
+    this._authentication = new ApiAuthenticationService(apiEndpoint, httpClient);
+    this._badges = new ApiBadgesService(apiEndpoint, httpClient);
+    this._classes = new ApiClassesService(apiEndpoint, httpClient);
+    this._decorations = new ApiDecorationsService(apiEndpoint, httpClient);
+    this._profile = new ApiProfileService(apiEndpoint, httpClient);
+    this._resources = new ApiResourcesService(apiEndpoint, httpClient);
+    this._safe = new ApiSafeService(apiEndpoint, httpClient);
+    this._thread = new ApiThreadService(apiEndpoint, httpClient);
   }
 
   get accounts()
@@ -80,5 +83,10 @@ export class ApiService {
   get safe()
   {
     return this._safe;
+  }
+
+  get thread()
+  {
+    return this._thread;
   }
 }

@@ -1,0 +1,25 @@
+<section id="activity-thread" class="side-thread">
+    <div class="activity" *ngFor="let activity of data">
+        <h1>
+            {{activity.activity_data.title}}
+        </h1>
+        <div class="activity-content">
+            <p>
+                {{activity.activity_data.content}}
+            </p>
+
+            <div class="activity-author">
+                <img src="/images/icons/close.png"/>
+                <button class="main-button" (click)="markAsRead(activity.activity_id)">
+                    Marquer comme lu
+                </button>
+            </div>
+
+            <time>
+                {{activity.activity_data.date | date}}
+            </time>
+        </div>
+    </div>
+
+    <p *ngIf="data.length == 0" class="nothing-info">No notification for the moment</p>
+</section>
