@@ -126,11 +126,11 @@ Le fichier par défaut de l'API est celui qui suit:
 }
 ```
 
-- `binding`: les paramètres d'écoute de la base de données
-    - `host`: l'hôte d'écoute de la base de données (`localhost` pour rester en local)
-    - `host_url`: l'url de la base de données
-    - `cookies_domain`: le [domaine de cookies](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/Cookies#attribut_domain) de la base de données. 
-    - `port`: le port d'écoute de la base de données
+- `binding`: les paramètres d'écoute de l'API
+    - `host`: l'hôte d'écoute de l'API (`localhost` pour rester en local)
+    - `host_url`: l'url de l'API
+    - `cookies_domain`: le [domaine de cookies](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/Cookies#attribut_domain) de l'API. 
+    - `port`: le port d'écoute de l'API
     - `public_key_file`: si `use_ssl` vaut `true`, le chemin d'accès vers le fichier de clé publique
     - `private_key_file`: si `use_ssl` vaut `true`, le chemin d'accès vers le fichier de certificat
     - `use_ssl`: vrai s'il faut utiliser SSL. 
