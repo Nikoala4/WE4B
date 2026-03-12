@@ -2,9 +2,9 @@
 
 Ce document vous permet de pouvoir installer ce projet Angular, ainsi que l'api à laquelle il est lié, et la base de données qui correspond. 
 
-Une version de ce projet est déployée en ligne sur [https://nooble-angular.flopcreation.fr](https://nooble-angular.flopcreation.fr). 
+Une version de ce projet est déployée en ligne sur [https://nooble-angular.flopcreation.fr](https://nooble-angular.flopcreation.fr/). 
 
-Pour accéder à l'API, vous pouvez vous rendre sur [https://api.nooble-angular.flopcreation.fr](https://nooble-angular.flopcreation.fr). 
+Pour accéder à l'API, vous pouvez vous rendre sur [https://api.nooble-angular.flopcreation.fr](https://api.nooble-angular.flopcreation.fr/). 
 
 ## 1. Dépendances 
 
